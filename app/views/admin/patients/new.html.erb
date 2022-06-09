@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>menu</h2>
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>患者登録</h2>
+        <%= form_with model: @patient, url: new_admin_patient_path do |f| %>
+        <div class="form-group row">
+          <%= f.label :名前, class: "col-3 " %>
+          <%= f.label :last_name, "(姓)" , class: "col-2" %>
+          <%= f.text_field :last_name, autocomplete: "last-name", placeholder: "令和", class: "form-control col-2" %>
+          <%= f.label :first_name, "(名)", class: "col-2" %>
+          <%= f.text_field :first_name, autocomplete: "first_name-name", placeholder: "道子", class: "form-control col-2" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :フリガナ, class: "col-3" %>
+          <%= f.label :last_name_kana, "(セイ)", class: "col-2" %>
+          <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", placeholder: "レイワ", class: "form-control col-2" %>
+          <%= f.label :first_name_kana, "(メイ)", class: "col-2" %>
+          <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder: "ミチコ", class:"form-control col-2" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :誕生日, class: "col-5" %>
+          <%= f.date_select :birthday, class: 'form-control col-2' %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
