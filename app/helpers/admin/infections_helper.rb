@@ -1,0 +1,2 @@
+module Admin::InfectionsHelper
+end
