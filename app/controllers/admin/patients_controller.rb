@@ -18,9 +18,13 @@ class Admin::PatientsController < ApplicationController
   end
 
   def edit
+    @patient = Patient.find(params[:id])
   end
 
   def update
+    @patient = Patient.find(params[:id])
+    @patient.update(patient_params)
+    redirect_to admin_patient_path(@patient)
   end
 
   private
