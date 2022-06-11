@@ -16,6 +16,7 @@ class Admin::AppointmentsController < ApplicationController
   end
   
   def show
+    #@appointment_form = AppointmentForm.find(params[:id])
   end
   
   def edit
