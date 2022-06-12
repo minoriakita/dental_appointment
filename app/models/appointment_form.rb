@@ -18,8 +18,8 @@ class AppointmentForm
       symptom_text: symptom_text
     )
     appointment.save
-    AppointmentTreatment.create!(treatment_id: treatment_id, appointment_id: appointment.id) if treatment_id.present?
-    AppointmentSymptom.create!(symptom_id: symptom_id, appointment_id: appointment.id) if symptom_id.present?
+    AppointmentTreatment.create(treatment_id: treatment_id, appointment_id: appointment.id) if treatment_id.present?
+    AppointmentSymptom.create(symptom_id: symptom_id, appointment_id: appointment.id) if symptom_id.present?
     appointment.id
   end
 end

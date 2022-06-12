@@ -5,7 +5,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
-        <%#= @patient_form.patient_id.name %>さんの予約詳細
+        <%= @patient.last_name + @patient.first_name %>さんの予約詳細
       </div>
       <table class="table table-bordered ml-5">
         <tbody>
@@ -41,11 +41,23 @@
           </tr>
           <tr>
             <th class="col-4 text-center">治療</th>
-            <td><%= @treatment.name %></td>
+            <td>
+              <% if @appointment_treatment.present? %>
+                <%=  @treatment.name %>
+              <% else %>
+                <%= "未登録" %>
+              <% end %>
+              </td>
           </tr>
           <tr>
             <th class="col-4 text-center">症状</th>
-            <td><%= @symptom.name %></td>
+            <td>
+              <% if @appointment_symptom.present? %>
+                <%= @symptom.name %>
+              <% else %>
+                <%= "未登録" %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th class="col-4 text-center">症状その他</th>

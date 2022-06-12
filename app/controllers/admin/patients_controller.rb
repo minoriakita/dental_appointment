@@ -6,8 +6,11 @@ class Admin::PatientsController < ApplicationController
 
   def create
     patient = Patient.new(patient_params)
-    patient.save
-    redirect_to admin_patient_path(@patient.id)
+    if patient.save
+      redirect_to admin_patient_path(patient.id)
+    else
+      render "new"
+    end
   end
 
   def index

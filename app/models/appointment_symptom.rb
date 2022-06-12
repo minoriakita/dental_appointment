@@ -1,4 +1,4 @@
 class AppointmentSymptom < ApplicationRecord
-  has_many :symptoms
+  belongs_to :symptom
   belongs_to :appointment
 end

@@ -6,7 +6,7 @@
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
         <%= @patient.last_name + @patient.first_name %>さんの患者詳細
-      </div>      
+      </div>
       <table class="table table-bordered ml-5">
         <tbody>
           <tr>
@@ -34,13 +34,13 @@
           <tr>
             <th class="col-4 text-center">年齢</th>
             <td>
-              
+              <%#= @patient.age() %>
             </td>
           </tr>
           <tr>
             <th class="col-4 text-center">性別</th>
             <td>
-              <%= @patient.gender %>
+              <%= @patient.gender_i18n %>
             </td>
           </tr>
           <tr>

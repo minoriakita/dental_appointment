@@ -1,4 +1,4 @@
 class AppointmentTreatment < ApplicationRecord
   belongs_to :appointment
-  has_many :treatments
+  belongs_to :treatment
 end

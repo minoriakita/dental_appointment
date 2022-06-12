@@ -1,0 +1,7 @@
+ja:
+  enums:
+    patient:
+      gender:
+        man: "男"
+        woman: "女"
+        other: "その他"
