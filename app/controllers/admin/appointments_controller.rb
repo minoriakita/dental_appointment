@@ -16,7 +16,11 @@ class Admin::AppointmentsController < ApplicationController
   end
   
   def show
-    #@appointment_form = AppointmentForm.find(params[:id])
+    @appointment = Appointment.find(params[:id])
+    @appointment_treatment = AppointmentTreatment.find_by(appointment_id: params[:id])
+    @treatment = Treatment.find(@appointment_treatment.treatment_id)
+    @appointment_symptom = AppointmentSymptom.find_by(appointment_id: params[:id])
+    @symptom = Symptom.find(@appointment_symptom.symptom_id)
   end
   
   def edit

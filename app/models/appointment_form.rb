@@ -5,6 +5,8 @@ class AppointmentForm
   attr_accessor :patient_id, :appointment_date, :visit_date, :remark, :status, :symptom_text, :treatment_id, :symptom_id
 
   validates :appointment_date, presence: true
+  validates :treatment_id, presence: true, allow_blank: true
+  validates :symptom_id, presence: true, allow_blank: true
 
   def save
     appointment = Appointment.new(
