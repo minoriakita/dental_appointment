@@ -7,6 +7,16 @@ class AppointmentForm
   validates :appointment_date, presence: true
   validates :treatment_id, presence: true, allow_blank: true
   validates :symptom_id, presence: true, allow_blank: true
+  
+  def self.initialize_by_appointment(appointment)
+    @patient_id = appointment.patient_id
+    @appointment_date = appointment.appointment_date
+    @visit_date = appointment.visit_date
+    @remark = appointment.remark
+    @status = appointment.status
+    @symptom_text = appointment.symptom_text
+    
+  end
 
   def save
     appointment = Appointment.new(

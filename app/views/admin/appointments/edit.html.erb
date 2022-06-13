@@ -4,12 +4,12 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <div class="mini-title">予約登録</div>
-        <%= form_with model: @appointment_form, url: admin_appointments_path do |f| %>
+      <div class="mini-title">予約編集</div>
+        <%= form_with model: @appointment, url: admin_appointment_path do |f| %>
         
         <div class="form-group row">
           <label class="col-3">カルテNo</label>
-          <label class="col-3"><%= @patient.id %></label>
+          <label class="col-3"><%= @appointment.patient.id %></label>
         </div>
 
         <div class="form-group row">
@@ -33,17 +33,21 @@
         </div>
         
         <div class="form-group row">
-          <%= f.label :symptom_id, "症状id", class: "col-5" %>
-          <%= f.select :symptom_id, @symptoms.map(&:id), {include_blank: '選択ボックス'} %>
+          <%= f.label "症状", class: "col-5" %>
+          <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
+            <%= b.label { b.check_box + b.text } %>
+          <% end %>
         </div>
         
         <div class="form-group row">
-          <%= f.label :treatment_id, "治療id", class: "col-5" %>
-          <%= f.select :treatment_id, @treatments.map(&:id), {include_blank: '選択ボックス'} %>
+          <%= f.label "治療", class: "col-5" %>
+          <%= f.collection_check_boxes(:treatment_ids, Treatment.all, :id, :name) do |b| %>
+            <%= b.label { b.check_box + b.text } %>
+          <% end %>
         </div>
         
         <div class="form-group text-center">
-          <%= f.submit "登録", class: 'btn btn-sm btn-success col-4' %>
+          <%= f.submit "編集保存", class: 'btn btn-sm btn-success col-4' %>
         </div>
         <% end %>
     </div>

@@ -36,13 +36,4 @@ class Admin::PatientsController < ApplicationController
     params.require(:patient).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, :gender, :email, :postal_code, :address, :telephone_number)
   end
   
-  def when_is_birthday(patient)
-    birthday = patient.birthday
-    today = today.
-    date_format = "%Y%m%d"
-    age = (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
-    #if patient.誕生日を迎えているかどうか
-    #end
-    #return age
-  end
 end
