@@ -8,7 +8,7 @@
         <%= form_with model: @appointment_form, url: admin_appointments_path do |f| %>
         
         <div class="form-group row">
-          <%= f.label :patient_id, "患者id", class: "col-5" %>
+          <%= f.label :patient_id, "カルテNo", class: "col-5" %>
           <%= f.select :patient_id, @patients.map(&:id), {include_blank: '選択ボックス'} %>
         </div>
 
@@ -32,10 +32,6 @@
           <%= f.text_area :symptom_text, class: "form-control col-5" %>
         </div>
         
-        <div class="form-group text-center">
-          <%= f.submit "登録", class: 'btn btn-sm btn-success col-4' %>
-        </div>
-        
         <div class="form-group row">
           <%= f.label :symptom_id, "症状id", class: "col-5" %>
           <%= f.select :symptom_id, @symptoms.map(&:id), {include_blank: '選択ボックス'} %>
@@ -44,6 +40,10 @@
         <div class="form-group row">
           <%= f.label :treatment_id, "治療id", class: "col-5" %>
           <%= f.select :treatment_id, @treatments.map(&:id), {include_blank: '選択ボックス'} %>
+        </div>
+        
+        <div class="form-group text-center">
+          <%= f.submit "登録", class: 'btn btn-sm btn-success col-4' %>
         </div>
         <% end %>
     </div>

@@ -29,9 +29,24 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def edit
+     @appointment = Appointment.find(params[:id])
+     @patient = Patient.find(@appointment.patient_id)
+     @symptoms = Symptom.all
+     @treatments = Treatment.all
+     @appointment_symptom = AppointmentSymptom.find_by(appointment_id: params[:id])
+    if @appointment_symptom != nil
+      @symptom = Symptom.find(@appointment_symptom.symptom_id)
+    end
+    @appointment_treatment = AppointmentTreatment.find_by(appointment_id: params[:id])
+    if @appointment_treatment != nil
+      @treatment = Treatment.find(@appointment_treatment.treatment_id)
+    end
   end
 
   def update
+    @appointment = Appointment.find(params[:id])
+    @appointment.update(appointment_form_params)
+    redirect_to admin_appointment_path(@appointment)
   end
 
   def destroy

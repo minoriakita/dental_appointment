@@ -61,6 +61,11 @@
           <%= f.label :patient_text, "注意事項", class: "col-5" %>
           <%= f.text_area :patient_text, class: "form-control col-5" %>
         </div>
+        
+        <div class="form-group row">
+          <%= f.label :infection_id, "感染症", class: "col-5" %>
+          <%#= f.select :infection_id, @infection.map(&:id), {include_blank: '選択ボックス'} %>
+        </div>
 
         <div class="form-group text-center">
           <%= f.submit "新規登録", class: 'btn btn-sm btn-success col-4' %>
