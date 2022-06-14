@@ -8,7 +8,7 @@
         <%= form_with model: @appointment, url: admin_appointment_path do |f| %>
         
         <div class="form-group row">
-          <label class="col-3">カルテNo</label>
+          <label class="col-3">患者ID</label>
           <label class="col-3"><%= @appointment.patient.id %></label>
         </div>
 

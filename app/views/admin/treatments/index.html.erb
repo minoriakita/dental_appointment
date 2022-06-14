@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+     <div class="mini-title">治療一覧・追加</div>
+     </div>
+    <div>
+     <%= form_with model: @treatment, url: admin_treatments_path, method: :post do |f| %>
+     <%= f.label :治療名 %>
+     <%= f.text_field :name %>
+     <%= f.submit "新規登録", class: "btn btn-success ml-3 mb-2" %>
+     <% end %>
+    </div>
+  <div class="row">
+   <div class="col-5">
+    <table class="table table-bordered table-hover text-center">
+     <thead class="thead">
+      <tr>
+       <th>治療</th>
+       <th colspan="3"></th>
+      </tr>
+     </thead>
+    <tbody class="tbody">
+      <% @treatments.each do |treatment| %>
+       <tr>
+        <td><%= treatment.name %></td>
+        <td><%= link_to "編集する", edit_admin_treatment_path(treatment), class: "btn btn-sm btn-success admin_genre_edit" %></td>
+       </tr>
+      <% end %>
+     </tbody>
+    </table>
+  </div>
+ </div>
+</div>
