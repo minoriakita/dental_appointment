@@ -23,16 +23,20 @@
                 <%= appointment.appointment_date %>
               </td>
               <td>
-                <%= link_to "appointment.last_name_kana + appointment.first_name_kana, admin_appointment_path(appointment.id)", class: "text-dark" %>
+                <%= link_to appointment.patient.last_name_kana + appointment.patient.first_name_kana, admin_appointment_path(appointment.id), class: "text-dark" %>
               </td>
               <td>
-                <%= appointment.treatments %>
+                <% appointment.treatments.each do |treatment| %>
+                  <%= treatment.name %><br>
+                <% end %>
               </td>
               <td>
-                <%= appointment.symptoms %>
+                <% appointment.symptoms.each do |symptom| %>
+                  <%= symptom.name %><br>
+                <% end %>
               </td>
               <td>
-                <%#= appointment.get_age %>
+                <%= appointment.patient.get_age %>
               </td>
               <td>
                 <%= appointment.status_i18n %>
@@ -46,3 +50,10 @@
     </div>
   </div>
 </div>
+
+<!--emploee.each do |e|-->
+<!-- puts e.name-->
+<!-- e.appointment.each do |a|-->
+<!--  puts a.name-->
+<!-- end-->
+<!--end-->

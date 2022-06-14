@@ -12,12 +12,12 @@
   </tr>
 	<tr>
 	  <td>
-	    <%= link_to "予約取得", new_admin_appointment_path %>
+	    <%#= link_to "予約取得", new_admin_appointment_path %>
 	  </td>
 	</tr>
 	<tr>
 	  <td>
-	    <%= link_to "予約一覧", admin_appointments_path %>
+	    <%= link_to "予約一覧", admin_appointments_path(patient_id: @patient) %>
 	  </td>
   </tr>
   <tr>

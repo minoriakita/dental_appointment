@@ -9,7 +9,7 @@
 
         <div class="form-group row">
           <%= f.label :patient_id, "患者ID", class: "col-5" %>
-          <%= @appointment.patient_id %>
+          <%= @patient.id %>
           <%= f.select :patient_id, @patients.map(&:id), {include_blank: '選択ボックス'} %>
         </div>
 

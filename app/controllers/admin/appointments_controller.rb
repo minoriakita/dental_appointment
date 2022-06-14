@@ -2,7 +2,7 @@ class Admin::AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @patients = Patient.all
-    #@patient = Patient.find_by(patient_id: params[:id])
+    @patient = Patient.find(params[:patient_id])
   end
 
   def create
@@ -16,6 +16,14 @@ class Admin::AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    #@patient = Patient.find(params[:patient_id])
+    #Appointment.where(担当者: 佐藤)
+    #Appointment.where(担当者: 佐藤).where(日付: today)
+    #@employee.all
+  end
+  
+  def search
+    
   end
 
   def show
