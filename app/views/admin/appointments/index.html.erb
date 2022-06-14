@@ -1,1 +1,48 @@
-予約一覧
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <div class="mini-title">予約一覧</div>
+      <table class="table table-bordered table-hover text-center">
+          <thead class="thead">
+            <tr>
+              <th>予約時間</th>
+              <th>氏名</th>
+              <th>治療</th>
+              <th>症状</th>
+              <th>年齢</th>
+              <th>予約状態</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+          <% @appointments.each do |appointment| %>
+            <tr>
+              <td>
+                <%= appointment.appointment_date %>
+              </td>
+              <td>
+                <%= link_to "appointment.last_name_kana + appointment.first_name_kana, admin_appointment_path(appointment.id)", class: "text-dark" %>
+              </td>
+              <td>
+                <%= appointment.treatments %>
+              </td>
+              <td>
+                <%= appointment.symptoms %>
+              </td>
+              <td>
+                <%#= appointment.get_age %>
+              </td>
+              <td>
+                <%= appointment.status_i18n %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

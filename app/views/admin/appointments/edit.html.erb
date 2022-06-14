@@ -24,7 +24,7 @@
         
         <div class="form-group row">
           <%= f.label :status, "予約ステータス", class: "col-5" %>
-          <%= f.select :status, ['sample1', 'sample2', 'sample3'], {include_blank: '選択ボックス'} %>
+          <%= f.select :status, Appointment.statuses_i18n.invert, class: "col-2" %>
         </div>
         
         <div class="form-group row">

@@ -3,6 +3,8 @@ class Patient < ApplicationRecord
   has_many :patient_infections
   has_many :infections, through: :patient_infections
 
+  validates :first_name, presence: true, allow_blank: true
+  validates :last_name, presence: true, allow_blank: true
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
 

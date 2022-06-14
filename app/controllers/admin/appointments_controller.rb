@@ -2,6 +2,7 @@ class Admin::AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @patients = Patient.all
+    #@patient = Patient.find_by(patient_id: params[:id])
   end
 
   def create
@@ -14,6 +15,7 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def index
+    @appointments = Appointment.all
   end
 
   def show
@@ -47,16 +49,17 @@ class Admin::AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:patient_id,
       :appointment_date,
+      :charge_id,
       :remark,
-      :status,
       :symptom_text,
       { symptom_ids: []},
-      { treatment_ids: []})
+      { treatment_ids: []},)
   end
-  
+
   def appointment_update_params
     params.require(:appointment).permit(:patient_id,
       :appointment_date,
+      :charge_id,
       :remark,
       :status,
       :symptom_text,

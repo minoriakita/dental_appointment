@@ -5,7 +5,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
-        <%= @patient.last_name + @patient.first_name %>さんの患者詳細
+        <%= @patient.last_name_kana + " " + @patient.first_name_kana %>さんの患者詳細
       </div>
       <table class="table table-bordered ml-5">
         <tbody>
@@ -63,10 +63,21 @@
             <th class="col-4 text-center">注意事項</th>
             <td><%= @patient.patient_text %></td>
           </tr>
+          <tr>
+            <th class="col-4 text-center">感染症</th>
+            <td>
+              <% if @patient_infection.present? %>
+                <%=  @infection.name %>
+              <% else %>
+                <%= "なし" %>
+              <% end %>
+              </td>
+          </tr>
         </tbody>
       </table>
       <div class="form-group text-center">
         <%= link_to "編集", edit_admin_patient_path(params[:id]), class: 'btn btn-sm btn-success col-4' %>
+        <%= link_to "予約取得", new_admin_appointment_path, class: 'btn btn-sm btn-success col-4' %>
       </div>
     </div>
   </div>

@@ -6,46 +6,49 @@
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">予約登録</div>
         <%= form_with model: @appointment, url: admin_appointments_path do |f| %>
-        
+
         <div class="form-group row">
-          <%= f.label :patient_id, "カルテNo", class: "col-5" %>
+          <%= f.label :patient_id, "患者ID", class: "col-5" %>
+          <%= @appointment.patient_id %>
           <%= f.select :patient_id, @patients.map(&:id), {include_blank: '選択ボックス'} %>
         </div>
 
         <div class="form-group row">
           <%= f.label :appointment_date, "予約日時", class: "col-5" %>
-          <%= f.datetime_field :appointment_date, value: @appointment.appointment_date.strftime('%Y-%m-%dT%T'), class: 'form-control col-2' %>
+          <%= f.datetime_field :appointment_date, class: 'form-control col-3' %>
 　　　　</div>
-        
+
+　　　　<div class="form-group row">
+　　　　  <%= f.label "担当者", class: "col-5" %>
+          <%= f.collection_check_boxes(:charge_id, Employee.all, :id, :name) do |b| %>
+            <%= b.label { b.check_box + b.text } %>
+          <% end %>
+　　　　</div>
+
         <div class="form-group row">
           <%= f.label :remark,"備考", class: "col-5" %>
           <%= f.text_area :remark %>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :status, "予約ステータス", class: "col-5" %>
-          <%= f.select :status, ['sample1', 'sample2', 'sample3'], {include_blank: '選択ボックス'} %>
-        </div>
-        
-        <div class="form-group row">
-          <%= f.label :symptom_text, "症状", class: "col-5" %>
-          <%= f.text_area :symptom_text, class: "form-control col-5" %>
-        </div>
-        
+
         <div class="form-group row">
           <%= f.label "症状", class: "col-5" %>
           <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
             <%= b.label { b.check_box + b.text } %>
           <% end %>
         </div>
-        
+
+        <div class="form-group row">
+          <%= f.label :symptom_text, "その他症状", class: "col-5" %>
+          <%= f.text_area :symptom_text, class: "form-control col-5" %>
+        </div>
+
         <div class="form-group row">
           <%= f.label "治療", class: "col-5" %>
           <%= f.collection_check_boxes(:treatment_ids, Treatment.all, :id, :name) do |b| %>
             <%= b.label { b.check_box + b.text } %>
           <% end %>
         </div>
-        
+
         <div class="form-group text-center">
           <%= f.submit "登録", class: 'btn btn-sm btn-success col-4' %>
         </div>

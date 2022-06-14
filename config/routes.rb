@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-
+  
   namespace :admin do
     resources :appointments
     resources :employees
@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     resources :patients
     resources :symptoms
     resources :treatments
+    get 'item' => 'homes#item'
   end
+
   devise_scope :admin do
     root to: "admin/sessions#new"
     get 'top', to: 'admin/homes#top'
   end
+
+
 end
