@@ -7,7 +7,7 @@
       <div class="mini-title">予約一覧</div>
         <% @employees.each do |employee| %>
           <%= employee.name %>
-          <% employee.appointments.where(hoge_id: employee.id, apo_date: Date.parse(@day)).order(appointment_date: "ASC").each do |appointment| %>
+          <% employee.appointments.where(charge_id: employee.id, apo_date: Date.to_s(@day)).order(appointment_date: "ASC").each do |appointment| %>
             <%= render 'index', appointment: appointment %>
           <% end %>
         <% end %>

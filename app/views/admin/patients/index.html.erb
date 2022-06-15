@@ -22,7 +22,7 @@
                 <%= patient.id %>
               </td>
               <td>
-                <%= link_to patient.last_name_kana + patient.first_name_kana, admin_patient_path(patient.id), class: "text-dark" %>
+                <%= link_to patient.last_name_kana + " " + patient.first_name_kana, admin_patient_path(patient.id), class: "text-dark" %>
               </td>
               <td>
                 <%= patient.telephone_number %>

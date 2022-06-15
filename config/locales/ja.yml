@@ -10,7 +10,6 @@ ja:
         confirm: "確定"
         visit: "来院"
         cancel: "キャンセル"
-        
   date:
     formats:
       default: "%Y/%m/%d"

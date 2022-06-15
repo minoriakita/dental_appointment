@@ -17,7 +17,7 @@ class Admin::AppointmentsController < ApplicationController
 
   def index
     appointments = Appointment.all
-    @day = params[:da]
+    @day = params[:day]
     #@patient = Patient.find(params[:patient_id])
     #Appointment.where(担当者: 佐藤)
     #Appointment.where(担当者: 佐藤).where(日付: today)

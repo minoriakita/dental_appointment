@@ -4,3 +4,8 @@
     <%= f.submit "検索" %>
   <% end %>
 </div>
+<div class="patient-index">
+  <% @patients.each do |patient| %>
+    <%= link_to patient.last_name_kana, admin_patient_path(patient.id) %>
+  <% end %>
+</div>
