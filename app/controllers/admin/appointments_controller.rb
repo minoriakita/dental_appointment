@@ -6,24 +6,26 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def create
-    appointment = Appointment.new(appointment_params)
-    if appointment.save
-       redirect_to admin_appointment_path(appointment)
+    @appointment = Appointment.new(appointment_params)
+    if @appointment.save
+       redirect_to admin_appointment_path(@appointment)
     else
+       @patient = Patient.find(params[:appointment][:patient_id])
        render "new"
     end
   end
 
   def index
-    @appointments = Appointment.all
+    appointments = Appointment.all
+    @day = params[:da]
     #@patient = Patient.find(params[:patient_id])
     #Appointment.where(担当者: 佐藤)
     #Appointment.where(担当者: 佐藤).where(日付: today)
-    #@employee.all
+    @employees = Employee.all
   end
-  
+
   def search
-    
+
   end
 
   def show
@@ -57,9 +59,9 @@ class Admin::AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:patient_id,
       :appointment_date,
-      :charge_id,
       :remark,
       :symptom_text,
+      :charge_id,
       { symptom_ids: []},
       { treatment_ids: []},)
   end
@@ -71,8 +73,8 @@ class Admin::AppointmentsController < ApplicationController
       :remark,
       :status,
       :symptom_text,
+      :visit_date,
       { symptom_ids: []},
-      { treatment_ids: []},
-      :visit_date)
+      { treatment_ids: []})
   end
 end

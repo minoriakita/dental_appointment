@@ -17,6 +17,11 @@ class Admin::PatientsController < ApplicationController
   def index
     @patients = Patient.all
   end
+  
+  def search
+    @patients = Patient.search(params[:keyword])
+    @keyword = params[:keyword]
+  end
 
   def show
     @patient = Patient.find(params[:id])

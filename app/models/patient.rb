@@ -16,4 +16,7 @@ class Patient < ApplicationRecord
     (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
   end
 
+  def self.search(keyword)
+    where(["id like? OR last_name_kana like?", "%#{keyword}%", "%#{keyword}%"])
+  end
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :symptoms
     resources :treatments
     get 'item' => 'homes#item'
+    get 'search' => 'patients#search'
   end
 
   devise_scope :admin do

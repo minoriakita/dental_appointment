@@ -5,55 +5,14 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">予約一覧</div>
-      <table class="table table-bordered table-hover text-center">
-          <thead class="thead">
-            <tr>
-              <th>予約時間</th>
-              <th>氏名</th>
-              <th>治療</th>
-              <th>症状</th>
-              <th>年齢</th>
-              <th>予約状態</th>
-            </tr>
-          </thead>
-          <tbody class="tbody">
-          <% @appointments.each do |appointment| %>
-            <tr>
-              <td>
-                <%= appointment.appointment_date %>
-              </td>
-              <td>
-                <%= link_to appointment.patient.last_name_kana + appointment.patient.first_name_kana, admin_appointment_path(appointment.id), class: "text-dark" %>
-              </td>
-              <td>
-                <% appointment.treatments.each do |treatment| %>
-                  <%= treatment.name %><br>
-                <% end %>
-              </td>
-              <td>
-                <% appointment.symptoms.each do |symptom| %>
-                  <%= symptom.name %><br>
-                <% end %>
-              </td>
-              <td>
-                <%= appointment.patient.get_age %>
-              </td>
-              <td>
-                <%= appointment.status_i18n %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <% @employees.each do |employee| %>
+          <%= employee.name %>
+          <% employee.appointments.where(hoge_id: employee.id, apo_date: Date.parse(@day)).order(appointment_date: "ASC").each do |appointment| %>
+            <%= render 'index', appointment: appointment %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     </div>
   </div>
 </div>
-
-<!--emploee.each do |e|-->
-<!-- puts e.name-->
-<!-- e.appointment.each do |a|-->
-<!--  puts a.name-->
-<!-- end-->
-<!--end-->

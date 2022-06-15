@@ -36,16 +36,18 @@
           <tr>
             <th class="col-4 text-center">予約ステータス</th>
             <td>
-              <%= @appointment.status %>
+              <%= @appointment.status_i18n %>
             </td>
           </tr>
           <tr>
             <th class="col-4 text-center">治療</th>
             <td>
+              <% @appointment.treatments.each do |treatment| %>
               <% if @appointment_treatment.present? %>
-                <%=  @treatment.name %>
+                <%= treatment.name %><br>
               <% else %>
                 <%= "未登録" %>
+              <% end %>
               <% end %>
               </td>
           </tr>

@@ -10,7 +10,7 @@
         <div class="form-group row">
           <%= f.label :patient_id, "患者ID", class: "col-5" %>
           <%= @patient.id %>
-          <%= f.select :patient_id, @patients.map(&:id), {include_blank: '選択ボックス'} %>
+          <%= f.hidden_field :patient_id, :value => @patient.id %>
         </div>
 
         <div class="form-group row">
@@ -20,9 +20,7 @@
 
 　　　　<div class="form-group row">
 　　　　  <%= f.label "担当者", class: "col-5" %>
-          <%= f.collection_check_boxes(:charge_id, Employee.all, :id, :name) do |b| %>
-            <%= b.label { b.check_box + b.text } %>
-          <% end %>
+　　　　  <%= f.collection_select :charge_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
 　　　　</div>
 
         <div class="form-group row">
