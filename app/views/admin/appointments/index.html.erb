@@ -3,16 +3,33 @@
     <div class='col-md-3'>
       <%= render 'layouts/sidebar' %>
     </div>
-    <div class='col-md-8 offset-md-1'>
-      <div class="mini-title">予約一覧</div>
-        <% @employees.each do |employee| %>
-          <%= employee.name %>
-          <% employee.appointments.where(charge_id: employee.id, apo_date: Date.to_s(@day)).order(appointment_date: "ASC").each do |appointment| %>
-            <%= render 'index', appointment: appointment %>
-          <% end %>
-        <% end %>
+    <% unless @day.blank? %>
+      <div class='col-md-8 offset-md-1'>
+        <div class="mini-title">予約一覧</div>
+          <div class="row">
+            <% @employees.each do |employee| %>
+              <div class="col-lg-6">
+                <%= employee.name %>
+                <% employee.appointments_list_on_charge(employee.id, @day).each do |appointment| %>
+                  <%= render 'index', appointment: appointment %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
+    <% else %>
+      <div class='col-md-8 offset-md-1'>
+        <h2>予約一覧</h2>
+        <% if @appointments.exists? %>
+          <% @appointments.each do |appointment| %>
+            <div><%= appointment.patient.full_name %> / <%= appointment.patient.full_name_kana %></div>
+          <% end %>
+        <% else %>
+          <h3>Appointments Nothing</h3>
+        <% end %>
+
+      </div>
+    <% end %>
   </div>
 </div>

@@ -24,7 +24,10 @@
               <% else %>
               　<%= link_to admin_appointments_path(day: day) do %>
                   <% passed_block.call day, sorted_events.fetch(day, []) %>
-                <%end%>
+                  <div class="text-center">
+                    <%= Appointment.appointments_list(day.to_s).count %> 件
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

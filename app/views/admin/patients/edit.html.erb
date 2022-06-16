@@ -5,7 +5,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
-        <%= @patient.last_name + @patient.first_name %>さんの患者編集
+        <%= @patient.last_name_kana + @patient.first_name_kana %>さんの患者編集
       </div>
     <%= form_with model: @patient, url: admin_patient_path(@patient) do |f| %>
         <div class="form-group row">

@@ -5,26 +5,34 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
-        <%= @patient.last_name + @patient.first_name %>さんの予約詳細
+        <%= @patient.last_name_kana + " " + @patient.first_name_kana %>さんの予約詳細
       </div>
       <table class="table table-bordered ml-5">
         <tbody>
           <tr>
-            <th class="col-4 text-center">患者</th>
+            <th class="col-4 text-center">患者ID</th>
             <td>
               <%= @appointment.patient_id %>
             </td>
           </tr>
+
+          <tr>
+            <th class="col-4 text-center">名前</th>
+            <td>
+              <%= @appointment.patient.full_name %>
+            </td>
+          </tr>
+
           <tr>
             <th class="col-4 text-center">予約日時</th>
             <td>
-              <%= @appointment.appointment_date %>
+              <%= @appointment.appointment_date.strftime("%Y年%m月%d日 %H時%M分") %>
             </td>
           </tr>
           <tr>
             <th class="col-4 text-center">担当者</th>
             <td>
-              <%= @appointment.charge_id %>
+              <%= @appointment.charge.name %>
             </td>
           </tr>
           <tr>
@@ -34,7 +42,7 @@
             </td>
           </tr>
           <tr>
-            <th class="col-4 text-center">予約ステータス</th>
+            <th class="col-4 text-center">予約状態</th>
             <td>
               <%= @appointment.status_i18n %>
             </td>
@@ -43,44 +51,51 @@
             <th class="col-4 text-center">治療</th>
             <td>
               <% @appointment.treatments.each do |treatment| %>
-              <% if @appointment_treatment.present? %>
-                <%= treatment.name %><br>
-              <% else %>
-                <%= "未登録" %>
-              <% end %>
+                <% if @appointment_treatment.present? %>
+                  <%= treatment.name %><br>
+                <% else %>
+                  <%= "未登録" %>
+                <% end %>
               <% end %>
               </td>
           </tr>
           <tr>
             <th class="col-4 text-center">症状</th>
             <td>
-              <% if @appointment_symptom.present? %>
-                <%= @symptom.name %>
-              <% else %>
-                <%= "未登録" %>
+              <% @appointment.symptoms.each do |symptom| %>
+                <% if @appointment_symptom.present? %>
+                  <%= symptom.name %>
+                <% else %>
+                  <%= "未登録" %>
+                <% end %>
               <% end %>
             </td>
           </tr>
           <tr>
-            <th class="col-4 text-center">症状その他</th>
+            <th class="col-4 text-center">その他症状</th>
             <td><%= @appointment.symptom_text %></td>
           </tr>
           <tr>
             <th class="col-4 text-center">予約者</th>
             <td>
-              <%= @appointment.charge_id %>
+              <% unless @appointment.subscriber.nil? %>
+                <%= @appointment.subscriber.name %>
+              <% end %>
             </td>
           </tr>
           <tr>
             <th class="col-4 text-center">来院</th>
             <td>
-              <%= @appointment.visit_date %>
+              <% unless @appointment.visit_date.nil? %>
+                <%= @appointment.visit_date.strftime("%Y年%m月%d日") %>
+              <% end %>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="form-group text-center">
         <%= link_to "編集", edit_admin_appointment_path(params[:id]), class: 'btn btn-sm btn-success col-4' %>
+        <%= link_to "来院", admin_visit_date_path(id: params[:id]), class: 'btn btn-sm btn-success col-4' %>
       </div>
     </div>
   </div>

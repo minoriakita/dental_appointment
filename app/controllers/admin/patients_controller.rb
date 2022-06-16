@@ -21,6 +21,11 @@ class Admin::PatientsController < ApplicationController
   def search
     @patients = Patient.search(params[:keyword])
     @keyword = params[:keyword]
+    # if params[:name].present?
+    #   @patient = Patient.where('last_name_kana LIKE ?', "%#{params[:name]}%")
+    # else
+    #   @patients = Patient.none
+    # end
   end
 
   def show

@@ -17,6 +17,17 @@ class Patient < ApplicationRecord
   end
 
   def self.search(keyword)
-    where(["id like? OR last_name_kana like?", "%#{keyword}%", "%#{keyword}%"])
+    where([
+      "id = ? OR first_name_kana LIKE ? OR last_name_kana LIKE ?",
+      "#{keyword}", "%#{keyword}%", "%#{keyword}%"
+      ])
+  end
+
+  def full_name
+    "#{self.last_name} #{self.first_name}"
+  end
+  
+  def full_name_kana
+    "#{self.last_name_kana} #{self.first_name_kana}"
   end
 end

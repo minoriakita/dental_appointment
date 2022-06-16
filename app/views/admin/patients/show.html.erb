@@ -66,10 +66,12 @@
           <tr>
             <th class="col-4 text-center">感染症</th>
             <td>
-              <% if @patient_infection.present? %>
-                <%=  @infection.name %>
-              <% else %>
-                <%= "なし" %>
+              <% @patient.infections.each do |infection| %>
+                <% if @patient_infection.present? %>
+                  <%=  infection.name %>
+                <% else %>
+                  <%= "なし" %>
+                <% end %>
               <% end %>
               </td>
           </tr>

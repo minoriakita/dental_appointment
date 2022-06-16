@@ -6,7 +6,7 @@
     <div class='col-md-8 offset-md-1'>
       <h2>calendar</h2>
       <%= month_calendar do |date| %>
-        <%= date %>
+        <%= date.strftime("%d") %>
       <% end %>
     </div>
   </div>

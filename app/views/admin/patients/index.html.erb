@@ -17,12 +17,16 @@
           </thead>
           <tbody class="tbody">
           <% @patients.each do |patient| %>
-            <tr>
+            <tr onclick='window.location="<%= '/admin/patients/' + patient.id.to_s %>"' role="link">>
               <td>
                 <%= patient.id %>
               </td>
               <td>
-                <%= link_to patient.last_name_kana + " " + patient.first_name_kana, admin_patient_path(patient.id), class: "text-dark" %>
+              <% if patient.last_name.present? %>
+                <%= patient.last_name + " " + patient.first_name %>
+              <% else %>
+                <%= patient.last_name_kana + " " + patient.first_name_kana %>
+              <% end %>
               </td>
               <td>
                 <%= patient.telephone_number %>

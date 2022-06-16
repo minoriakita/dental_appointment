@@ -1,11 +1,42 @@
 <div class="search-form">
-  <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+  <%= form_with url: search_admin_patients_path, method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: @keyword %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
 <div class="patient-index">
-  <% @patients.each do |patient| %>
-    <%= link_to patient.last_name_kana, admin_patient_path(patient.id) %>
-  <% end %>
+  <div class="mini-title">患者一覧</div>
+      <table class="table table-bordered table-hover text-center">
+          <thead class="thead">
+            <tr>
+              <th>患者ID</th>
+              <th>氏名</th>
+              <th>電話番号</th>
+              <th>性別</th>
+              <th>年齢</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+          <% @patients.each do |patient| %>
+            <tr>
+              <td>
+                <%= patient.id %>
+              </td>
+              <td>
+                <%= link_to patient.last_name_kana + " " + patient.first_name_kana, admin_patient_path(patient.id), class: "text-dark" %>
+              </td>
+              <td>
+                <%= patient.telephone_number %>
+              </td>
+              <td>
+                <%= patient.gender_i18n %>
+              </td>
+              <td>
+                <%= patient.get_age %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 </div>

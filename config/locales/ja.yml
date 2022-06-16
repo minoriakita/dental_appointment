@@ -8,8 +8,8 @@ ja:
     appointment:
       status:
         confirm: "確定"
-        visit: "来院"
         cancel: "キャンセル"
+        visit: "来院"
   date:
     formats:
       default: "%Y/%m/%d"
