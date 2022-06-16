@@ -1,10 +1,11 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
-      <div class="mini-title">患者一覧</div>
+<div class="search-form">
+  <%= form_with url: search_admin_patients_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div class="patient-index">
+  <div class="mini-title">患者一覧</div>
       <table class="table table-bordered table-hover text-center">
           <thead class="thead">
             <tr>
@@ -17,16 +18,12 @@
           </thead>
           <tbody class="tbody">
           <% @patients.each do |patient| %>
-            <tr onclick='window.location="<%= '/admin/patients/' + patient.id.to_s %>"' role="link">>
+            <tr>
               <td>
                 <%= patient.id %>
               </td>
               <td>
-              <% if patient.last_name.present? %>
-                <%= patient.last_name + " " + patient.first_name %>
-              <% else %>
-                <%= patient.last_name_kana + " " + patient.first_name_kana %>
-              <% end %>
+                <%= link_to patient.last_name_kana + " " + patient.first_name_kana, admin_patient_path(patient.id), class: "text-dark" %>
               </td>
               <td>
                 <%= patient.telephone_number %>
@@ -42,7 +39,4 @@
           </tbody>
         </table>
       </div>
-    </div>
-    </div>
-  </div>
 </div>

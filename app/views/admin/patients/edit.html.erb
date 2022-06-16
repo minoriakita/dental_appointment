@@ -5,7 +5,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
-        <%= @patient.last_name + @patient.first_name %>さんの患者編集
+        <%= @patient.last_name_kana + @patient.first_name_kana %>さんの患者編集
       </div>
     <%= form_with model: @patient, url: admin_patient_path(@patient) do |f| %>
         <div class="form-group row">
@@ -26,7 +26,7 @@
 
         <div class="form-group row">
           <%= f.label :誕生日, class: "col-5" %>
-          <%= f.date_select :birthday, class: 'form-control col-2' %>
+          <%= f.date_field :birthday, class: 'form-control col-2' %>
         </div>
         
         <div class="form-group row">
@@ -62,6 +62,13 @@
         <div class="form-group row">
           <%= f.label :patient_text, "注意事項", class: "col-5" %>
           <%= f.text_area :patient_text, class: "form-control col-5" %>
+        </div>
+        
+        <div class="form-group row">
+          <%= f.label :infection_id, "感染症", class: "col-5" %>
+          <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
+            <%= b.label { b.check_box + b.text } %>
+          <% end %>
         </div>
         
         <div class="form-group text-center">

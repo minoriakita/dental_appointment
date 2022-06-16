@@ -1,2 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// Simple Calender Layout Change
+.wday-0 {
+  background-color: #F5ACB9;
+}
+
+.wday-6 {
+  background-color: #BDB7F5;
+}

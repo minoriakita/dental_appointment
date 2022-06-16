@@ -1,0 +1,15 @@
+<div class="container py-3">
+ <div class="row">
+  <div class="mini-title">症状名編集</div>
+ </div>
+
+ <div class="row pt-4">
+   <%= form_with model: @symptom, url: admin_symptom_path(@symptom), method: :patch do |f| %>
+   <%= f.label :症状名 %>
+   <%= f.text_field :name %>
+   <%= f.submit "変更を保存" ,class: "btn btn-primary" %>
+   <%= link_to "削除する", admin_symptom_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+   <% end %>
+ </div>
+   <%= link_to "戻る", admin_symptoms_path %>
+</div>

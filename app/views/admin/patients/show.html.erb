@@ -5,8 +5,8 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="mini-title">
-        <%= @patient.last_name + @patient.first_name %>さんの患者詳細
-      </div>      
+        <%= @patient.last_name_kana + " " + @patient.first_name_kana %>さんの患者詳細
+      </div>
       <table class="table table-bordered ml-5">
         <tbody>
           <tr>
@@ -32,9 +32,15 @@
             </td>
           </tr>
           <tr>
+            <th class="col-4 text-center">年齢</th>
+            <td>
+              <%= @patient.get_age %>
+            </td>
+          </tr>
+          <tr>
             <th class="col-4 text-center">性別</th>
             <td>
-              <%= @patient.gender %>
+              <%= @patient.gender_i18n %>
             </td>
           </tr>
           <tr>
@@ -57,10 +63,24 @@
             <th class="col-4 text-center">注意事項</th>
             <td><%= @patient.patient_text %></td>
           </tr>
+          <tr>
+            <th class="col-4 text-center">感染症</th>
+            <td>
+              <% @patient.infections.each do |infection| %>
+                <% if @patient_infection.present? %>
+                  <%=  infection.name %>
+                <% else %>
+                  <%= "なし" %>
+                <% end %>
+              <% end %>
+              </td>
+          </tr>
         </tbody>
       </table>
       <div class="form-group text-center">
         <%= link_to "編集", edit_admin_patient_path(params[:id]), class: 'btn btn-sm btn-success col-4' %>
+        <%= link_to "予約取得", new_admin_appointment_path(patient_id: @patient), class: 'btn btn-sm btn-success col-4' %>
+        <%= link_to "戻る", admin_patients_path %>
       </div>
     </div>
   </div>

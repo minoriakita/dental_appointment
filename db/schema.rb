@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_070122) do
+ActiveRecord::Schema.define(version: 2022_06_15_154119) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_070122) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "patient_id", null: false
-    t.integer "subscriber_id"
-    t.integer "charge_id"
     t.datetime "appointment_date", null: false
     t.date "visit_date"
     t.text "remark"
@@ -49,6 +47,11 @@ ActiveRecord::Schema.define(version: 2022_06_11_070122) do
     t.text "symptom_text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "charge_id"
+    t.integer "subscriber_id"
+    t.date "apo_date"
+    t.index ["charge_id"], name: "index_appointments_on_charge_id"
+    t.index ["subscriber_id"], name: "index_appointments_on_subscriber_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -98,4 +101,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_070122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "appointments", "employees", column: "charge_id"
+  add_foreign_key "appointments", "employees", column: "subscriber_id"
 end
