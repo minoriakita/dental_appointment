@@ -1,28 +1,33 @@
-<table class='table'>
   <h2>menu</h2>
-  <tr>
-    <td>
-      <%= link_to "患者登録", new_admin_patient_path %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to "患者一覧", admin_patients_path %>
-    </td>
-  </tr>
-	<tr>
-	  <td>
-	    <%= link_to "患者検索", search_admin_patients_path %>
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	    <%= link_to "予約一覧", admin_appointments_path(patient_id: @patient) %>
-	  </td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to "各項目追加", admin_item_path %>
-    </td>
-  </tr>
-</table>
+    <div class="sidebar">
+      <div class="row">
+        <div class="col">
+          <%= link_to "患者登録", new_admin_patient_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="row">
+        <div class="col">
+          <%= link_to "患者一覧", admin_patients_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="row">
+        <div class="col">
+	        <%= link_to "予約一覧", admin_appointments_path(patient_id: @patient) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="row">
+        <div class="col">
+          <%= link_to "各項目追加", admin_item_path %>
+        </div>
+      </div>
+    </div>
+

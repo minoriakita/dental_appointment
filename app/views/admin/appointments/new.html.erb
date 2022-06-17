@@ -4,27 +4,56 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <div class="mini-title">
-        <%= @patient.last_name_kana + " " + @patient.first_name_kana %>さんの予約登録
-      </div>
+      <h3>
+        予約登録
+      </h3>
         <%= form_with model: @appointment, url: admin_appointments_path do |f| %>
 
-        <div class="form-group row">
-          <%= f.label :patient_id, "患者ID", class: "col-5" %>
-          <%= @patient.id %>
-          <%= f.hidden_field :patient_id, :value => @patient.id %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :patient_id, "患者ID" %>
+            </div>
+            <div class="col-lg-9">
+              <%= @patient.id %>
+              <%= f.hidden_field :patient_id, :value => @patient.id %>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :patient_id, "名前", class: "col-5" %>
-          <%= @patient.last_name + " " + @patient.first_name %>
-          <%= f.hidden_field :patient_id, :value => @patient.id %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :patient_id, "名前" %>
+            </div>
+            <div class="col-lg-9">
+              <%= @patient.full_name %> / <%= @patient.full_name_kana %>
+          　　　<%= f.hidden_field :patient_id, :value => @patient.id %>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :appointment_date, "予約日時", class: "col-5" %>
-          <%= f.datetime_field :appointment_date, class: 'form-control col-3' %>
-　　　　</div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :appointment_date, "予約日時" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.datetime_field :appointment_date, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :charge_id, "担当者" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.collection_select :charge_id, Employee.all, :id, :name, include_blank: "選択して下さい", class: 'form-control' %>
+            </div>
+          </div>
+        </div>
 
 　　　　<div class="form-group row">
 　　　　  <%= f.label :charge_id, "担当者", class: "col-3" %>
