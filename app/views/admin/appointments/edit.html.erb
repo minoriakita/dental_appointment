@@ -1,9 +1,9 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-2'>
       <%= render 'layouts/sidebar' %>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-9 offset-md-1'>
       <h3>予約編集</h3>
         <%= form_with model: @appointment, url: admin_appointment_path do |f| %>
 
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="form-group">
           <div class="row">
             <div class="col-lg-3 d-flex align-items-center">
@@ -59,7 +59,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="form-group">
           <div class="row">
             <div class="col-lg-3 d-flex align-items-center">
@@ -105,7 +105,18 @@
             </div>
           </div>
         </div>
-        
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3 d-flex align-items-center">
+              <%= f.label :subscriber_id, "予約者" %>
+            </div>
+            <div class="col-lg-9">
+　　　　  　　<%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
+            </div>
+          </div>
+        </div>
+
         <div class="form-group text-center">
           <%= f.submit "保存", class: 'btn btn-outline-info col-3' %>
         </div>

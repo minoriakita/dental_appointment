@@ -1,17 +1,13 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
-      <h3>
-        予約登録
-      </h3>
+    <%= render 'layouts/sidebar' %>
+    <div class='col-md-9 offset-md-1'>
+      <h3>予約登録</h3>
         <%= form_with model: @appointment, url: admin_appointments_path do |f| %>
 
         <div class="form-group">
           <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 mini-title">
               <%= f.label :patient_id, "患者ID" %>
             </div>
             <div class="col-lg-9">
@@ -55,43 +51,79 @@
           </div>
         </div>
 
-　　　　<div class="form-group row">
-　　　　  <%= f.label :charge_id, "担当者", class: "col-3" %>
-　　　　  <%= f.collection_select :charge_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
-　　　　</div>
-
-        <div class="form-group row">
-          <%= f.label :remark,"備考", class: "col-5" %>
-          <%= f.text_area :remark %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :treatment, "治療" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.collection_check_boxes(:treatment_ids, Treatment.all, :id, :name) do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label "症状", class: "col-5" %>
-          <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
-            <%= b.label { b.check_box + b.text } %>
-          <% end %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :symptom, "症状" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
+            　　　<%= b.label { b.check_box + b.text } %>
+          　　　<% end %>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :symptom_text, "その他症状", class: "col-5" %>
-          <%= f.text_area :symptom_text, class: "form-control col-5" %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :symptom_text, "その他症状" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.text_area :symptom_text, class: 'form-control'%>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label "治療", class: "col-5" %>
-          <%= f.collection_check_boxes(:treatment_ids, Treatment.all, :id, :name) do |b| %>
-            <%= b.label { b.check_box + b.text } %>
-          <% end %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :remark, "備考" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.text_area :remark, class: 'form-control'%>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3 d-flex align-items-center">
+              <%= f.label :status, "予約状態" %>
+            </div>
+            <div class="col-lg-9">
+              <%= f.select :status, Appointment.statuses_i18n.invert, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3 d-flex align-items-center">
+              <%= f.label :subscriber_id, "予約者" %>
+            </div>
+            <div class="col-lg-9">
+　　　　  　　<%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
+            </div>
+          </div>
         </div>
 
         <div class="form-group text-center">
-          <%= f.submit "登録", class: 'btn btn-sm btn-success col-4' %>
+          <%= f.submit "登録", class: 'btn btn-outline-info col-3' %>
         </div>
-
-        <div class="form-group row">
-　　　　  <%= f.label :subscriber_id, "予約者", class: "col-3" %>
-　　　　  <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
-　　　　</div>
         <% end %>
     </div>
   </div>

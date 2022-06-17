@@ -1,9 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
+    <%= render 'layouts/sidebar' %>
+    <div class='col-md-9 offset-md-1'>
       <h3>
         予約詳細
       </h3>
@@ -25,7 +23,7 @@
             名前
           </div>
           <div class="col-lg-9">
-            <%= @appointment.patient.full_name %> / <%= @patient.full_name_kana %>
+            <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
           </div>
         </div>
       </div>

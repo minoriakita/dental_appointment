@@ -1,87 +1,141 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
-      <div class="mini-title">
-        <%= @patient.last_name_kana + " " + @patient.first_name_kana %>さんの患者詳細
+    <%= render 'layouts/sidebar' %>
+    <div class='col-md-9 offset-md-1'>
+      <h3>患者詳細</h3>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            患者ID
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.id %>
+          </div>
+        </div>
       </div>
-      <table class="table table-bordered ml-5">
-        <tbody>
-          <tr>
-            <th class="col-4 text-center">カルテNo</th>
-            <td><%= @patient.id %></td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">名前</th>
-            <td>
-              <%= @patient.last_name + " " + @patient.first_name %>
-            </td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">フリガナ</th>
-            <td>
-              <%= @patient.last_name_kana + " " + @patient.first_name_kana%>
-            </td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">誕生日</th>
-            <td>
-              <%= @patient.birthday %>
-            </td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">年齢</th>
-            <td>
-              <%= @patient.get_age %>
-            </td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">性別</th>
-            <td>
-              <%= @patient.gender_i18n %>
-            </td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">電話番号</th>
-            <td><%= @patient.telephone_number %></td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">メールアドレス</th>
-            <td><%= @patient.email %></td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">郵便番号</th>
-            <td><%= @patient.postal_code %></td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">住所</th>
-            <td><%= @patient.address %></td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">注意事項</th>
-            <td><%= @patient.patient_text %></td>
-          </tr>
-          <tr>
-            <th class="col-4 text-center">感染症</th>
-            <td>
-              <% @patient.infections.each do |infection| %>
-                <% if @patient_infection.present? %>
-                  <%=  infection.name %>
-                <% else %>
-                  <%= "なし" %>
-                <% end %>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            名前
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.full_name %> / <%= @patient.full_name_kana %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            誕生日
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.birthday %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            年齢
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.get_age %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            性別
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.gender_i18n %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            電話番号
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.telephone_number %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            メールアドレス
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.email %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            郵便番号
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.postal_code %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            住所
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.address %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            患者注意事項
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.patient_text %>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="row">
+          <div class="col-lg-3">
+            感染症
+          </div>
+          <div class="col-lg-9">
+            <% @patient.infections.each do |infection| %>
+              <% if @patient_infection.present? %>
+                <%=  infection.name %>
+              <% else %>
+                <%= "なし" %>
               <% end %>
-              </td>
-          </tr>
-        </tbody>
-      </table>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group text-center">
-        <%= link_to "編集", edit_admin_patient_path(params[:id]), class: 'btn btn-sm btn-success col-4' %>
-        <%= link_to "予約取得", new_admin_appointment_path(patient_id: @patient), class: 'btn btn-sm btn-success col-4' %>
-        <%= link_to "戻る", admin_patients_path %>
-        予約履歴
+        <%= link_to "一覧へ戻る", admin_patients_path, class: 'btn btn-outline-info col-2' %>
+        <%= link_to "編集", edit_admin_patient_path(params[:id]), class: 'btn btn-outline-info col-2' %>
+        <%= link_to "予約履歴", admin_patients_path, class: 'btn btn-outline-info col-2'%>
+        <%= link_to "予約取得", new_admin_appointment_path(patient_id: @patient), class: 'btn btn btn-outline-danger col-3' %>
       </div>
     </div>
   </div>

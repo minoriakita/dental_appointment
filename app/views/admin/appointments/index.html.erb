@@ -1,11 +1,9 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
+    <%= render 'layouts/sidebar' %>
     <% unless @day.blank? %>
-      <div class='col-md-8 offset-md-1'>
-        <div class="mini-title">予約一覧</div>
+      <div class='col-md-9 offset-md-1'>
+        <h3>予約一覧</h3>
           <div class="row">
             <% @employees.each do |employee| %>
               <div class="col-lg-6">
@@ -19,16 +17,16 @@
         </div>
       </div>
     <% else %>
-      <div class='col-md-8 offset-md-1'>
-        <h2>予約一覧</h2>
+      <div class='col-md-9 offset-md-1'>
+        <h3>本日の予約一覧</h3>
         <% if @appointments.exists? %>
           <% @appointments.each do |appointment| %>
+
             <div><%= appointment.patient.full_name %> / <%= appointment.patient.full_name_kana %></div>
           <% end %>
         <% else %>
-          <h3>Appointments Nothing</h3>
+          <div>予約はありません<div>
         <% end %>
-
       </div>
     <% end %>
   </div>
