@@ -1,4 +1,8 @@
+<% if appointment.patient.infections.present? %>
+<div class="card bg-warning">
+<% else %>
 <div class="card">
+<% end %>
   <div class="card-body">
     <h5 class="card-title"><%= appointment.appointment_date.strftime("%H時%M分")%></h5>
     <div class="card-subtitle mb-2 text-muted">
@@ -27,24 +31,20 @@
       <div class="row">
         <div class="col-3">診療状況</div>
         <div class="col-9">
-          <%#= unless visit_date.blank?
-          その人の過去のvisit_dateが空じゃなければ
-          再診
-          else
-          初診%>
+          <% if appointment.patient.appointments.last.visit_date.blank? %>
+            初診
+          <% else %>
+            再診
+          <% end %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-3">予約状態</div>
-        <div class="col-9">
-          <%= appointment.status_i18n %>
-          <!--if status == 3なら文字をred-->
+        <div class="col-9" >
+          <%= appointment_status(appointment) %>
         </div>
       </div>
-
-      <!--if infection.presence
-      カードを黄色に-->
 
     </div>
   </div>

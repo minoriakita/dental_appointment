@@ -1,8 +1,6 @@
-<div class='container'>
+<div class='container-fluid'>
   <div class='row'>
-    <div class='col-md-2'>
       <%= render 'layouts/sidebar' %>
-    </div>
     <div class='col-md-9 offset-md-1'>
       <h3>予約編集</h3>
         <%= form_with model: @appointment, url: admin_appointment_path do |f| %>
@@ -112,7 +110,7 @@
               <%= f.label :subscriber_id, "予約者" %>
             </div>
             <div class="col-lg-9">
-　　　　  　　<%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
+        <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
             </div>
           </div>
         </div>

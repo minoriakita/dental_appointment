@@ -1,4 +1,4 @@
-<div class='col-md-2'>
+<div class='col-md-2 sidebar-all'>
   <div class="sidebar">
   <div class="row">
     <div class="col">
@@ -19,7 +19,7 @@
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <%= link_to "予約一覧", admin_appointments_path(patient_id: @patient) %>
+      <%= link_to "予約一覧", admin_appointments_path(day: Date.current.strftime('%Y-%m-%d')) %>
     </div>
   </div>
   </div>

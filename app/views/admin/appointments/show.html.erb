@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container-fluid'>
   <div class='row'>
     <%= render 'layouts/sidebar' %>
     <div class='col-md-9 offset-md-1'>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-　　　<div class="table">
+    <div class="table">
         <div class="row">
           <div class="col-lg-3">
             担当者
@@ -56,7 +56,7 @@
             治療
           </div>
           <div class="col-lg-9">
-　　　　　　<% @appointment.treatments.each do |treatment| %>
+      <% @appointment.treatments.each do |treatment| %>
               <% if @appointment_treatment.present? %>
                 <%= treatment.name %>
               <% else %>
