@@ -1,8 +1,7 @@
-<div class='col-md-2 sidebar-all'>
+<div class='col-md-2'>
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <i class="fas fa-user-plus"></i>
       <%= link_to "患者登録", new_admin_patient_path %>
     </div>
   </div>
@@ -19,7 +18,7 @@
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <%= link_to "予約一覧", admin_appointments_path(day: Date.current.strftime('%Y-%m-%d')) %>
+      <%= link_to "予約一覧", admin_appointments_path(patient_id: @patient) %>
     </div>
   </div>
   </div>
@@ -32,4 +31,3 @@
   </div>
   </div>
 </div>
-

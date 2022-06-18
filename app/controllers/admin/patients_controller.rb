@@ -17,15 +17,10 @@ class Admin::PatientsController < ApplicationController
   def index
     @patients = Patient.all
   end
-  
+
   def search
     @patients = Patient.search(params[:keyword])
     @keyword = params[:keyword]
-    # if params[:name].present?
-    #   @patient = Patient.where('last_name_kana LIKE ?', "%#{params[:name]}%")
-    # else
-    #   @patients = Patient.none
-    # end
   end
 
   def show
@@ -45,7 +40,7 @@ class Admin::PatientsController < ApplicationController
     patient.update(patient_params)
     redirect_to admin_patient_path(patient)
   end
-  
+
   def destroy
   end
 

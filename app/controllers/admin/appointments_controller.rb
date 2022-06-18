@@ -19,9 +19,9 @@ class Admin::AppointmentsController < ApplicationController
     @appointments = Appointment.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @employees = Employee.all
     @day = params[:day]
-    # if @day.blank?
-    #   redirect_to top_path
-    # end
+    if @day.blank?
+      redirect_to admin_appointments_path(day: Date.current.strftime('%Y-%m-%d'))
+    end
     #@patient = Patient.find(params[:patient_id])
     #Appointment.where(担当者: 佐藤)
     #Appointment.where(担当者: 佐藤).where(日付: today)

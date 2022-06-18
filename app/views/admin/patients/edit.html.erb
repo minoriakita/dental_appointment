@@ -1,78 +1,139 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
-      <div class="mini-title">
-        <%= @patient.last_name_kana + @patient.first_name_kana %>さんの患者編集
-      </div>
-    <%= form_with model: @patient, url: admin_patient_path(@patient) do |f| %>
-        <div class="form-group row">
-          <%= f.label :名前, class: "col-3 " %>
-          <%= f.label :last_name, "(姓)" , class: "col-2" %>
-          <%= f.text_field :last_name, autocomplete: "last-name", placeholder: "令和", class: "form-control col-2" %>
-          <%= f.label :first_name, "(名)", class: "col-2" %>
-          <%= f.text_field :first_name, autocomplete: "first_name-name", placeholder: "道子", class: "form-control col-2" %>
+    <%= render 'layouts/sidebar' %>
+    <div class='col-md-9 offset-md-1'>
+      <h3>患者編集</h3>
+        <%= form_with model: @patient, url: admin_patient_path(@patient) do |f| %>
+
+    <div class='form-group'>
+          <div class='row'>
+            <div class='col-lg-3'>
+              <%= f.label :full_name,"名前" %>
+            </div>
+            <div class='col-lg-4'>
+              <%= f.label :last_name, "(姓)" %>
+              <%= f.text_field :last_name, placeholder: "令和", class: "form-control" %>
+            </div>
+            <div class='col-lg-4'>
+              <%= f.label :first_name, "(名)" %>
+              <%= f.text_field :first_name, placeholder: "道子", class: "form-control" %>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :フリガナ, class: "col-3" %>
-          <%= f.label :last_name_kana, "(セイ)", class: "col-2" %>
-          <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", placeholder: "レイワ", class: "form-control col-2" %>
-          <%= f.label :first_name_kana, "(メイ)", class: "col-2" %>
-          <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder: "ミチコ", class:"form-control col-2" %>
+        <div class='form-group'>
+          <div class='row'>
+            <div class='col-lg-3'>
+              <%= f.label :full_name_kana,"フリガナ" %>
+            </div>
+            <div class='col-lg-4'>
+              <%= f.label :last_name_kana, "(セイ)" %>
+              <%= f.text_field :last_name_kana, placeholder: "レイワ", class: "form-control" %>
+            </div>
+            <div class='col-lg-4'>
+              <%= f.label :first_name_kana, "(メイ)" %>
+              <%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control" %>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group row">
-          <%= f.label :誕生日, class: "col-5" %>
-          <%= f.date_field :birthday, class: 'form-control col-2' %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :birthday, "誕生日" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.datetime_field :birthday, class: 'form-control' %>
+            </div>
+          </div>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :性別, class: "col-3" %>
-          <%= f.label :gander, "（男）", class: "col-2" %>
-          <%= f.radio_button :gender, "man" %>
-          <%= f.label :gander, "（女）", class: "col-2" %>
-          <%= f.radio_button :gender, "woman" %>
-          <%= f.label :gander, "（その他）", class: "col-2" %>
-          <%= f.radio_button :gender, "other" %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :gender, "性別" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.label :gender,Patient.genders_i18n[:man] %>
+              <%= f.radio_button :gender,Patient.genders.key(0) %>
+              <%= f.label :gender,Patient.genders_i18n[:woman] %>
+              <%= f.radio_button :gender,Patient.genders.key(1) %>
+              <%= f.label :gender,Patient.genders_i18n[:other] %>
+              <%= f.radio_button :gender,Patient.genders.key(2) %>
+            </div>
+          </div>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :telephone_number,"電話番号(ハイフンなし)", class: "col-5" %>
-          <%= f.text_field :telephone_number, autocomplete: "tel", placeholder:"0000000000", class:"form-control col-3" %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :telephone_number,"電話番号(ハイフンなし)" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :telephone_number, placeholder: "0000000000", class: "form-control" %>
+            </div>
+          </div>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :email, "メールアドレス", class: "col-5" %>
-          <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control col-4" %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :email,"メールアドレス" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :email, placeholder: "sample@example.com", class: "form-control" %>
+            </div>
+          </div>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-5" %>
-          <%= f.text_field :postal_code, autocomplete: "postal-code", placeholder: "0000000", class: "form-control col-4" %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
+            </div>
+          </div>
         </div>
-          
-        <div class="form-group row">
-          <%= f.label :address, "住所", class: "col-5" %>
-          <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0－0", class:"form-control col-5" %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :address, "住所" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0－0", class: "form-control" %>
+            </div>
+          </div>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :patient_text, "注意事項", class: "col-5" %>
-          <%= f.text_area :patient_text, class: "form-control col-5" %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :patient_text, "患者注意事項" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.text_area :patient_text, class: "form-control" %>
+            </div>
+          </div>
         </div>
-        
-        <div class="form-group row">
-          <%= f.label :infection_id, "感染症", class: "col-5" %>
-          <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
-            <%= b.label { b.check_box + b.text } %>
-          <% end %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-3">
+              <%= f.label :infection_id, "感染症" %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
+            　　<%= b.label { b.check_box + b.text } %>
+          　　<% end %>
+            </div>
+          </div>
         </div>
-        
+
         <div class="form-group text-center">
-          <%= f.submit "変更を保存", class: 'btn btn-sm btn-success col-4' %>
+          <%= f.submit "変更を保存", class: 'btn btn-outline-info col-3' %>
         </div>
         <% end %>
       </div>

@@ -1,35 +1,22 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <% unless @day.blank? %>
-      <div class='col-md-8 offset-md-1'>
-        <div class="mini-title">予約一覧</div>
-          <div class="row">
-            <% @employees.each do |employee| %>
-              <div class="col-lg-6">
-                <%= employee.name %>
-                <% employee.appointments_list_on_charge(employee.id, @day).each do |appointment| %>
-                  <%= render 'index', appointment: appointment %>
-                <% end %>
-              </div>
+    <%= render 'layouts/sidebar' %>
+    <div class='col-md-9 offset-md-1'>
+      <h3>予約一覧</h3>
+      <div class="row">
+        <% @employees.each do |employee| %>
+          <div class="col-lg-6">
+            <%= employee.name %>
+            <% if employee.appointments_list_on_charge(employee.id, @day).present? %>
+              <% employee.appointments_list_on_charge(employee.id, @day).each do |appointment| %>
+                <%= render 'index', appointment: appointment %>
+              <% end %>
+            <% else %>
+              予約はありません
             <% end %>
           </div>
-        </div>
-      </div>
-    <% else %>
-      <div class='col-md-8 offset-md-1'>
-        <h2>予約一覧</h2>
-        <% if @appointments.exists? %>
-          <% @appointments.each do |appointment| %>
-            <div><%= appointment.patient.full_name %> / <%= appointment.patient.full_name_kana %></div>
-          <% end %>
-        <% else %>
-          <h3>Appointments Nothing</h3>
         <% end %>
-
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
