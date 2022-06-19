@@ -45,7 +45,9 @@
             担当者
           </div>
           <div class="col-lg-9">
-            <%= @appointment.charge.name %>
+            <% unless @appointment.charge.nil? %>
+              <%= @appointment.charge.name %>
+            <% end %>
           </div>
         </div>
       </div>

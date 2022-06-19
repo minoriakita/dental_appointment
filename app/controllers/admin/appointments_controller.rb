@@ -27,9 +27,6 @@ class Admin::AppointmentsController < ApplicationController
     #Appointment.where(担当者: 佐藤).where(日付: today)
   end
 
-  # def search
-  # end
-
   def show
     @appointment = Appointment.find(params[:id])
     @patient = Patient.find(@appointment.patient_id)
@@ -80,6 +77,7 @@ class Admin::AppointmentsController < ApplicationController
       :remark,
       :symptom_text,
       :charge_id,
+      :subscriber_id,
       { symptom_ids: []},
       { treatment_ids: []},)
   end
@@ -92,6 +90,7 @@ class Admin::AppointmentsController < ApplicationController
       :status,
       :symptom_text,
       :visit_date,
+      :subscriber_id,
       { symptom_ids: []},
       { treatment_ids: []})
   end

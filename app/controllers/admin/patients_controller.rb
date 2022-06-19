@@ -41,6 +41,11 @@ class Admin::PatientsController < ApplicationController
     redirect_to admin_patient_path(patient)
   end
 
+  def appointment_index
+    @patient = Patient.find(params[:patient_id])
+    @appointments = @patient.appointments.all.order(created_at: :desc)
+  end
+
   def destroy
   end
 

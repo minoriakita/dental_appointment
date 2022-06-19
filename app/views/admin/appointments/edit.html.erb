@@ -19,7 +19,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-lg-3">患者名</div>
-            <div class="col-lg-9"><%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name %></div>
+            <div class="col-lg-9"><%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %></div>
           </div>
         </div>
 
@@ -110,7 +110,7 @@
               <%= f.label :subscriber_id, "予約者" %>
             </div>
             <div class="col-lg-9">
-        <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
+              <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
             </div>
           </div>
         </div>
