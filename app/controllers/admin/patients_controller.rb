@@ -6,9 +6,9 @@ class Admin::PatientsController < ApplicationController
   end
 
   def create
-    patient = Patient.new(patient_params)
-    if patient.save
-      redirect_to admin_patient_path(patient.id)
+    @patient = Patient.new(patient_params)
+    if @patient.save
+      redirect_to admin_patient_path(@patient.id)
     else
       render "new"
     end
@@ -36,9 +36,12 @@ class Admin::PatientsController < ApplicationController
   end
 
   def update
-    patient = Patient.find(params[:id])
-    patient.update(patient_params)
-    redirect_to admin_patient_path(patient)
+    @patient = Patient.find(params[:id])
+    if @patient.update(patient_params)
+       redirect_to admin_patient_path(@patient)
+    else
+       render :edit
+    end
   end
 
   def appointment_index

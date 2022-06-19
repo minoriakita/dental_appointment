@@ -3,6 +3,8 @@
     <%= render 'layouts/sidebar' %>
     <div class='col-md-9 offset-md-1'>
       <h3>患者編集</h3>
+              <%= render 'layouts/error', obj: @patient %>
+
         <%= form_with model: @patient, url: admin_patient_path(@patient) do |f| %>
 
     <div class='form-group'>

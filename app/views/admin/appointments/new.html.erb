@@ -3,6 +3,8 @@
     <%= render 'layouts/sidebar' %>
     <div class='col-md-9 offset-md-1'>
       <h3>予約登録</h3>
+        <%= render 'layouts/error', obj: @appointment %>
+
         <%= form_with model: @appointment, url: admin_appointments_path do |f| %>
 
         <div class="form-group">
