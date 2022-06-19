@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     resources :infections
     resources :patients do
       get :search, on: :collection
+      get 'appointment_index' => 'patients#appointment_index'
     end
     resources :symptoms
     resources :treatments
     get 'item' => 'homes#item'
-    #get 'search' => 'patients#search'
     get 'visit_date' => 'appointments#visit_date'
   end
 

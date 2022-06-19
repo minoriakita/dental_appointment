@@ -116,7 +116,7 @@
               <%= f.label :subscriber_id, "予約者" %>
             </div>
             <div class="col-lg-9">
-        <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
+              <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
             </div>
           </div>
         </div>

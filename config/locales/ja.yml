@@ -9,7 +9,7 @@ ja:
       status:
         confirm: "確定"
         cancel: "キャンセル"
-        visit: "来院"
+        visit: "来院済"
   date:
     formats:
       default: "%Y/%m/%d"
