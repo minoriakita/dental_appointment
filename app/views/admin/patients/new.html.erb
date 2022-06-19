@@ -126,8 +126,8 @@
             </div>
             <div class="col-lg-8">
               <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
-            　　<%= b.label { b.check_box + b.text } %>
-          　　<% end %>
+              <%= b.label { b.check_box + b.text } %>
+            <% end %>
             </div>
           </div>
         </div>

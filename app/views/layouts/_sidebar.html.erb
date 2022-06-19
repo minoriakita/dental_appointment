@@ -1,9 +1,11 @@
 <div class='col-md-2 sidebar-all'>
+
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <i class="fas fa-user-plus"></i>
-      <%= link_to "患者登録", new_admin_patient_path %>
+      <%= link_to admin_appointments_path(day: Date.current.strftime('%Y-%m-%d')) do %>
+        <i class="fas fa-teeth-open"></i>予約一覧
+      <% end %>
     </div>
   </div>
   </div>
@@ -11,7 +13,9 @@
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <%= link_to "患者一覧", admin_patients_path %>
+      <%= link_to new_admin_patient_path do %>
+        <i class="fas fa-user-plus"></i>患者登録
+      <% end %>
     </div>
   </div>
   </div>
@@ -19,7 +23,9 @@
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <%= link_to "予約一覧", admin_appointments_path(day: Date.current.strftime('%Y-%m-%d')) %>
+      <%= link_to admin_patients_path do %>
+       <i class="fas fa-users"></i>患者一覧
+      <% end %>
     </div>
   </div>
   </div>
@@ -27,7 +33,9 @@
   <div class="sidebar">
   <div class="row">
     <div class="col">
-      <%= link_to "各項目追加", admin_item_path %>
+      <%= link_to admin_item_path do %>
+        <i class="fas fa-pencil-alt"></i>各項目追加
+      <% end %>
     </div>
   </div>
   </div>

@@ -24,7 +24,7 @@
             </div>
             <div class="col-lg-9">
               <%= @patient.full_name %> / <%= @patient.full_name_kana %>
-          　　　<%= f.hidden_field :patient_id, :value => @patient.id %>
+             <%= f.hidden_field :patient_id, :value => @patient.id %>
             </div>
           </div>
         </div>
@@ -71,8 +71,8 @@
             </div>
             <div class="col-lg-9">
               <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
-            　　　<%= b.label { b.check_box + b.text } %>
-          　　　<% end %>
+               <%= b.label { b.check_box + b.text } %>
+             <% end %>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@
               <%= f.label :subscriber_id, "予約者" %>
             </div>
             <div class="col-lg-9">
-　　　　  　　<%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
+        <%= f.collection_select :subscriber_id, Employee.all, :id, :name, include_blank: "選択して下さい" %>
             </div>
           </div>
         </div>

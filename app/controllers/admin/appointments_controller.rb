@@ -27,8 +27,8 @@ class Admin::AppointmentsController < ApplicationController
     #Appointment.where(担当者: 佐藤).where(日付: today)
   end
 
-  def search
-  end
+  # def search
+  # end
 
   def show
     @appointment = Appointment.find(params[:id])
