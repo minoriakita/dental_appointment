@@ -23,11 +23,11 @@ body {
   background-color: #EDEFF5;
 }
 
-main {
-  background-color: #EDEFF5;
-  width: 100%; /* 横幅いっぱい */
-  height: 100%;
-}
+// main {
+//   background-color: #EDEFF5;
+//   width: 100%; /* 横幅いっぱい */
+//   min-height: calc(100vh - 56px);
+// }
 
 a {
   color: black;

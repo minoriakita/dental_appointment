@@ -2,7 +2,7 @@
  <div class="row">
   <div class="mini-title">スタッフ編集</div>
  </div>
-     <%= render 'layouts/error', obj: @employee %>
+ <%= render 'layouts/error', obj: @employee %>
 
  <div class="row pt-4">
    <%= form_with model: @employee, url: admin_employee_path(@employee), method: :patch do |f| %>

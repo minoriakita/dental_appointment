@@ -1,32 +1,50 @@
-<div class='col-md-2'>
-  <div class="sidebar">
+<div class='col-md-2 sidebar-all'>
+  <div class="sidebar mb-3 mt-3">
   <div class="row">
     <div class="col">
-      <%= link_to "患者登録", new_admin_patient_path %>
+      <%= link_to admin_employees_path do %>
+        スタッフ<i class="fas fa-user-friends"></i>
+      <% end %>
     </div>
   </div>
   </div>
 
-  <div class="sidebar">
+  <div class="sidebar mb-3">
   <div class="row">
     <div class="col">
-      <%= link_to "患者一覧", admin_patients_path %>
+      <%= link_to admin_infections_path do %>
+        感染症<i class="fas fa-viruses"></i>
+      <% end %>
     </div>
   </div>
   </div>
 
-  <div class="sidebar">
+  <div class="sidebar mb-3">
   <div class="row">
     <div class="col">
-      <%= link_to "予約一覧", admin_appointments_path(patient_id: @patient) %>
+      <%= link_to admin_treatments_path do %>
+        治療<i class="fas fa-teeth"></i>
+      <% end %>
     </div>
   </div>
   </div>
 
-  <div class="sidebar">
+  <div class="sidebar mb-3">
   <div class="row">
     <div class="col">
-      <%= link_to "各項目追加", admin_item_path %>
+      <%= link_to admin_symptoms_path do %>
+        症状<i class="fas fa-head-side-mask"></i>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+  <div class="sidebar mb-3">
+  <div class="row">
+    <div class="col">
+      <%= link_to top_path do %>
+        topへ<i class="fas fa-hand-point-left"></i>
+      <% end %>
     </div>
   </div>
   </div>

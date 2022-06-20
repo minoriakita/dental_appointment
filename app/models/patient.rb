@@ -3,7 +3,7 @@ class Patient < ApplicationRecord
   has_many :patient_infections
   has_many :infections, through: :patient_infections
 
-  validates :last_name_, length: { maximum: 20 }
+  validates :last_name, length: { maximum: 20 }
   validates :first_name, length: { maximum: 20 }
   validates :last_name_kana, presence: true, length: { maximum: 20 }
   validates :first_name_kana, presence: true, length: { maximum: 20 }

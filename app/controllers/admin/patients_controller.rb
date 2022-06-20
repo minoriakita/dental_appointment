@@ -27,7 +27,7 @@ class Admin::PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     @patient_infection = PatientInfection.find_by(patient_id: params[:id])
     if @patient_infection != nil
-      @infection = Infection.find(@patient_infection.infection_id)
+       @infection = Infection.find(@patient_infection.infection_id)
     end
   end
 

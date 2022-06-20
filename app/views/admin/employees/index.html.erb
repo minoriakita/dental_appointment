@@ -1,15 +1,36 @@
-<div class="container">
-  <div class="row">
-     <div class="mini-title">スタッフ一覧・追加</div>
-     </div>
-     <%= render 'layouts/error', obj: @employee %>
-    <div>
-     <%= form_with model: @employee, url: admin_employees_path, method: :post do |f| %>
-     <%= f.label :スタッフ名 %>
-     <%= f.text_field :name %>
-     <%= f.submit "新規登録", class: "btn btn-success ml-3 mb-2" %>
-     <% end %>
+<div class='row'>
+  <%= render 'layouts/item_sidebar' %>
+  <div class='col-md-8 offset-md-1'>
+    <h3>スタッフ一覧・追加</h3>
+    <%= render 'layouts/error', obj: @employee %>
+
+    <div class="form-group">
+         <%= form_with model: @employee, url: admin_employees_path, method: :post do |f| %>
+     <div class="row">
+      <div class="col-4">
+      <%= f.label :スタッフ名 %>
+      <%= f.text_field :name, class: "form-control" %>
+            <%= f.submit "新規登録", class: "btn btn-outline-info" %>
+
+      <%= f.submit "新規登録", class: "btn btn-outline-info" %>
+
     </div>
+      <% end %>
+    </div>
+
+
+
+    <div class="table">
+     	<div class="table_line">
+     		<div class="block">スタッフ</div>
+     		<div class="block"></div>
+     	</div>
+     	<div class="table_line">
+     		<div class="block">2段目 ブロックA</div>
+     		<div class="block">2段目 ブロックB</div>
+     	</div>
+    </div>
+
   <div class="row">
    <div class="col-5">
     <table class="table table-bordered table-hover text-center">
@@ -31,4 +52,5 @@
        <%= link_to "戻る", admin_item_path %>
   </div>
  </div>
+</div>
 </div>
