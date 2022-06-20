@@ -6,8 +6,12 @@ class Admin::InfectionsController < ApplicationController
 
   def create
     @infection = Infection.new(infection_params)
-    @infection.save
-    redirect_to admin_infections_path
+    if @infection.save
+       redirect_to admin_infections_path
+    else
+       @infections = Infection.all
+       render :index
+    end
   end
 
   def edit
@@ -16,8 +20,11 @@ class Admin::InfectionsController < ApplicationController
 
   def update
     @infection = Infection.find(params[:id])
-    @infection.update(infection_params)
-    redirect_to admin_infections_path
+    if @infection.update(infection_params)
+       redirect_to admin_infections_path
+    else
+       render :edit
+    end
   end
 
  def destroy

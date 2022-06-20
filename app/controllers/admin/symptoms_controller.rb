@@ -6,8 +6,12 @@ class Admin::SymptomsController < ApplicationController
 
   def create
     @symptom = Symptom.new(symptom_params)
-    @symptom.save
-    redirect_to admin_symptoms_path
+    if @symptom.save
+       redirect_to admin_symptoms_path
+    else
+       @symptoms = Symptom.all
+       render :index
+    end
   end
 
   def edit
@@ -16,8 +20,11 @@ class Admin::SymptomsController < ApplicationController
 
   def update
     @symptom = Symptom.find(params[:id])
-    @symptom.update(symptom_params)
-    redirect_to admin_symptoms_path
+    if @symptom.update(symptom_params)
+       redirect_to admin_symptoms_path
+    else
+      render :edit
+    end
   end
 
  def destroy

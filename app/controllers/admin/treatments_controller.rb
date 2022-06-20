@@ -6,8 +6,12 @@ class Admin::TreatmentsController < ApplicationController
 
   def create
     @treatment = Treatment.new(treatment_params)
-    @treatment.save
-    redirect_to admin_treatments_path
+    if @treatment.save
+       redirect_to admin_treatments_path
+    else
+       @treatments = Treatment.all
+       render :index
+    end
   end
 
   def edit
@@ -16,8 +20,11 @@ class Admin::TreatmentsController < ApplicationController
 
   def update
     @treatment = Treatment.find(params[:id])
-    @treatment.update(treatment_params)
-    redirect_to admin_treatments_path
+    if @treatment.update(treatment_params)
+       redirect_to admin_treatments_path
+    else
+       render :edit
+    end
   end
 
  def destroy

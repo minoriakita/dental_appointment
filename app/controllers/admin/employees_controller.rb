@@ -28,9 +28,9 @@ class Admin::EmployeesController < ApplicationController
   end
 
  def destroy
-    employee = Employee.find(params[:id])
-    employee.delete
-    redirect_to admin_employees_path
+     employee = Employee.find(params[:id])
+     employee.delete
+     redirect_to admin_employees_path
  end
 
   private
