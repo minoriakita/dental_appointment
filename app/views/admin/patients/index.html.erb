@@ -1,55 +1,53 @@
-<div class='container'>
-  <div class='row'>
-    <%= render 'layouts/sidebar' %>
-    <div class='col-md-8 offset-md-1'>
-      <h3>患者一覧</h3>
+<div class='row'>
+  <%= render 'layouts/sidebar' %>
+  <div class='col-md-8 offset-md-1'>
+    <h3>患者一覧</h3>
 
-      <div class="table">
-        <div class="row">
-          <div class="col-lg-2">
-            患者ID
-          </div>
-          <div class="col-lg-4">
-            名前
-          </div>
-          <div class="col-lg-3">
-            電話番号
-          </div>
-          <div class="col-lg-2">
-            性別
-          </div>
-          <div class="col-lg-1">
-            年齢
-          </div>
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-2">
+          ＜患者ID＞
+        </div>
+        <div class="col-lg-4">
+          ＜名前＞
+        </div>
+        <div class="col-lg-2">
+          ＜電話番号＞
+        </div>
+        <div class="col-lg-2">
+          ＜性別＞
+        </div>
+        <div class="col-lg-2">
+          ＜年齢＞
         </div>
       </div>
-
-      <div class="table">
-        <% @patients.each do |patient| %>
-          <div class="row">
-            <div class="col-lg-2">
-              <%= patient.id %>
-            </div>
-            <div class="col-lg-4">
-              <% if patient.last_name.present? %>
-                <%= link_to patient.full_name, admin_patient_path(patient) %>
-              <% else %>
-                <%= link_to patient.full_name_kana, admin_patient_path(patient) %>
-              <% end %>
-            </div>
-            <div class="col-lg-3">
-              <%= patient.telephone_number %>
-            </div>
-            <div class="col-lg-2">
-              <%= patient.gender_i18n %>
-            </div>
-            <div class="col-lg-1">
-              <%= patient.get_age %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
     </div>
+
+    <div class="table">
+      <% @patients.each do |patient| %>
+        <div class="row">
+          <div class="col-lg-2">
+            <%= patient.id %>
+          </div>
+          <div class="col-lg-4">
+            <% if patient.full_name.present? %>
+              <%= link_to "#{patient.full_name} / #{patient.full_name_kana}", admin_patient_path(patient) %>
+            <% else %>
+              <%= link_to patient.full_name_kana, admin_patient_path(patient) %>
+            <% end %>
+          </div>
+          <div class="col-lg-2">
+            <%= patient.telephone_number %>
+          </div>
+          <div class="col-lg-2">
+            <%= patient.gender_i18n %>
+          </div>
+          <div class="col-lg-2">
+            <%= patient.get_age %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>

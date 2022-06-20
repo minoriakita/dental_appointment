@@ -23,24 +23,36 @@ body {
   background-color: #EDEFF5;
 }
 
-main {
-  background-color: #EDEFF5;
-  width: 100%; /* 横幅いっぱい */
-  height: 100%;
-}
+// main {
+//   background-color: #EDEFF5;
+//   width: 100%; /* 横幅いっぱい */
+//   min-height: calc(100vh - 56px);
+// }
 
 a {
   color: black;
 }
 
 header {
-  background-color: #96B1F5;
+  background-color: #C5E9FA;
 }
 
 .sidebar-all {
-  background-color: #96B1F5;
+  background-color: #C5E9FA;
   min-height: calc(100vh - 56px);
 }
+
+@media screen and (max-width: 1199.98px) {}
+@media screen and (max-width: 991.98px) {}
+@media screen and (max-width: 767.98px) {
+  .sidebar-all {
+    background-color: #96B1F5;
+    min-height: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 575.98px) {}
 
 .navbar-brand {
   margin-right: auto;
@@ -81,6 +93,7 @@ h3:after {
 		display: table-cell;
 		border: solid 1px #999;
 		width: 200px;
+		height: 20px;
 	}
 
 .card-infection {
