@@ -1,4 +1,6 @@
 class Admin::AppointmentsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @appointment = Appointment.new
     @patients = Patient.all

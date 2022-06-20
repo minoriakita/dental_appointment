@@ -14,10 +14,14 @@
     <header>
       <% if admin_signed_in? %>
         <%= render 'layouts/header_admin_top' %>
+      <% else %>
+        <%= render 'layouts/default_header' %>
       <% end %>
     </header>
     <main>
-      <%= yield %>
+      <div class='container-fluid'>
+        <%= yield %>
+      </div>
     </main>
     <footer>
     </footer>

@@ -46,7 +46,7 @@ header {
 @media screen and (max-width: 991.98px) {}
 @media screen and (max-width: 767.98px) {
   .sidebar-all {
-    background-color: #96B1F5;
+    background-color: #C5E9FA;
     min-height: auto;
     display: flex;
     justify-content: space-between;
@@ -98,4 +98,5 @@ h3:after {
 
 .card-infection {
   background-color: #FAF599;
+  border-radius: 5px 5px 5px 5px;
 }

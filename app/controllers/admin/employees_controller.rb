@@ -1,4 +1,6 @@
 class Admin::EmployeesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @employee = Employee.new
     @employees = Employee.all

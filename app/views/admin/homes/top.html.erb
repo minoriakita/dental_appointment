@@ -1,10 +1,8 @@
-<div class='container'>
   <div class='row'>
     <%= render 'layouts/sidebar' %>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-8 offset-md-1 mt-3'>
       <%= month_calendar do |date| %>
         <%= date.strftime("%d") %>
       <% end %>
     </div>
   </div>
-</div>

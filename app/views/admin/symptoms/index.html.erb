@@ -1,35 +1,32 @@
-<div class="container">
-  <div class="row">
-     <div class="mini-title">症状一覧・追加</div>
-     </div>
-     <%= render 'layouts/error', obj: @symptom %>
+<div class='row'>
+ <%= render 'layouts/item_sidebar' %>
+  <div class='col-md-8 offset-md-1 mt-3'>
+   <h3>症状一覧・追加</h3>
+   <%= render 'layouts/error', obj: @symptom %>
 
-    <div>
-     <%= form_with model: @symptom, url: admin_symptoms_path, method: :post do |f| %>
-     <%= f.label :症状名 %>
-     <%= f.text_field :name %>
-     <%= f.submit "新規登録", class: "btn btn-success ml-3 mb-2" %>
-     <% end %>
-    </div>
-  <div class="row">
-   <div class="col-5">
-    <table class="table table-bordered table-hover text-center">
-     <thead class="thead">
-      <tr>
-       <th>症状</th>
-       <th colspan="3"></th>
-      </tr>
-     </thead>
-    <tbody class="tbody">
-      <% @symptoms.each do |symptom| %>
-       <tr>
-        <td><%= symptom.name %></td>
-        <td><%= link_to "編集する", edit_admin_symptom_path(symptom), class: "btn btn-sm btn-success admin_genre_edit" %></td>
-       </tr>
-      <% end %>
-     </tbody>
-    </table>
-         <%= link_to "戻る", admin_item_path %>
+   <div class="form-group">
+    <%= form_with model: @symptom, url: admin_symptoms_path, method: :post do |f| %>
+     <div class="row">
+      <div class="col-4 mt-2">
+       <%= f.label :症状名 %>
+       <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="col-3 mt-4 pt-3 pl-0 ">
+       <%= f.submit "新規登録", class: "btn btn-outline-info" %>
+      </div>
+     </div>
+    <% end %>
   </div>
- </div>
+
+    <% @symptoms.each do |symptom| %>
+     <div class="row mb-3">
+      <div class="col-md-4">
+       <%= symptom.name %>
+      </div>
+      <div>
+       <%= link_to "編集", edit_admin_symptom_path(symptom), class: "btn btn-sm btn-block btn-outline-secondary" %>
+      </div>
+     </div>
+    <% end %>
+  </div>
 </div>

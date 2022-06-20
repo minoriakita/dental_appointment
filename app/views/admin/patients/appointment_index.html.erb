@@ -1,6 +1,6 @@
 <div class='row'>
   <%= render 'layouts/sidebar' %>
-  <div class='col-md-8 offset-md-1'>
+  <div class='col-md-8 offset-md-1 mt-3'>
     <h3>
       <% if @patient.full_name.present? %>
         <%= @patient.full_name %>さんの予約履歴
@@ -12,19 +12,19 @@
     <div class="table">
       <div class="row">
         <div class="col-lg-2">
-          ＜予約日時＞
+          [予約日時]
         </div>
         <div class="col-lg-2">
-          ＜来院日＞
+          [来院日]
         </div>
         <div class="col-lg-2">
-         ＜担当者＞
+         [担当者]
         </div>
         <div class="col-lg-4">
-          ＜治療＞
+          [治療]
         </div>
         <div class="col-lg-2">
-          ＜予約状況＞
+          [予約状況]
         </div>
       </div>
     </div>
