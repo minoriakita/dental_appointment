@@ -14,6 +14,9 @@ class Patient < ApplicationRecord
   validates :telephone_number, numericality: true, allow_blank: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
+  validates :birthday, presence: true, allow_blank: true
+  validate :date_after_start
+
 
   enum gender: { man: 0, woman: 1, other: 2 }
 
@@ -37,4 +40,9 @@ class Patient < ApplicationRecord
   def full_name_kana
     "#{self.last_name_kana} #{self.first_name_kana}"
   end
+end
+
+def date_after_start
+    return if birthday.blank?
+    errors.add(:birthday, "は今日以前のものを選択してください。") if birthday > Date.today
 end
