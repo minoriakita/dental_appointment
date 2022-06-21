@@ -1,7 +1,7 @@
 <div class='row'>
   <%= render 'layouts/sidebar' %>
-  <div class='col-md-8 offset-md-1'>
-    <h3>予約一覧</h3>
+  <div class='col-md-8 offset-md-1 mt-3'>
+    <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
     <div class="row">
       <% @employees.each do |employee| %>
         <div class="col-lg-6">

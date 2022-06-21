@@ -5,8 +5,10 @@ class Patient < ApplicationRecord
 
   validates :last_name, length: { maximum: 20 }
   validates :first_name, length: { maximum: 20 }
-  validates :last_name_kana, presence: true, length: { maximum: 20 }
-  validates :first_name_kana, presence: true, length: { maximum: 20 }
+  validates :last_name_kana, presence: true, length: { maximum: 20 },
+  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  validates :first_name_kana, presence: true, length: { maximum: 20 },
+  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
   validates :patient_text, length: { maximum: 300 }
   validates :postal_code, numericality: true, allow_blank: true
   validates :telephone_number, numericality: true, allow_blank: true

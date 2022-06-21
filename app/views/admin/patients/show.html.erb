@@ -1,6 +1,6 @@
 <div class='row'>
   <%= render 'layouts/sidebar' %>
-  <div class='col-md-8 offset-md-1'>
+  <div class='col-md-8 offset-md-1 mt-3'>
     <h3>患者詳細</h3>
 
     <div class="table">
@@ -131,7 +131,6 @@
     </div>
 
     <div class="form-group text-center">
-      <%= link_to "一覧へ戻る", admin_patients_path, class: 'btn btn-outline-info col-2' %>
       <%= link_to "編集", edit_admin_patient_path(params[:id]), class: 'btn btn-outline-info col-2' %>
       <%= link_to "予約履歴", admin_patient_appointment_index_path(patient_id: @patient), class: 'btn btn-outline-info col-2'%>
       <%= link_to "予約取得", new_admin_appointment_path(patient_id: @patient), class: 'btn btn btn-outline-danger col-3' %>
