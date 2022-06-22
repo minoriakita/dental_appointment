@@ -1,4 +1,6 @@
 class Admin::InfectionsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @infection = Infection.new
     @infections = Infection.all

@@ -10,6 +10,40 @@ ja:
         confirm: "確定"
         cancel: "キャンセル"
         visit: "来院済"
+  activerecord:
+    models:
+      patient: "患者"
+      appointment: "予約"
+      employee: "スタッフ"
+      infection: "感染症"
+      symptom: "症状"
+      treatment: "治療"
+    attributes:
+      patient:
+        last_name: "姓"
+        first_name: "名"
+        last_name_kana: "セイ"
+        first_name_kana: "メイ"
+        birthday: "誕生日"
+        email: "メールアドレス"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+        patient_text: "患者注意事項"
+      appointment:
+        appointment_date: "予約日時"
+        remark: "備考"
+        symptom_text: "その他症状"
+        charge: "担当者"
+        subscriber: "予約者"
+      employee:
+        name: "スタッフ名"
+      infection:
+        name: "感染症名"
+      symptom:
+        name: "症状名"
+      treatment:
+        name: "治療名"
   date:
     formats:
       default: "%Y/%m/%d"

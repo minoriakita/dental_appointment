@@ -1,34 +1,32 @@
-<div class="container">
-  <div class="row">
-     <div class="mini-title">治療一覧・追加</div>
+<div class='row'>
+ <%= render 'layouts/item_sidebar' %>
+  <div class='col-md-8 offset-md-1 mt-3'>
+   <h3>治療一覧・追加</h3>
+   <%= render 'layouts/error', obj: @treatment %>
+
+   <div class="form-group">
+    <%= form_with model: @treatment, url: admin_treatments_path, method: :post do |f| %>
+     <div class="row">
+      <div class="col-4 mt-2">
+       <%= f.label :治療名 %>
+       <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="col-3 mt-4 pt-3 pl-0 ">
+       <%= f.submit "新規登録", class: "btn btn-outline-info" %>
+      </div>
      </div>
-     <%= render 'layouts/error', obj: @treatment %>
-    <div>
-     <%= form_with model: @treatment, url: admin_treatments_path, method: :post do |f| %>
-     <%= f.label :治療名 %>
-     <%= f.text_field :name %>
-     <%= f.submit "新規登録", class: "btn btn-success ml-3 mb-2" %>
-     <% end %>
-    </div>
-  <div class="row">
-   <div class="col-5">
-    <table class="table table-bordered table-hover text-center">
-     <thead class="thead">
-      <tr>
-       <th>治療</th>
-       <th colspan="3"></th>
-      </tr>
-     </thead>
-    <tbody class="tbody">
-      <% @treatments.each do |treatment| %>
-       <tr>
-        <td><%= treatment.name %></td>
-        <td><%= link_to "編集する", edit_admin_treatment_path(treatment), class: "btn btn-sm btn-success admin_genre_edit" %></td>
-       </tr>
-      <% end %>
-     </tbody>
-    </table>
-      <%= link_to "戻る", admin_item_path %>
+    <% end %>
   </div>
- </div>
+
+    <% @treatments.each do |treatment| %>
+     <div class="row mb-3 border-bottom">
+      <div class="col-md-4">
+       <%= treatment.name %>
+      </div>
+      <div>
+       <%= link_to "編集", edit_admin_treatment_path(treatment), class: "btn btn-sm btn-block btn-outline-secondary" %>
+      </div>
+     </div>
+    <% end %>
+  </div>
 </div>

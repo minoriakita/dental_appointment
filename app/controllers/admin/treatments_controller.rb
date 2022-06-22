@@ -1,4 +1,6 @@
 class Admin::TreatmentsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @treatment = Treatment.new
     @treatments = Treatment.all

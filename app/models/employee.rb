@@ -1,5 +1,6 @@
 class Employee < ApplicationRecord
   has_many :appointments, foreign_key: :charge_id
+  has_many :appointments, foreign_key: :subscriber_id
 
   validates :name, presence: true, length: { maximum: 20 }
 
@@ -8,5 +9,4 @@ class Employee < ApplicationRecord
                     .where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day)
                     .order(appointment_date: "ASC")
   end
-
 end

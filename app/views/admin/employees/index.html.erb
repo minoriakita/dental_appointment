@@ -19,7 +19,8 @@
   </div>
 
     <% @employees.each do |employee| %>
-     <div class="row mb-3">
+     <% if !employee.is_deleted %>
+     <div class="row mb-3 border-bottom">
       <div class="col-md-4">
        <%= employee.name %>
       </div>
@@ -28,6 +29,7 @@
        <%= link_to "編集", edit_admin_employee_path(employee), class: "btn btn-sm btn-block btn-outline-secondary" %>
       </div>
      </div>
+     <% end %>
     <% end %>
 
     <!--<div class="w-100 d-flex justify-content-between">-->
@@ -36,6 +38,4 @@
     <!-- <div>hige</div>-->
     <!--</div>-->
   </div>
- </div>
-</div>
 </div>

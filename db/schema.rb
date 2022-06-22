@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_15_154119) do
+ActiveRecord::Schema.define(version: 2022_06_22_163551) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2022_06_15_154119) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "charge_id"
     t.integer "subscriber_id"
-    t.date "apo_date"
     t.index ["charge_id"], name: "index_appointments_on_charge_id"
     t.index ["subscriber_id"], name: "index_appointments_on_subscriber_id"
   end
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_06_15_154119) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false
   end
 
   create_table "infections", force: :cascade do |t|

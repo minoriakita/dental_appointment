@@ -1,51 +1,60 @@
-<% if appointment.patient.infections.present? %>
-  <div class="card-infection mb-4">
-<% else %>
-  <div class="card mb-3">
-<% end %>
-  <div class="card-body">
-    <h5 class="card-title"><%= appointment.appointment_date.strftime("%H時%M分")%></h5>
-    <div class="card-subtitle mb-2 text-muted">
-      <%= link_to "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana} / (#{appointment.patient.get_age}歳)", admin_appointment_path(appointment.id), class: "text-dark" %>
-    </div>
-    <div class="card-text">
-
-      <div class="row">
-        <div class="col-3">治療</div>
-        <div class="col-9">
-          <% appointment.treatments.each do |treatment| %>
-            <span class="badge badge-pill badge-secondary mr-1"><%= treatment.name %></span>
-          <% end %>
-        </div>
+<%= link_to admin_appointment_path(appointment.id) do %>
+  <% if appointment.patient.infections.present? %>
+    <div class="card-infection mb-4 border">
+  <% else %>
+    <div class="card mb-3">
+  <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= appointment.appointment_date.strftime("%H時%M分")%></h5>
+      <div class="card-subtitle mb-2">
+        <!--もしフルネームが存在したらフルネーム-->
+        <% if appointment.patient.get_age && appointment.patient.full_name.present? %>
+          <%= "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana} / (#{appointment.patient.get_age}歳)" %>
+        <% elsif appointment.patient.full_name.present? %>
+          <%= "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana}" %>
+        <% else %>
+          <%= "#{appointment.patient.full_name_kana}" %>
+        <% end %>
       </div>
+      <div class="card-text">
 
-      <div class="row">
-        <div class="col-3">症状</div>
-        <div class="col-9">
-          <% appointment.symptoms.each do |symptom| %>
-            <span class="badge badge-pill badge-secondary mr-1"><%= symptom.name %></span>
-          <% end %>
+        <div class="row">
+          <div class="col-3">治療</div>
+          <div class="col-9">
+            <% appointment.treatments.each do |treatment| %>
+              <span class="badge badge-pill badge-secondary mr-1"><%= treatment.name %></span>
+            <% end %>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-3">診療状況</div>
-        <div class="col-9">
-          <% if appointment.patient.appointments.last.visit_date.blank? %>
-            初診
-          <% else %>
-            再診
-          <% end %>
+        <div class="row">
+          <div class="col-3">症状</div>
+          <div class="col-9">
+            <% appointment.symptoms.each do |symptom| %>
+              <span class="badge badge-pill badge-secondary mr-1"><%= symptom.name %></span>
+            <% end %>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-3">予約状態</div>
-        <div class="col-9" >
-          <%= appointment_status(appointment) %>
+        <div class="row">
+          <div class="col-3">診療状況</div>
+          <div class="col-9">
+            <% if appointment.patient.appointments.last.visit_date.blank? %>
+              初診
+            <% else %>
+              再診
+            <% end %>
+          </div>
         </div>
-      </div>
 
+        <div class="row">
+          <div class="col-3">予約状態</div>
+          <div class="col-9" >
+            <%= appointment_status(appointment) %>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
+<% end %>

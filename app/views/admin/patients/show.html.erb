@@ -1,7 +1,8 @@
 <div class='row'>
   <%= render 'layouts/sidebar' %>
-  <div class='col-md-8 offset-md-1'>
+  <div class='col-md-8 offset-md-1 mt-3'>
     <h3>患者詳細</h3>
+    <%= render partial: 'layouts/flash' %>
 
     <div class="table">
       <div class="row">
@@ -20,7 +21,11 @@
           名前
         </div>
         <div class="col-lg-9">
-          <%= @patient.full_name %> / <%= @patient.full_name_kana %>
+          <% if @patient.full_name.present? %>
+            <%= @patient.full_name %> / <%= @patient.full_name_kana %>
+          <% else %>
+            <%= @patient.full_name_kana %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -31,7 +36,11 @@
           誕生日
         </div>
         <div class="col-lg-9">
-          <%= @patient.birthday %>
+          <% if @patient.birthday.present? %>
+            <%= @patient.birthday.strftime("%m月%d日") %>
+          <% else %>
+            未登録
+          <% end %>
         </div>
       </div>
     </div>
@@ -42,7 +51,11 @@
           年齢
         </div>
         <div class="col-lg-9">
-          <%= @patient.get_age %>
+          <% if @patient.get_age.present? %>
+            <%= @patient.get_age %>歳
+          <% else %>
+            未登録
+          <% end %>
         </div>
       </div>
     </div>
@@ -53,7 +66,11 @@
           性別
         </div>
         <div class="col-lg-9">
-          <%= @patient.gender_i18n %>
+          <% if @patient.gender.present? %>
+            <%= @patient.gender_i18n %>
+          <% else %>
+            未登録
+          <% end %>
         </div>
       </div>
     </div>
@@ -64,7 +81,11 @@
           電話番号
         </div>
         <div class="col-lg-9">
-          <%= @patient.telephone_number %>
+          <% if @patient.telephone_number.present? %>
+            <%= @patient.telephone_number %>
+          <% else %>
+            未登録
+          <% end %>
         </div>
       </div>
     </div>
@@ -75,7 +96,11 @@
           メールアドレス
         </div>
         <div class="col-lg-9">
-          <%= @patient.email %>
+          <% if @patient.email.present? %>
+            <%= @patient.email %>
+          <% else %>
+            未登録
+          <% end %>
         </div>
       </div>
     </div>
@@ -86,7 +111,11 @@
           郵便番号
         </div>
         <div class="col-lg-9">
-          <%= @patient.postal_code %>
+          <% if @patient.postal_code.present? %>
+            <%= @patient.postal_code %>
+          <% else %>
+            未登録
+          <% end %>
         </div>
       </div>
     </div>
@@ -97,7 +126,11 @@
           住所
         </div>
         <div class="col-lg-9">
+        <% if @patient.address.present? %>
           <%= @patient.address %>
+        <% else %>
+          未登録
+        <% end %>
         </div>
       </div>
     </div>
@@ -108,7 +141,11 @@
           患者注意事項
         </div>
         <div class="col-lg-9">
-          <%= @patient.patient_text %>
+          <% if @patient.patient_text.present? %>
+            <%= @patient.patient_text %>
+          <% else %>
+            なし
+          <% end %>
         </div>
       </div>
     </div>
@@ -119,22 +156,21 @@
           感染症
         </div>
         <div class="col-lg-9">
-          <% @patient.infections.each do |infection| %>
-            <% if @patient_infection.present? %>
+          <% if @patient.infections.length != 0 %>
+            <% @patient.infections.each do |infection| %>
               <%=  infection.name %>
-            <% else %>
-              <%= "なし" %>
             <% end %>
+          <% else %>
+              なし
           <% end %>
         </div>
       </div>
     </div>
 
     <div class="form-group text-center">
-      <%= link_to "一覧へ戻る", admin_patients_path, class: 'btn btn-outline-info col-2' %>
-      <%= link_to "編集", edit_admin_patient_path(params[:id]), class: 'btn btn-outline-info col-2' %>
-      <%= link_to "予約履歴", admin_patient_appointment_index_path(patient_id: @patient), class: 'btn btn-outline-info col-2'%>
       <%= link_to "予約取得", new_admin_appointment_path(patient_id: @patient), class: 'btn btn btn-outline-danger col-3' %>
+      <%= link_to "患者情報編集", edit_admin_patient_path(params[:id]), class: 'btn btn-outline-info col-2' %>
+      <%= link_to "予約履歴", admin_patient_appointment_index_path(patient_id: @patient), class: 'btn btn-outline-info col-2'%>
     </div>
   </div>
 </div>

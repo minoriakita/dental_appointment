@@ -1,4 +1,6 @@
 class Admin::EmployeesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @employee = Employee.new
     @employees = Employee.all
@@ -29,7 +31,7 @@ class Admin::EmployeesController < ApplicationController
 
  def destroy
      employee = Employee.find(params[:id])
-     employee.delete
+     employee.update(is_deleted: true)
      redirect_to admin_employees_path
  end
 

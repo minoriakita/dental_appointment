@@ -1,6 +1,5 @@
 class Appointment < ApplicationRecord
   belongs_to :patient
-  # belongs_to :employee, class_name: 'Employee', foreign_key: :charge_id
 
   belongs_to :charge, class_name: 'Employee', foreign_key: :charge_id, optional: true
   belongs_to :subscriber, class_name: 'Employee', foreign_key: :subscriber_id, optional: true
@@ -25,7 +24,7 @@ class Appointment < ApplicationRecord
 
   def date_before_start
     return if appointment_date.blank?
-    errors.add(:appointment_date, "は今日以降のものを選択してください") if appointment_date < Date.today
+    errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today
   end
 
 end

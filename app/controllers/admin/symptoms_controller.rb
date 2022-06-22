@@ -1,4 +1,6 @@
 class Admin::SymptomsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @symptom = Symptom.new
     @symptoms = Symptom.all

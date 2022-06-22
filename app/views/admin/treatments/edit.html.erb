@@ -1,16 +1,20 @@
-<div class="container py-3">
- <div class="row">
-  <div class="mini-title">治療名編集</div>
- </div>
- <%= render 'layouts/error', obj: @treatment %>
+<div class='row'>
+ <%= render 'layouts/item_sidebar' %>
+  <div class='col-md-8 offset-md-1 mt-3'>
+   <h3>治療名編集</h3>
+   <%= render 'layouts/error', obj: @treatment %>
 
- <div class="row pt-4">
-   <%= form_with model: @treatment, url: admin_treatment_path(@treatment), method: :patch do |f| %>
-   <%= f.label :治療名 %>
-   <%= f.text_field :name %>
-   <%= f.submit "変更を保存" ,class: "btn btn-primary" %>
-   <%= link_to "削除する", admin_treatment_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-   <% end %>
- </div>
-   <%= link_to "戻る", admin_treatments_path %>
-</div>
+   <div class="form-group">
+    <%= form_with model: @treatment, url: admin_treatment_path(@treatment), method: :patch do |f| %>
+     <div class="row">
+      <div class="col-4 mt-2">
+       <%= f.label :治療名 %>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <div class="col-3 mt-4 pt-3 pl-0">
+       <%= f.submit "変更を保存" ,class: "btn btn-outline-info" %>
+       <%= link_to "削除する", admin_treatment_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-secondary" %>
+     <% end %>
+      </div>
+     </div>
+   </div>

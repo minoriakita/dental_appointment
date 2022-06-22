@@ -16,23 +16,27 @@
 
     <tbody>
       <% date_range.each_slice(7) do |week| %>
+
         <tr>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
-                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
-              <% else %>
-              　<%= link_to admin_appointments_path(day: day) do %>
-                  <% passed_block.call day, sorted_events.fetch(day, []) %>
-                  <div class="text-center">
-                    <%= Appointment.appointments_list(day.to_s).count %> 件
-                  </div>
-                <% end %>
+              <%= link_to admin_appointments_path(day: day) do %>
+                <div class="calendar-link">
+                  <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                    <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                  <% else %>
+                      <% passed_block.call day, sorted_events.fetch(day, []) %>
+                      <div class="text-center">
+                        <%= Appointment.appointments_list(day.to_s).count %> 件
+                      </div>
+                  <% end %>
+                </div>
               <% end %>
             <% end %>
           <% end %>
         </tr>
       <% end %>
+
     </tbody>
   </table>
 </div>

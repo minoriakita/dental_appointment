@@ -1,7 +1,8 @@
 <div class='row'>
   <%= render 'layouts/sidebar' %>
-  <div class='col-md-8 offset-md-1'>
+  <div class='col-md-8 offset-md-1 mt-3'>
     <h3>患者編集</h3>
+      <%= render partial: 'layouts/flash' %>
       <%= render 'layouts/error', obj: @patient %>
 
       <%= form_with model: @patient, url: admin_patient_path(@patient) do |f| %>
@@ -44,7 +45,7 @@
             <%= f.label :birthday, "誕生日" %>
           </div>
           <div class="col-lg-8">
-            <%= f.datetime_field :birthday, class: 'form-control' %>
+            <%= f.date_field :birthday, class: 'form-control' %>
           </div>
         </div>
       </div>
@@ -127,8 +128,8 @@
           </div>
           <div class="col-lg-8">
             <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
-          　　<%= b.label { b.check_box + b.text } %>
-        　　<% end %>
+            <%= b.label { b.check_box + b.text } %>
+          <% end %>
           </div>
         </div>
       </div>
