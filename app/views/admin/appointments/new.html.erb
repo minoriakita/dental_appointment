@@ -2,6 +2,7 @@
   <%= render 'layouts/sidebar' %>
   <div class='col-md-8 offset-md-1 mt-3'>
     <h3>予約登録</h3>
+      <%= render partial: 'layouts/flash' %>
       <%= render 'layouts/error', obj: @appointment %>
 
       <%= form_with model: @appointment, url: admin_appointments_path do |f| %>

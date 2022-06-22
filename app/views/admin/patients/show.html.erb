@@ -2,6 +2,7 @@
   <%= render 'layouts/sidebar' %>
   <div class='col-md-8 offset-md-1 mt-3'>
     <h3>患者詳細</h3>
+    <%= render partial: 'layouts/flash' %>
 
     <div class="table">
       <div class="row">
@@ -42,7 +43,9 @@
           年齢
         </div>
         <div class="col-lg-9">
-          <%= @patient.get_age %>
+          <% if @patient.get_age.present? %>
+            <%= @patient.get_age %>歳
+          <% end %>
         </div>
       </div>
     </div>
@@ -119,12 +122,12 @@
           感染症
         </div>
         <div class="col-lg-9">
-          <% @patient.infections.each do |infection| %>
-            <% if @patient_infection.present? %>
+          <% if @patient.infections.length != 0 %>
+            <% @patient.infections.each do |infection| %>
               <%=  infection.name %>
-            <% else %>
-              <%= "なし" %>
             <% end %>
+          <% else %>
+              なし
           <% end %>
         </div>
       </div>

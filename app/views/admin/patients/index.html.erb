@@ -26,9 +26,12 @@
     <% @patients.each do |patient| %>
     <div class="table-index">
       <%= link_to admin_patient_path(patient) do %>
-        <div class="row mb-2 mt-2 border-bottom">
+        <div class="row border-bottom d-flex align-items-end">
+
           <div class="col-md-2">
+            <div style="height: 49px; vertical-align: bottom;">
             <%= patient.id %>
+            </div>
           </div>
           <div class="col-md-4">
             <% if patient.full_name.present? %>
@@ -53,3 +56,4 @@
     </div>
     <% end %>
   </div>
+</div>

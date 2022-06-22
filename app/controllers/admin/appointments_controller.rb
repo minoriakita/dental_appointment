@@ -10,9 +10,10 @@ class Admin::AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
-       redirect_to admin_appointment_path(@appointment)
+       redirect_to admin_appointment_path(@appointment), notice: "予約が完了しました"
     else
        @patient = Patient.find(params[:appointment][:patient_id])
+       flash.now[:alert] = "予約が失敗しました"
        render "new"
     end
   end
@@ -32,14 +33,6 @@ class Admin::AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     @patient = Patient.find(@appointment.patient_id)
-    @appointment_symptom = AppointmentSymptom.find_by(appointment_id: params[:id])
-    if @appointment_symptom != nil
-      @symptom = Symptom.find(@appointment_symptom.symptom_id)
-    end
-    @appointment_treatment = AppointmentTreatment.find_by(appointment_id: params[:id])
-    if @appointment_treatment != nil
-      @treatment = Treatment.find(@appointment_treatment.treatment_id)
-    end
   end
 
   def edit
@@ -49,8 +42,9 @@ class Admin::AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id])
     if @appointment.update(appointment_update_params)
-      redirect_to admin_appointment_path(@appointment)
+      redirect_to admin_appointment_path(@appointment), notice: "変更が完了しました"
     else
+      flash.now[:alert] = "変更が失敗しました"
       render :edit
     end
   end
@@ -78,6 +72,7 @@ class Admin::AppointmentsController < ApplicationController
       :appointment_date,
       :remark,
       :symptom_text,
+      :status,
       :charge_id,
       :subscriber_id,
       { symptom_ids: []},

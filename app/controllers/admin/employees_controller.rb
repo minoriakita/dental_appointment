@@ -31,7 +31,7 @@ class Admin::EmployeesController < ApplicationController
 
  def destroy
      employee = Employee.find(params[:id])
-     employee.delete
+     employee.update(is_deleted: true)
      redirect_to admin_employees_path
  end
 

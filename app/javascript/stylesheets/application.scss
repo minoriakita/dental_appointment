@@ -38,6 +38,9 @@ a:hover {
   text-decoration: none;
 }
 
+.table-index {
+}
+
 .table-index:hover {
   background-color: #C5D6E6;
 }
@@ -103,9 +106,15 @@ h3:before {
   background-color: #C5D6E6;
 }
 
+.calendar-link {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .calendar-link:hover {
   background-color: #C5D6E6;
-
 }
 
 .ul-non-padding {
@@ -113,7 +122,7 @@ h3:before {
 }
 
 .ul-non-margin {
-  margin: 0;
+  margin: 10px;
 }
 
 .sidebar {
@@ -122,4 +131,12 @@ h3:before {
 
 .sidebar:hover {
 transform: scale(1.1);
+}
+
+.alert {
+  padding: 0;
+}
+
+.table td {
+  padding: 0;
 }

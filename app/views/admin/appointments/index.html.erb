@@ -4,6 +4,7 @@
     <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
     <div class="row">
       <% @employees.each do |employee| %>
+        <% if !employee.is_deleted %>
         <div class="col-lg-6">
           <%= employee.name %>
           <% if employee.appointments_list_on_charge(employee.id, @day).present? %>
@@ -14,6 +15,7 @@
             予約はありません
           <% end %>
         </div>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -7,14 +7,17 @@
     <div class="card-body">
       <h5 class="card-title"><%= appointment.appointment_date.strftime("%H時%M分")%></h5>
       <div class="card-subtitle mb-2">
-        <% if appointment.patient.get_age.present? %>
+        <!--もしフルネームが存在したらフルネーム-->
+        <% if appointment.patient.get_age && appointment.patient.full_name.present? %>
           <%= "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana} / (#{appointment.patient.get_age}歳)" %>
-        <% else %>
+        <% elsif appointment.patient.full_name.present? %>
           <%= "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana}" %>
+        <% else %>
+          <%= "#{appointment.patient.full_name_kana}" %>
         <% end %>
       </div>
       <div class="card-text">
-  
+
         <div class="row">
           <div class="col-3">治療</div>
           <div class="col-9">
@@ -23,7 +26,7 @@
             <% end %>
           </div>
         </div>
-  
+
         <div class="row">
           <div class="col-3">症状</div>
           <div class="col-9">
@@ -32,7 +35,7 @@
             <% end %>
           </div>
         </div>
-  
+
         <div class="row">
           <div class="col-3">診療状況</div>
           <div class="col-9">
@@ -43,14 +46,14 @@
             <% end %>
           </div>
         </div>
-  
+
         <div class="row">
           <div class="col-3">予約状態</div>
           <div class="col-9" >
             <%= appointment_status(appointment) %>
           </div>
         </div>
-  
+
       </div>
     </div>
   </div>

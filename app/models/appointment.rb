@@ -1,6 +1,5 @@
 class Appointment < ApplicationRecord
   belongs_to :patient
-  # belongs_to :employee, class_name: 'Employee', foreign_key: :charge_id
 
   belongs_to :charge, class_name: 'Employee', foreign_key: :charge_id, optional: true
   belongs_to :subscriber, class_name: 'Employee', foreign_key: :subscriber_id, optional: true

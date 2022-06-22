@@ -2,6 +2,7 @@
   <%= render 'layouts/sidebar' %>
   <div class='col-md-8 offset-md-1 mt-3'>
     <h3>予約詳細</h3>
+     <%= render partial: 'layouts/flash' %>
 
     <div class="table">
       <div class="row">
@@ -42,7 +43,7 @@
           担当者
         </div>
         <div class="col-lg-9">
-          <% unless @appointment.charge.nil? %>
+          <% unless @appointment.charge.is_deleted %>
             <%= @appointment.charge.name %>
           <% end %>
         </div>
@@ -55,12 +56,12 @@
           治療
         </div>
         <div class="col-lg-9">
-    <% @appointment.treatments.each do |treatment| %>
-            <% if @appointment_treatment.present? %>
+         <% if @appointment.treatments.length != 0 %>
+            <% @appointment.treatments.each do |treatment| %>
               <%= treatment.name %>
-            <% else %>
-              <%= "未登録" %>
             <% end %>
+          <% else %>
+            未登録
           <% end %>
         </div>
       </div>
@@ -72,12 +73,12 @@
           症状
         </div>
         <div class="col-lg-9">
-          <% @appointment.symptoms.each do |symptom| %>
-            <% if @appointment_symptom.present? %>
+          <% if @appointment.symptoms.length != 0 %>
+            <% @appointment.symptoms.each do |symptom| %>
               <%= symptom.name %>
-            <% else %>
-              <%= "未登録" %>
             <% end %>
+          <% else %>
+            未登録
           <% end %>
         </div>
       </div>
@@ -111,7 +112,11 @@
           予約状態
         </div>
         <div class="col-lg-9">
-          <%= @appointment.status_i18n %>
+          <% if @appointment.status == "cancel" %>
+            <%= tag.span @appointment.status_i18n, class: "text-danger" %>
+          <% else %>
+            <%= @appointment.status_i18n %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -135,8 +140,10 @@
           予約者
         </div>
         <div class="col-lg-9">
-          <% unless @appointment.subscriber.nil? %>
+          <% unless @appointment.subscriber.is_deleted %>
             <%= @appointment.subscriber.name %>
+          <% else %>
+            未登録
           <% end %>
         </div>
       </div>
