@@ -39,11 +39,15 @@
           <div class="col-md-2">
             <% if appointment.visit_date.present? %>
               <%= appointment.visit_date.strftime("%Y年%m月%d日") %>
+            <% else %>
+              未来院
             <% end %>
           </div>
           <div class="col-md-2">
           <% if appointment.charge.present? %>
             <%= appointment.charge.name %>
+          <% else %>
+            未登録
           <% end %>
           </div>
           <div class="col-md-4">
@@ -56,7 +60,11 @@
           <% end %>
           </div>
           <div class="col-md-2">
+          <% if appointment_status(appointment).present? %>
             <%= appointment_status(appointment) %>
+          <% else %>
+            未登録
+          <% end %>
           </div>
         </div>
       <% end %>

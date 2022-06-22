@@ -20,8 +20,16 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-3">患者名</div>
-          <div class="col-lg-9"><%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %></div>
+          <div class="col-lg-3">
+            患者名
+          </div>
+          <div class="col-lg-9">
+            <% if @appointment.patient.full_name.present? %>
+              <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
+            <% else %>
+              <%= @appointment.patient.full_name_kana %>
+            <% end %>
+          </div>
         </div>
       </div>
 
