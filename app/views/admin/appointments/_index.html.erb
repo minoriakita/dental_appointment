@@ -5,7 +5,7 @@
     <div class="card mb-3">
   <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= appointment.appointment_date.strftime("%H時%M分")%></h5>
+      <h5 class="card-title"><%= appointment.appointment_date.strftime("%H時%M分") %></h5>
       <div class="card-subtitle mb-2">
         <% if appointment.patient.get_age && appointment.patient.full_name.present? %>
           <%= "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana} / (#{appointment.patient.get_age}歳)" %>
