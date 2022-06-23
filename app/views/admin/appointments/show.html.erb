@@ -21,10 +21,12 @@
           名前
         </div>
         <div class="col-lg-9">
-          <% if @appointment.patient.full_name.present? %>
-            <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
-          <% else %>
-            <%= @appointment.patient.full_name_kana %>
+          <%= link_to admin_patient_path(@appointment.patient.id) do %>
+            <% if @appointment.patient.full_name.present? %>
+              <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
+            <% else %>
+              <%= @appointment.patient.full_name_kana %>
+            <% end %>
           <% end %>
         </div>
       </div>

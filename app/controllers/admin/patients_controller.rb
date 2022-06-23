@@ -17,11 +17,11 @@ class Admin::PatientsController < ApplicationController
   end
 
   def index
-    @patients = Patient.all
+    @patients = Patient.page(params[:page])
   end
 
   def search
-    @patients = Patient.search(params[:keyword])
+    @patients = Patient.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
   end
 
@@ -49,7 +49,7 @@ class Admin::PatientsController < ApplicationController
 
   def appointment_index
     @patient = Patient.find(params[:patient_id])
-    @appointments = @patient.appointments.all.order(created_at: :desc)
+    @appointments = @patient.appointments.page(params[:page]).order(created_at: :desc)
   end
 
   def destroy

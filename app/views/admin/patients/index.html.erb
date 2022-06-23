@@ -29,7 +29,7 @@
         <div class="row border-bottom d-flex align-items-end">
 
           <div class="col-md-2">
-            <div style="height: 49px; vertical-align: bottom;">
+            <div style="height: 50px; vertical-align: bottom;">
             <%= patient.id %>
             </div>
           </div>
@@ -41,19 +41,32 @@
             <% end %>
           </div>
           <div class="col-md-2">
-            <%= patient.telephone_number %>
+            <% if patient.telephone_number.present? %>
+              <%= patient.telephone_number %>
+            <% else %>
+              未登録
+            <% end %>
           </div>
           <div class="col-md-2">
-            <%= patient.gender_i18n %>
+            <% if patient.gender.present? %>
+              <%= patient.gender_i18n %>
+            <% else %>
+              未登録
+            <% end %>
           </div>
           <div class="col-md-2">
             <% if patient.get_age.present? %>
               <%= patient.get_age %>歳
+            <% else %>
+              未登録
             <% end %>
           </div>
         </div>
       <% end %>
     </div>
     <% end %>
+    <div class="d-flex justify-content-center mt-3">
+      <%= paginate @patients %>
+    </div>
   </div>
 </div>
