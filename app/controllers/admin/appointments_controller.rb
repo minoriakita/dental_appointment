@@ -58,11 +58,11 @@ class Admin::AppointmentsController < ApplicationController
         visit_date: Date.today,
         status: 2
       )
+    redirect_to request.referer, notice: "来院しました"
     #   if 来院カラムに値が入ったら == ""
     #     @appointment.update_all("status = 1")
     #   end
     # flash[:notice] = "来院しました"
-    redirect_to request.referer
   end
 
   private

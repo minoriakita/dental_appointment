@@ -1,6 +1,6 @@
 <div class='row'>
   <%= render 'layouts/sidebar' %>
-  <div class='col-md-8 offset-md-1 mt-3'>
+  <div class='col-md-9 offset-md-1 mt-3'>
     <h3>
       <% if @patient.full_name.present? %>
         <%= @patient.full_name %>さんの予約履歴
@@ -11,7 +11,7 @@
 
     <div class="table-title">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           [予約日時]
         </div>
         <div class="col-md-2">
@@ -20,7 +20,7 @@
         <div class="col-md-2">
           [担当者]
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           [治療]
         </div>
         <div class="col-md-2">
@@ -32,8 +32,8 @@
     <% @appointments.each do |appointment| %>
     <div class="table-index">
       <%= link_to admin_appointment_path(appointment.id) do %>
-        <div class="row border-bottom d-flex align-items-end">
-          <div class="col-md-2">
+        <div class="row border-bottom d-flex align-items-end" style = "padding-top: 25px;">
+          <div class="col-md-3">
               <%= appointment.appointment_date.strftime("%Y年%m月%d日 %H時%M分") %>
           </div>
           <div class="col-md-2">
@@ -50,7 +50,7 @@
             未登録
           <% end %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
           <% if appointment.treatments.length != 0 %>
             <% appointment.treatments.each do |treatment| %>
               <%= treatment.name %>
@@ -70,5 +70,8 @@
       <% end %>
     </div>
     <% end %>
+    <div class="d-flex justify-content-center mt-3">
+      <%= paginate @appointments %>
+    </div>
   </div>
 </div>

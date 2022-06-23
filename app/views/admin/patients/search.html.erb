@@ -1,6 +1,6 @@
   <div class='row'>
     <%= render 'layouts/sidebar' %>
-    <div class='col-md-8 offset-md-1 mt-3'>
+    <div class='col-md-9 offset-md-1 mt-3'>
 
       <div class="search-index">
         <h3>【<%= @keyword %>】の検索結果</h3>
@@ -28,7 +28,7 @@
           <% @patients.each do |patient| %>
           <div class="table-index">
             <%= link_to admin_patient_path(patient) do %>
-            <div class="row mb-2 mt-2 border-bottom">
+            <div class="row border-bottom d-flex align-items-end" style = "padding-top: 25px;">
               <div class="col-md-2">
                <%= patient.id %>
               </div>
@@ -40,18 +40,31 @@
                 <% end %>
               </div>
               <div class="col-md-2">
-                <%= patient.telephone_number %>
+                <% if patient.telephone_number.present? %>
+                  <%= patient.telephone_number %>
+                <% else %>
+                  未登録
+                <% end %>
               </div>
               <div class="col-md-2">
-                <%= patient.gender_i18n %>
+                <% if patient.gender.present? %>
+                  <%= patient.gender_i18n %>
+                <% else %>
+                  未登録
+                <% end %>
               </div>
               <div class="col-md-2">
                 <% if patient.get_age.present? %>
                   <%= patient.get_age %>歳
+                <% else %>
+                  未登録
                 <% end %>
               </div>
             </div>
             <% end %>
           </div>
           <% end %>
+          <div class="d-flex justify-content-center mt-3">
+            <%= paginate @patients %>
+          </div>
       </div>

@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3 mt-4">
+      <%= render partial: 'layouts/flash' %>
       <h2>Log in</h2>
     </div>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @admin, url: admin_session_path do |f| %>
     <div class="field form-group">
       <div class="row">
         <div class="col-md-6 offset-md-3">

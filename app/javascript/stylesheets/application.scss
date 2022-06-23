@@ -94,7 +94,7 @@ h3:before {
 	}
 
 .card-infection {
-  background-color: #FAF599;
+  background-color: #EBE6C4;
   border-radius: 5px 5px 5px 5px;
 }
 
@@ -107,13 +107,17 @@ h3:before {
 }
 
 .calendar-link {
-  height: 80px;
+  height: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .calendar-link:hover {
+  background-color: #C5D6E6;
+}
+
+.calendar-change:hover {
   background-color: #C5D6E6;
 }
 
@@ -140,3 +144,26 @@ transform: scale(1.1);
 .table td {
   padding: 0;
 }
+
+.page-link {
+    z-index: 3;
+    background-color: #EDEFF5 !important;
+    color: #696969 !important;/*文字の色を変える*/
+}
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;/*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  border-radius: 100px !important;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 100px !important;  /*角を丸くする*/
+  background: #C5D6E6 !important;
+}
+
