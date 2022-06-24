@@ -18,16 +18,16 @@
       <div class="card-text">
 
         <div class="row">
-          <div class="col-4">治療</div>
+          <div class="col-4">治療：</div>
           <div class="col-8">
             <% appointment.treatments.each do |treatment| %>
-              <span class="badge badge-pill badge-secondary mr-1"><%= treatment.name %></span>
+              <span class="badge badge-pill badge-dark mr-1"><%= treatment.name %></span>
             <% end %>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-4">症状</div>
+          <div class="col-4">症状：</div>
           <div class="col-8">
             <% appointment.symptoms.each do |symptom| %>
               <span class="badge badge-pill badge-secondary mr-1"><%= symptom.name %></span>
@@ -36,18 +36,18 @@
         </div>
 
         <div class="row">
-          <div class="col-4">診療状況</div>
+          <div class="col-4">診療状況：</div>
           <div class="col-8">
-            <% if appointment.patient.appointments.last.visit_date.blank? %>
-              初診
-            <% else %>
+            <% if appointment.patient.appointments.last.visit_date.present? %>
               再診
+            <% else %>
+              初診
             <% end %>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-4">予約状態</div>
+          <div class="col-4">予約状態：</div>
           <div class="col-8" >
             <%= appointment_status(appointment) %>
           </div>

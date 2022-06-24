@@ -62,7 +62,6 @@ class Admin::AppointmentsController < ApplicationController
     #   if 来院カラムに値が入ったら == ""
     #     @appointment.update_all("status = 1")
     #   end
-    # flash[:notice] = "来院しました"
   end
 
   private
