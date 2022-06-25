@@ -25,7 +25,7 @@ class Admin::SymptomsController < ApplicationController
     if @symptom.update(symptom_params)
        redirect_to admin_symptoms_path
     else
-      render :edit
+       render :edit
     end
   end
 

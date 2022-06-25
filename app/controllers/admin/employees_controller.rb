@@ -3,7 +3,7 @@ class Admin::EmployeesController < ApplicationController
 
   def index
     @employee = Employee.new
-    @employees = Employee.all
+    @employees = Employee.page(params[:page])
   end
 
   def create
