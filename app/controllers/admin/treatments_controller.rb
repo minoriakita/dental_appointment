@@ -3,7 +3,7 @@ class Admin::TreatmentsController < ApplicationController
 
   def index
     @treatment = Treatment.new
-    @treatments = Treatment.all
+    @treatments = Treatment.page(params[:page])
   end
 
   def create

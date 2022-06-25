@@ -3,7 +3,7 @@ class Admin::SymptomsController < ApplicationController
 
   def index
     @symptom = Symptom.new
-    @symptoms = Symptom.all
+    @symptoms = Symptom.page(params[:page])
   end
 
   def create

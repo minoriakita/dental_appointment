@@ -17,6 +17,13 @@
   background-color: #D0CDFA;
 }
 
+.navbar-brand {
+  transition-duration: .4s;
+}
+.navbar-brand:hover {
+  transform: scale(1.1);
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -167,3 +174,10 @@ transform: scale(1.1);
   background: #C5D6E6 !important;
 }
 
+.page-item {
+  padding: 4px;
+}
+
+.item-index {
+  padding-top: 40px;
+}
