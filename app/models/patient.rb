@@ -44,5 +44,5 @@ end
 
 def date_after_start
     return if birthday.blank?
-    errors.add(:birthday, "は今日以前のものを選択してください。") if birthday > Date.today
+    errors.add(:birthday, "は今日以前のものを選択してください") if birthday > Date.today
 end

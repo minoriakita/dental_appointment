@@ -11,7 +11,7 @@ class Admin::SymptomsController < ApplicationController
     if @symptom.save
        redirect_to admin_symptoms_path
     else
-       @symptoms = Symptom.all
+       @symptoms = Symptom.page(params[:page])
        render :index
     end
   end

@@ -11,7 +11,7 @@ class Admin::EmployeesController < ApplicationController
     if @employee.save
        redirect_to admin_employees_path
     else
-       @employees = Employee.all
+       @employees = Employee.page(params[:page])
        render :index
     end
   end

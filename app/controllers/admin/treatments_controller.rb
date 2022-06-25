@@ -11,7 +11,7 @@ class Admin::TreatmentsController < ApplicationController
     if @treatment.save
        redirect_to admin_treatments_path
     else
-       @treatments = Treatment.all
+       @treatments = Treatment.page(params[:page])
        render :index
     end
   end
