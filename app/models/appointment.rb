@@ -18,6 +18,12 @@ class Appointment < ApplicationRecord
 
   enum status: { confirm: 0, cancel: 1, visit: 2 }
 
+  # enum consultation: { confirm: 0, cancel: 1 }
+  enum consultation: {
+    初診:1,再診:2
+  }
+
+
   def self.appointments_list(day)
     self.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day)
   end

@@ -35,14 +35,17 @@
           </div>
         </div>
 
+
         <div class="row">
           <div class="col-4">診療状況：</div>
           <div class="col-8">
-            <% if appointment.patient.appointments.where.not(visit_date: nil).count > 1 %>
-              再診
-            <% else %>
+            <%# binding.pry %>
+            <%# if appointment.patient.appointments.where.not(visit_date: nil).count > 1　&&  %>
+            <%# if @items.count(appointment.patient.id) < 2 %>
               初診
-            <% end %>
+            <%# else %>
+              <!--再診-->
+            <%# end %>
           </div>
         </div>
 

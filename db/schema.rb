@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_163551) do
     t.text "remark"
     t.integer "status"
     t.text "symptom_text"
+    t.integer "consultation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "charge_id"

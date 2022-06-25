@@ -10,6 +10,9 @@ ja:
         confirm: "確定"
         cancel: "キャンセル"
         visit: "来院済"
+      consultation:
+        confirm: "確定"
+        cancel: "キャンセル"
   activerecord:
     models:
       patient: "患者"

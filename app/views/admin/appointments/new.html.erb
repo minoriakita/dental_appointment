@@ -127,9 +127,26 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3 d-flex align-items-center">
+            <%= f.label :consultation, "診療状態" %>
+          </div>
+          <div class="col-lg-9">
+            <%# binding.pry %>
+            <%= f.select :consultation, options_for_select(Appointment.consultations), {prompt: "選択してください"}, class: 'form-control' %>
+            <!--.select :prefecture, Address.prefectures.keys, {prompt: "選択してください"},-->
+            <%#= f.select :consultation, Appointment., class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group text-center">
         <%= f.submit "新規登録", class: 'btn btn-outline-info col-3' %>
       </div>
       <% end %>
   </div>
 </div>
+
+<!--<if Appointment.consultation.present?>-->
+<!--<%#= Appointment.consultation[1] %>-->

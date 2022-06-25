@@ -76,7 +76,7 @@ class Admin::AppointmentsController < ApplicationController
       :charge_id,
       :subscriber_id,
       { symptom_ids: []},
-      { treatment_ids: []},)
+      { treatment_ids: []},).merge(consultation: params[:appointment][:consultation].to_i)
   end
 
   def appointment_update_params
