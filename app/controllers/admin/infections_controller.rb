@@ -3,7 +3,7 @@ class Admin::InfectionsController < ApplicationController
   
   def index
     @infection = Infection.new
-    @infections = Infection.all
+    @infections = Infection.page(params[:page])
   end
 
   def create
@@ -11,7 +11,7 @@ class Admin::InfectionsController < ApplicationController
     if @infection.save
        redirect_to admin_infections_path
     else
-       @infections = Infection.all
+       @infections = Infection.page(params[:page])
        render :index
     end
   end
