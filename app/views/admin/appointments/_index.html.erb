@@ -38,7 +38,7 @@
         <div class="row">
           <div class="col-4">診療状況：</div>
           <div class="col-8">
-            <% if appointment.patient.appointments.last.visit_date.present? %>
+            <% if appointment.patient.appointments.where.not(visit_date: nil).count > 0 %>
               再診
             <% else %>
               初診
