@@ -17,11 +17,12 @@ class Appointment < ApplicationRecord
   validates :subscriber, presence: true
 
   enum status: { confirm: 0, cancel: 1, visit: 2 }
+  #enum status: [ confirm, cancel, visit ]
 
   # enum consultation: { confirm: 0, cancel: 1 }
-  enum consultation: {
-    初診:1,再診:2
-  }
+  #enum consultation: {
+    #初診:1,再診:2
+  #}
 
 
   def self.appointments_list(day)

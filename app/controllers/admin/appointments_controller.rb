@@ -42,6 +42,7 @@ class Admin::AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id])
     if @appointment.update(appointment_update_params)
+      @appointment.update(visit_date: nil) if @appointment.status == 'cancel'
       redirect_to admin_appointment_path(@appointment), notice: "変更が完了しました"
     else
       flash.now[:alert] = "変更が失敗しました"
@@ -55,7 +56,7 @@ class Admin::AppointmentsController < ApplicationController
   def visit_date
     @appointment = Appointment.find(params[:id])
     @appointment.update!(
-        visit_date: Date.today,
+        visit_date: Time.current,
         status: 2
       )
     flash.now[:notice] = "来院しました"
@@ -76,7 +77,7 @@ class Admin::AppointmentsController < ApplicationController
       :charge_id,
       :subscriber_id,
       { symptom_ids: []},
-      { treatment_ids: []},).merge(consultation: params[:appointment][:consultation].to_i)
+      { treatment_ids: []},)#merge(consultation: params[:appointment][:consultation].to_i)
   end
 
   def appointment_update_params

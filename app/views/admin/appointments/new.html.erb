@@ -6,6 +6,7 @@
       <%= render 'layouts/error', obj: @appointment %>
 
       <%= form_with model: @appointment, url: admin_appointments_path do |f| %>
+      <%= f.hidden_field :status, value: "confirm" %>
 
       <div class="form-group">
         <div class="row">
@@ -105,16 +106,16 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-lg-3 d-flex align-items-center">
-            <%= f.label :status, "予約状態" %>
-          </div>
-          <div class="col-lg-9">
-            <%= f.select :status, Appointment.statuses_i18n.invert, class: 'form-control' %>
-          </div>
-        </div>
-      </div>
+      <!--<div class="form-group">-->
+      <!--  <div class="row">-->
+      <!--    <div class="col-lg-3 d-flex align-items-center">-->
+      <!--      <%#= f.label :status, "予約状態" %>-->
+      <!--    </div>-->
+      <!--    <div class="col-lg-9">-->
+      <!--      <%#= f.select :status, Appointment.statuses_i18n.invert, class: 'form-control' %>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</div>-->
 
       <div class="form-group">
         <div class="row">
@@ -127,19 +128,19 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-lg-3 d-flex align-items-center">
-            <%= f.label :consultation, "診療状態" %>
-          </div>
-          <div class="col-lg-9">
+      <!--<div class="form-group">-->
+      <!--  <div class="row">-->
+      <!--    <div class="col-lg-3 d-flex align-items-center">-->
+      <!--      <%#= f.label :consultation, "診療状態" %>-->
+      <!--    </div>-->
+      <!--    <div class="col-lg-9">-->
             <%# binding.pry %>
-            <%= f.select :consultation, options_for_select(Appointment.consultations), {prompt: "選択してください"}, class: 'form-control' %>
+      <!--      <%#= f.select :consultation, options_for_select(Appointment.consultations), {prompt: "選択してください"}, class: 'form-control' %>-->
             <!--.select :prefecture, Address.prefectures.keys, {prompt: "選択してください"},-->
             <%#= f.select :consultation, Appointment., class: 'form-control' %>
-          </div>
-        </div>
-      </div>
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</div>-->
 
       <div class="form-group text-center">
         <%= f.submit "新規登録", class: 'btn btn-outline-info col-3' %>

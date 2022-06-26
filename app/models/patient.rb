@@ -20,6 +20,10 @@ class Patient < ApplicationRecord
 
   enum gender: { man: 0, woman: 1, other: 2 }
 
+  def is_visited?(on: Date.today)
+    appointments.where("appointment_date < ?", on).where(status: :visit).exists?
+  end
+
   def get_age
     return if birthday.nil?
     date_format = "%Y%m%d"
