@@ -55,13 +55,21 @@
           <div class="col-lg-3">
             <%= f.label :gender, "性別" %>
           </div>
-          <div class="col-lg-8 mr-2">
-            <%= f.label :gender,Patient.genders_i18n[:man] %>
-            <%= f.radio_button :gender,Patient.genders.key(0) %>
-            <%= f.label :gender,Patient.genders_i18n[:woman] %>
-            <%= f.radio_button :gender,Patient.genders.key(1) %>
-            <%= f.label :gender,Patient.genders_i18n[:other] %>
-            <%= f.radio_button :gender,Patient.genders.key(2) %>
+          <div class="col-lg-8">
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(0), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:man], for: 'patient_gender_man', class: 'custom-control-label' %>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(1), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:woman], for: 'patient_gender_woman', class: 'custom-control-label' %>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(2), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:other], for: 'patient_gender_other', class: 'custom-control-label' %>
+            </div>
           </div>
         </div>
       </div>
@@ -128,8 +136,11 @@
           </div>
           <div class="col-lg-8">
             <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
-            <%= b.label { b.check_box + b.text } %>
-          <% end %>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <%= b.check_box(class:"custom-control-input") %>
+                <%= b.label(class:"custom-control-label") %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

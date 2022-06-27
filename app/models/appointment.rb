@@ -17,13 +17,6 @@ class Appointment < ApplicationRecord
   validates :subscriber, presence: true
 
   enum status: { confirm: 0, cancel: 1, visit: 2 }
-  #enum status: [ confirm, cancel, visit ]
-
-  # enum consultation: { confirm: 0, cancel: 1 }
-  #enum consultation: {
-    #初診:1,再診:2
-  #}
-
 
   def self.appointments_list(day)
     self.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day)
@@ -33,5 +26,4 @@ class Appointment < ApplicationRecord
     return if appointment_date.blank?
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today
   end
-
 end

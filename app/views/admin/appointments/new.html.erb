@@ -53,7 +53,7 @@
             <%= f.label :charge_id, "担当者" %>
           </div>
           <div class="col-lg-9">
-            <%= f.collection_select :charge_id, Employee.where(is_deleted: false), :id, :name, include_blank: "選択して下さい", class: 'form-control' %>
+            <%= f.collection_select :charge_id, Employee.where(is_deleted: false), :id, :name, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
           </div>
         </div>
       </div>
@@ -65,7 +65,10 @@
           </div>
           <div class="col-lg-9">
             <%= f.collection_check_boxes(:treatment_ids, Treatment.all, :id, :name) do |b| %>
-              <%= b.label { b.check_box + b.text } %>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <%= b.check_box(class:"custom-control-input") %>
+                <%= b.label(class:"custom-control-label") %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -78,7 +81,10 @@
           </div>
           <div class="col-lg-9">
             <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
-             <%= b.label { b.check_box + b.text } %>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <%= b.check_box(class:"custom-control-input") %>
+                <%= b.label(class:"custom-control-label") %>
+              </div>
            <% end %>
           </div>
         </div>
@@ -106,41 +112,16 @@
         </div>
       </div>
 
-      <!--<div class="form-group">-->
-      <!--  <div class="row">-->
-      <!--    <div class="col-lg-3 d-flex align-items-center">-->
-      <!--      <%#= f.label :status, "予約状態" %>-->
-      <!--    </div>-->
-      <!--    <div class="col-lg-9">-->
-      <!--      <%#= f.select :status, Appointment.statuses_i18n.invert, class: 'form-control' %>-->
-      <!--    </div>-->
-      <!--  </div>-->
-      <!--</div>-->
-
       <div class="form-group">
         <div class="row">
           <div class="col-lg-3 d-flex align-items-center">
             <%= f.label :subscriber_id, "予約者" %>
           </div>
           <div class="col-lg-9">
-            <%= f.collection_select :subscriber_id, Employee.where(is_deleted: false), :id, :name, include_blank: "選択して下さい" %>
+            <%= f.collection_select :subscriber_id, Employee.where(is_deleted: false), :id, :name, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
           </div>
         </div>
       </div>
-
-      <!--<div class="form-group">-->
-      <!--  <div class="row">-->
-      <!--    <div class="col-lg-3 d-flex align-items-center">-->
-      <!--      <%#= f.label :consultation, "診療状態" %>-->
-      <!--    </div>-->
-      <!--    <div class="col-lg-9">-->
-            <%# binding.pry %>
-      <!--      <%#= f.select :consultation, options_for_select(Appointment.consultations), {prompt: "選択してください"}, class: 'form-control' %>-->
-            <!--.select :prefecture, Address.prefectures.keys, {prompt: "選択してください"},-->
-            <%#= f.select :consultation, Appointment., class: 'form-control' %>
-      <!--    </div>-->
-      <!--  </div>-->
-      <!--</div>-->
 
       <div class="form-group text-center">
         <%= f.submit "新規登録", class: 'btn btn-outline-info col-3' %>
@@ -148,6 +129,3 @@
       <% end %>
   </div>
 </div>
-
-<!--<if Appointment.consultation.present?>-->
-<!--<%#= Appointment.consultation[1] %>-->

@@ -9,7 +9,6 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
       t.text :remark
       t.integer :status
       t.text :symptom_text
-      t.integer :consultation
 
       t.timestamps
     end
