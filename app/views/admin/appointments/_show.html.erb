@@ -22,7 +22,7 @@
         </div>
         <div class="col-lg-9">
           <% unless appointment.visit_date.nil? %>
-            <%= appointment.visit_date.strftime("%Y年%m月%d日") %>
+            <%= appointment.visit_date.strftime("%Y年%m月%d日 %H時%M分") %>
           <% else %>
            未来院
           <% end %>
@@ -41,11 +41,6 @@
           <% else %>
             未登録
           <% end %>
-          <%# unless @appointment.subscriber.is_deleted %>
-            <%#= @appointment.subscriber.name %>
-          <%# else %>
-            <!--未登録-->
-          <%# end %>
         </div>
       </div>
     </div>

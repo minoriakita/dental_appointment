@@ -26,5 +26,4 @@ class Appointment < ApplicationRecord
     return if appointment_date.blank?
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today
   end
-
 end

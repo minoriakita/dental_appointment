@@ -22,6 +22,4 @@ Rails.application.routes.draw do
     root to: "admin/sessions#new"
     get 'top', to: 'admin/homes#top'
   end
-
-
 end

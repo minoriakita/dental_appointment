@@ -10,8 +10,8 @@
         <div class="col-lg-4 col-md-6 border-right border-bottom">
           <%= employee.name %>
           <% if employee.appointments_list_on_charge(employee.id, @day).present? %>
-            <% employee.appointments_list_on_charge(employee.id, @day).each do |appointment| %>
-              <%= render 'index', appointment: appointment %>
+            <% employee.appointments_list_on_charge(employee.id, @day).each_with_index do |appointment, index| %>
+              <%= render partial: 'index', locals: {appointment: appointment, index: index, on: @day} %>
             <% end %>
           <% else %>
             ：予約はありません

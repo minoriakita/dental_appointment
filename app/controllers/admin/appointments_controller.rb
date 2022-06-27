@@ -25,9 +25,6 @@ class Admin::AppointmentsController < ApplicationController
     if @day.blank?
       redirect_to admin_appointments_path(day: Date.current.strftime('%Y-%m-%d'))
     end
-    #@patient = Patient.find(params[:patient_id])
-    #Appointment.where(担当者: 佐藤)
-    #Appointment.where(担当者: 佐藤).where(日付: today)
   end
 
   def show
@@ -42,6 +39,7 @@ class Admin::AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id])
     if @appointment.update(appointment_update_params)
+      @appointment.update(visit_date: nil) if @appointment.status == 'cancel'
       redirect_to admin_appointment_path(@appointment), notice: "変更が完了しました"
     else
       flash.now[:alert] = "変更が失敗しました"
@@ -55,14 +53,10 @@ class Admin::AppointmentsController < ApplicationController
   def visit_date
     @appointment = Appointment.find(params[:id])
     @appointment.update!(
-        visit_date: Date.today,
+        visit_date: Time.current,
         status: 2
       )
     flash.now[:notice] = "来院しました"
-    #redirect_to request.referer, notice: "来院しました"
-    #   if 来院カラムに値が入ったら == ""
-    #     @appointment.update_all("status = 1")
-    #   end
   end
 
   private

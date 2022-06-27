@@ -24,7 +24,6 @@
       <div class="col-md-5">
        <%= employee.name %>
       </div>
-      <!--<div class="offset-3 col-6 offset-md-2 col-md-2">-->
       <div>
        <%= link_to "編集", edit_admin_employee_path(employee), class: "btn btn-sm btn-block btn-outline-secondary" %>
       </div>
@@ -34,11 +33,5 @@
     <div class="d-flex justify-content-center mt-3">
       <%= paginate @employees %>
     </div>
-
-    <!--<div class="w-100 d-flex justify-content-between">-->
-    <!-- <div>hoge</div>-->
-    <!-- <div>fuga</div>-->
-    <!-- <div>hige</div>-->
-    <!--</div>-->
   </div>
 </div>
