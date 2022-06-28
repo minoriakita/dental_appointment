@@ -6,15 +6,25 @@
 
    <div class="form-group">
     <%= form_with model: @infection, url: admin_infection_path(@infection), method: :patch do |f| %>
-     <div class="row">
-      <div class="col-4 mt-2">
+     <div class="row d-flex justify-content-center">
+      <div class="col-5 mt-2">
        <%= f.label :感染症名 %>
         <%= f.text_field :name, class: "form-control"%>
       </div>
-      <div class="col-3 mt-4 pt-3 pl-0">
-       <%= f.submit "変更を保存" ,class: "btn btn-outline-info" %>
-       <%= link_to "削除する", admin_infection_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-secondary" %>
+      <div class="item-index">
+       <%= f.submit "変更保存" ,class: "btn btn-outline-info" %>
      <% end %>
       </div>
      </div>
    </div>
+   
+   <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-md-5">
+    </div>
+    <div>
+     <%= link_to "削除する", admin_infection_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-secondary" %>
+    </div>
+   </div>
+   
+  </div>
+</div>

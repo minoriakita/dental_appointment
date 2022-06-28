@@ -24,11 +24,11 @@
        <%= infection.name %>
       </div>
       <div>
-       <%= link_to "編集", edit_admin_infection_path(infection), class: "btn btn-sm btn-block btn-outline-secondary" %>
+       <%= link_to "編集する", edit_admin_infection_path(infection), class: "btn btn-block btn-outline-secondary" %>
       </div>
      </div>
     <% end %>
-    
+
     <div class="d-flex justify-content-center mt-3">
       <%= paginate @infections %>
     </div>
