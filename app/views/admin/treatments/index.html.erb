@@ -19,6 +19,7 @@
    </div>
 
     <% @treatments.each do |treatment| %>
+     <% if !treatment.is_deleted %>
      <div class="row mb-3 border-bottom d-flex justify-content-center">
       <div class="col-md-5">
        <%= treatment.name %>
@@ -27,6 +28,7 @@
        <%= link_to "編集する", edit_admin_treatment_path(treatment), class: "btn btn-block btn-outline-secondary" %>
       </div>
      </div>
+     <% end %>
     <% end %>
 
     <div class="d-flex justify-content-center mt-3">

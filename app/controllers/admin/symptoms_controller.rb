@@ -31,7 +31,7 @@ class Admin::SymptomsController < ApplicationController
 
  def destroy
     symptom = Symptom.find(params[:id])
-    symptom.delete
+    symptom.update(is_deleted: true)
     redirect_to admin_symptoms_path
  end
 

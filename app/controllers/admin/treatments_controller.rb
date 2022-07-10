@@ -31,7 +31,7 @@ class Admin::TreatmentsController < ApplicationController
 
  def destroy
     treatment = Treatment.find(params[:id])
-    treatment.delete
+    treatment.update(is_deleted: true)
     redirect_to admin_treatments_path
  end
 

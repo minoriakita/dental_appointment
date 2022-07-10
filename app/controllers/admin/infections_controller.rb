@@ -31,7 +31,7 @@ class Admin::InfectionsController < ApplicationController
 
  def destroy
     infection = Infection.find(params[:id])
-    infection.delete
+    infection.update(is_deleted: true)
     redirect_to admin_infections_path
  end
 

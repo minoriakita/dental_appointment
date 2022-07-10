@@ -19,6 +19,7 @@
   </div>
 
     <% @infections.each do |infection| %>
+     <% if !infection.is_deleted %>
      <div class="row mb-3 border-bottom d-flex justify-content-center">
       <div class="col-md-5">
        <%= infection.name %>
@@ -27,6 +28,7 @@
        <%= link_to "編集する", edit_admin_infection_path(infection), class: "btn btn-block btn-outline-secondary" %>
       </div>
      </div>
+     <% end %>
     <% end %>
 
     <div class="d-flex justify-content-center mt-3">

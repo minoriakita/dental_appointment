@@ -1,59 +1,60 @@
-    <div class="table">
-      <div class="row">
-        <div class="col-lg-3">
-          予約状態
-        </div>
-        <div class="col-lg-9">
-          <% if appointment.status == "cancel" %>
-            <%= tag.span appointment.status_i18n, class: "text-danger" %>
-          <% elsif appointment.status.nil? %>
-            未登録
-          <% else %>
-            <%= appointment.status_i18n %>
-          <% end %>
-        </div>
-      </div>
+<!--showページ来院ボタン非同期-->
+<div class="table">
+  <div class="row">
+    <div class="col-lg-3">
+      予約状態
     </div>
+    <div class="col-lg-9">
+      <% if appointment.status == "cancel" %>
+        <%= tag.span appointment.status_i18n, class: "text-danger" %>
+      <% elsif appointment.status.nil? %>
+        未登録
+      <% else %>
+        <%= appointment.status_i18n %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-    <div class="table">
-      <div class="row">
-        <div class="col-lg-3">
-          来院日時
-        </div>
-        <div class="col-lg-9">
-          <% unless appointment.visit_date.nil? %>
-            <%= appointment.visit_date.strftime("%Y年%m月%d日 %H時%M分") %>
-          <% else %>
-           未来院
-          <% end %>
-        </div>
-      </div>
+<div class="table">
+  <div class="row">
+    <div class="col-lg-3">
+      来院日時
     </div>
+    <div class="col-lg-9">
+      <% unless appointment.visit_date.nil? %>
+        <%= appointment.visit_date.strftime("%Y年%m月%d日 %H時%M分") %>
+      <% else %>
+       未来院
+      <% end %>
+    </div>
+  </div>
+</div>
 
-    <div class="table">
-      <div class="row">
-        <div class="col-lg-3">
-          予約者
-        </div>
-        <div class="col-lg-9">
-          <% if appointment.subscriber.present? %>
-            <%= appointment.subscriber.name %>
-          <% else %>
-            未登録
-          <% end %>
-        </div>
-      </div>
+<div class="table">
+  <div class="row">
+    <div class="col-lg-3">
+      予約者
     </div>
+    <div class="col-lg-9">
+      <% if appointment.subscriber.present? %>
+        <%= appointment.subscriber.name %>
+      <% else %>
+        未登録
+      <% end %>
+    </div>
+  </div>
+</div>
 
-    <div class="text-center">
-      <div class="row">
-        <div class="col">
-          <% if appointment.visit_date.present? %>
-            <%= link_to "予約編集", edit_admin_appointment_path(params[:id]), class: 'btn btn-outline-info col-3' %>
-          <% else %>
-            <%= link_to "来院", admin_visit_date_path(id: params[:id]), remote: true, class: 'btn btn-outline-danger col-3', "data-confirm" => "来院しましたか？" %>
-            <%= link_to "予約編集", edit_admin_appointment_path(params[:id]), class: 'btn btn-outline-info col-2' %>
-          <% end %>
-        </div>
-      </div>
+<div class="text-center">
+  <div class="row">
+    <div class="col">
+      <% if appointment.visit_date.present? %>
+        <%= link_to "予約編集", edit_admin_appointment_path(params[:id]), class: 'btn btn-outline-info col-3' %>
+      <% else %>
+        <%= link_to "来院", admin_visit_date_path(id: params[:id]), remote: true, class: 'btn btn-outline-danger col-3', "data-confirm" => "来院しましたか？" %>
+        <%= link_to "予約編集", edit_admin_appointment_path(params[:id]), class: 'btn btn-outline-info col-2' %>
+      <% end %>
     </div>
+  </div>
+</div>

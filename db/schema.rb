@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_163551) do
 
   create_table "infections", force: :cascade do |t|
     t.string "name", null: false
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -91,12 +92,14 @@ ActiveRecord::Schema.define(version: 2022_06_22_163551) do
 
   create_table "symptoms", force: :cascade do |t|
     t.string "name", null: false
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "treatments", force: :cascade do |t|
     t.string "name", null: false
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
