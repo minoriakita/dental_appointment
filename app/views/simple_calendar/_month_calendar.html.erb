@@ -27,6 +27,7 @@
                   <% else %>
                       <% passed_block.call day, sorted_events.fetch(day, []) %>
                       <div class="text-center">
+                        <!--1日の予約件数-->
                         <%= Appointment.appointments_list(day.to_s).count %> 件
                       </div>
                   <% end %>
