@@ -22,4 +22,24 @@ Rails.application.routes.draw do
     root to: "admin/sessions#new"
     get 'top', to: 'admin/homes#top'
   end
+
+  namespace :public do
+    resources :appointments
+    resources :patients do
+      get "appointment_index" => "patients#appointment_index"
+    end
+  end
+
+  # scope :public do
+  #   resources :appointments
+
+  #   # public/appointments
+  # end
+
+  # scope module: :public do
+  #   resources :appointments
+  #   # appointments
+  # end
+
+
 end
