@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :patients do
       get "appointment_index" => "patients#appointment_index"
     end
+  end
 
   # scope :public do
   #   resources :appointments
