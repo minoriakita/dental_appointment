@@ -61,6 +61,9 @@ class Admin::AppointmentsController < ApplicationController
 
   def appointment_request
     @appointments = Appointment.where(status: "request")
+    @appointment.update(
+        status: 0
+      )
   end
 
   private
