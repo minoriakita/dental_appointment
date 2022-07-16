@@ -2,11 +2,13 @@ class Patient < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :authentication_keys => [:telephone_number]
+
   has_many :appointments
   has_many :patient_infections
   has_many :infections, through: :patient_infections
 
+  validates :password, presence: true
   validates :last_name, length: { maximum: 20 }
   validates :first_name, length: { maximum: 20 }
   validates :last_name_kana, presence: true, length: { maximum: 20 },
@@ -15,7 +17,7 @@ class Patient < ApplicationRecord
   format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力してください'}
   validates :patient_text, length: { maximum: 300 }
   validates :postal_code, numericality: true, allow_blank: true
-  validates :telephone_number, numericality: true, allow_blank: true
+  validates :telephone_number, numericality: true, uniqueness: true, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
   validates :birthday, presence: true, allow_blank: true

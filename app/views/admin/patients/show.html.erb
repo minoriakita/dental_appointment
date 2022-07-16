@@ -74,6 +74,21 @@
         </div>
       </div>
     </div>
+    
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          パスワード
+        </div>
+        <div class="col-lg-9">
+          <% if @patient.password.present? %>
+            <%= @patient.password %>
+          <% else %>
+            未登録
+          <% end %>
+        </div>
+      </div>
+    </div>
 
     <div class="table">
       <div class="row">
@@ -131,21 +146,6 @@
         <% else %>
           未登録
         <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="table">
-      <div class="row">
-        <div class="col-lg-3">
-          患者注意事項
-        </div>
-        <div class="col-lg-9">
-          <% if @patient.patient_text.present? %>
-            <%= @patient.patient_text %>
-          <% else %>
-            なし
-          <% end %>
         </div>
       </div>
     </div>

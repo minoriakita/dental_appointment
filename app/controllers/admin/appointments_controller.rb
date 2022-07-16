@@ -19,7 +19,7 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = Appointment.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
+    @appointments = Appointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @employees = Employee.all
     @day = params[:day]
     if @day.blank?
@@ -58,8 +58,9 @@ class Admin::AppointmentsController < ApplicationController
       )
     flash.now[:notice] = "来院しました"
   end
-  
+
   def appointment_request
+    @appointments = Appointment.where(status: "request")
   end
 
   private

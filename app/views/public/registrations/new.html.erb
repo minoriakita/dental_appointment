@@ -1,29 +1,182 @@
-<h2>患者登録</h2>
+<div class='row'>
+  <%= render 'layouts/sidebar' %>
+  <div class='col-md-9 offset-md-1 mt-3'>
+    <h3>患者登録</h3>
+      <%= render partial: 'layouts/flash' %>
+      <%= render 'layouts/error', obj: @patient %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+      <%= form_with model: @patient, url: patient_registration_path do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class='form-group'>
+        <div class='row'>
+          <div class='col-lg-3'>
+            <%= f.label :full_name,"名前" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :last_name, "(姓)" %>
+            <%= f.text_field :last_name, placeholder: "令和", class: "form-control" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :first_name, "(名)" %>
+            <%= f.text_field :first_name, placeholder: "道子", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='row'>
+          <div class='col-lg-3'>
+            <%= f.label :full_name_kana,"フリガナ" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :last_name_kana, "(セイ)" %>
+            <%= f.text_field :last_name_kana, placeholder: "レイワ", class: "form-control" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :first_name_kana, "(メイ)" %>
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :birthday, "誕生日" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.date_field :birthday, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :gender, "性別" %>
+          </div>
+          <div class="col-lg-8">
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(0), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:man], for: 'patient_gender_man', class: 'custom-control-label' %>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(1), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:woman], for: 'patient_gender_woman', class: 'custom-control-label' %>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(2), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:other], for: 'patient_gender_other', class: 'custom-control-label' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :password,"パスワード" %>
+            <% if @minimum_password_length %>
+            (<%= @minimum_password_length %> 文字以上)
+            <% end %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :password_confirmation, "パスワード確認" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :telephone_number,"電話番号(ハイフンなし)" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :telephone_number, placeholder: "0000000000", autofocus: true, autocomplete: "telephone_number", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :email,"メールアドレス" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :email, placeholder: "sample@example.com", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :address, "住所" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0－0", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :patient_text, "患者注意事項" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_area :patient_text, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :infection_id, "感染症" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <%= b.check_box(class:"custom-control-input") %>
+                <%= b.label(class:"custom-control-label") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <%= f.submit "新規登録", class: 'btn btn-outline-info col-3' %>
+      </div>
+      <% end %>
+      <p class="mini-title">既にご登録済みの方</p>
+    <div class= "ml-4 pb-4">
+     <%= render "public/shared/links"%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
