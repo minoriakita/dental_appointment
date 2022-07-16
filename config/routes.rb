@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :appointments
+    resources :appointments do
+      get "appointment_request" => "appointments#appointment_request"
+    end
     resources :employees
     resources :infections
     resources :patients do
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
     resources :treatments
     get 'item' => 'homes#item'
     get 'visit_date' => 'appointments#visit_date'
+    get "appointment_request" => "appointments#appointment_request"
   end
 
   #ルートページにしている
