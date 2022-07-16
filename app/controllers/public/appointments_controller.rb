@@ -1,5 +1,5 @@
-class Admin::AppointmentsController < ApplicationController
-  before_action :authenticate_admin!
+class Public::AppointmentsController < ApplicationController
+   before_action :authenticate_patient!
 
   def new
     @appointment = Appointment.new
@@ -10,16 +10,16 @@ class Admin::AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
-       redirect_to admin_appointment_path(@appointment), notice: "予約が完了しました"
+       redirect_to public_appointment_path(@appointment), notice: "予約依頼が完了しました"
     else
        @patient = Patient.find(params[:appointment][:patient_id])
-       flash.now[:alert] = "予約が失敗しました"
+       flash.now[:alert] = "予約依頼が失敗しました"
        render "new"
     end
   end
 
   def index
-    @appointments = Appointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
+    @appointments = Appointment.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @employees = Employee.all
     @day = params[:day]
     if @day.blank?
@@ -60,7 +60,6 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def appointment_request
-    @appointments = Appointment.where(status: "request")
   end
 
   private

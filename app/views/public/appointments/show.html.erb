@@ -1,0 +1,95 @@
+<div class='row'>
+  <%= render 'layouts/patient_sidebar' %>
+  <div class='col-md-9 offset-md-1 mt-3'>
+    <h3>依頼詳細</h3>
+    <div id="flash-message">
+     <%= render partial: 'layouts/flash' %>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          患者ID
+        </div>
+        <div class="col-lg-9">
+          <%= @appointment.patient_id %>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          名前
+        </div>
+        <div class="col-lg-9">
+          <%= link_to admin_patient_path(@appointment.patient.id) do %>
+            <% if @appointment.patient.full_name.present? %>
+              <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
+            <% else %>
+              <%= @appointment.patient.full_name_kana %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          予約日時
+        </div>
+        <div class="col-lg-9">
+          <%= @appointment.appointment_date.strftime("%Y年%m月%d日 %H時%M分") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          症状
+        </div>
+        <div class="col-lg-9">
+          <% if @appointment.symptoms.length != 0 %>
+            <% @appointment.symptoms.each do |symptom| %>
+              <%= symptom.name %>
+            <% end %>
+          <% else %>
+            未登録
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          その他症状
+        </div>
+        <div class="col-lg-9">
+        <% if @appointment.symptom_text.present? %>
+          <%= @appointment.symptom_text%>
+        <% else %>
+          未登録
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="row">
+        <div class="col-lg-3">
+          備考
+        </div>
+        <div class="col-lg-9">
+          <% if @appointment.remark.present? %>
+            <%= @appointment.remark %>
+          <% else %>
+            なし
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

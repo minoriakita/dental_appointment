@@ -1,11 +1,40 @@
 class ApplicationController < ActionController::Base
   #before_action :authenticate_admin!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_out_path_for(resource)
-    root_path # ログアウト後に遷移するpathを設定
+    if resource == :admin
+       root_path # ログアウト後に遷移するpathを設定
+    elsif resource == :patient
+       new_patient_session_path
+    end
   end
 
   def after_sign_in_path_for(resource)
-    top_path # ログイン後に遷移するpathを設定
+     if resource.class == Admin
+       top_path # ログイン後に遷移するpathを設定
+     elsif resource.class == Patient
+       new_public_appointment_path(patient_id: current_patient.id)
+     end
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :birthday,
+      :gender,
+      :email,
+      :postal_code,
+      :address,
+      :telephone_number,
+      :patient_text,
+      :encrypted_password,
+      ])
   end
 end
+

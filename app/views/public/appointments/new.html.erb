@@ -1,0 +1,93 @@
+<div class='row'>
+  <%= render 'layouts/patient_sidebar' %>
+  <div class='col-md-9 offset-md-1 mt-3'>
+    <h3>予約依頼</h3>
+      <%= render partial: 'layouts/flash' %>
+      <%= render 'layouts/error', obj: @appointment %>
+
+      <%= form_with model: @appointment, url: public_appointments_path do |f| %>
+      <%= f.hidden_field :status, value: "request" %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3 mini-title">
+            <%= f.label :patient_id, "患者ID" %>
+          </div>
+          <div class="col-lg-9">
+            <%= @patient.id %>
+            <%= f.hidden_field :patient_id, :value => @patient.id %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :patient_id, "名前" %>
+          </div>
+          <div class="col-lg-9">
+            <% if @patient.full_name.present? %>
+              <%= @patient.full_name %> / <%= @patient.full_name_kana %>
+            <% else %>
+              <%= @patient.full_name_kana %>
+            <% end %>
+            <%= f.hidden_field :patient_id, :value => @patient.id %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :appointment_date, "予約日時" %>
+          </div>
+          <div class="col-lg-9">
+            <%= f.datetime_field :appointment_date, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :symptom, "症状" %>
+          </div>
+          <div class="col-lg-9">
+            <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <%= b.check_box(class:"custom-control-input") %>
+                <%= b.label(class:"custom-control-label") %>
+              </div>
+           <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :symptom_text, "その他症状" %>
+          </div>
+          <div class="col-lg-9">
+            <%= f.text_area :symptom_text, class: 'form-control'%>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :remark, "備考" %>
+          </div>
+          <div class="col-lg-9">
+            <%= f.text_area :remark, class: 'form-control'%>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <%= f.submit "依頼送信", class: 'btn btn-outline-info col-3' %>
+      </div>
+      <% end %>
+  </div>
+</div>

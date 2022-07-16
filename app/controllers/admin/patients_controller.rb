@@ -64,6 +64,7 @@ class Admin::PatientsController < ApplicationController
     :postal_code,
     :address,
     :telephone_number,
+    :password,
     { infection_ids: []})
   end
 end
