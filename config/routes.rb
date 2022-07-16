@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :patients, skip: [:passwords],controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-  }
-
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -23,28 +18,8 @@ Rails.application.routes.draw do
     get 'visit_date' => 'appointments#visit_date'
   end
 
-  #ルートページにしている
   devise_scope :admin do
     root to: "admin/sessions#new"
     get 'top', to: 'admin/homes#top'
   end
-
-  namespace :public do
-    resources :appointments
-    resources :patients do
-      get "appointment_index" => "patients#appointment_index"
-    end
-
-  # scope :public do
-  #   resources :appointments
-
-  #   # public/appointments
-  # end
-
-  # scope module: :public do
-  #   resources :appointments
-  #   # appointments
-  # end
-
-
 end
