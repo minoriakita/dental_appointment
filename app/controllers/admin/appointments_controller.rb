@@ -58,6 +58,9 @@ class Admin::AppointmentsController < ApplicationController
       )
     flash.now[:notice] = "来院しました"
   end
+  
+  def appointment_request
+  end
 
   private
 
