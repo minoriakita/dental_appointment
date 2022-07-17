@@ -62,6 +62,7 @@ gem "font-awesome-rails"
 gem 'pry-rails'
 gem 'rails-i18n'
 gem "simple_calendar", "~> 2.0"
+gem "active_type"
 
 gem 'dotenv-rails'
 group :production do

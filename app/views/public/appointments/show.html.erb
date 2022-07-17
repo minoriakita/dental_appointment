@@ -1,7 +1,7 @@
 <div class='row'>
   <%= render 'layouts/patient_sidebar' %>
   <div class='col-md-9 offset-md-1 mt-3'>
-    <h3>依頼詳細</h3>
+    <h3>予約詳細</h3>
     <div id="flash-message">
      <%= render partial: 'layouts/flash' %>
     </div>
@@ -23,7 +23,7 @@
           名前
         </div>
         <div class="col-lg-9">
-          <%= link_to admin_patient_path(@appointment.patient.id) do %>
+          <%= link_to public_patient_path(@appointment.patient.id) do %>
             <% if @appointment.patient.full_name.present? %>
               <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
             <% else %>
@@ -91,5 +91,29 @@
         </div>
       </div>
     </div>
+
+    <div class="table">
+  <div class="row">
+    <div class="col-lg-3">
+      予約状態
+    </div>
+    <div class="col-lg-9">
+      <% if @appointment.status == "cancel" %>
+        <%= tag.span @appointment.status_i18n, class: "text-danger" %>
+      <% elsif @appointment.status.nil? %>
+        未登録
+      <% else %>
+        <%= @appointment.status_i18n %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+    <% if @appointment.status == "request" %>
+    <div class="form-group text-center">
+      <%= link_to "予約依頼変更", edit_public_appointment_path(params[:id]), class: 'btn btn-outline-info col-3' %>
+    </div>
+    <% end %>
+
   </div>
 </div>

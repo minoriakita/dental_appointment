@@ -115,7 +115,7 @@
             <%= f.label :status, "予約状態" %>
           </div>
           <div class="col-lg-9">
-            <%= f.select :status, Appointment.statuses_i18n.slice(:confirm, :cancel).invert, {prompt: ""}, {class: 'form-control'} %>
+            <%= f.select :status, Appointment.statuses_i18n.slice(:confirm, :cancel, :request).invert, {prompt: ""}, {class: 'form-control'} %>
           </div>
         </div>
       </div>

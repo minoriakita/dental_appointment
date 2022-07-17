@@ -1,22 +1,19 @@
 <div class='row'>
   <%= render 'layouts/patient_sidebar' %>
   <div class='col-md-9 offset-md-1 mt-3'>
-    <h3>予約依頼</h3>
-    <h5>※お急ぎのご予約はお電話ください。</h5>
+    <h3>予約編集</h3>
       <%= render partial: 'layouts/flash' %>
       <%= render 'layouts/error', obj: @appointment %>
 
-      <%= form_with model: @appointment, url: public_appointments_path do |f| %>
-      <%= f.hidden_field :status, value: "request" %>
+      <%= form_with model: @appointment, url: public_appointment_path do |f| %>
 
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-3 mini-title">
-            <%= f.label :patient_id, "患者ID" %>
+          <div class="col-lg-3">
+            患者ID
           </div>
           <div class="col-lg-9">
-            <%= @patient.id %>
-            <%= f.hidden_field :patient_id, :value => @patient.id %>
+            <%= @appointment.patient.id %>
           </div>
         </div>
       </div>
@@ -24,22 +21,21 @@
       <div class="form-group">
         <div class="row">
           <div class="col-lg-3">
-            <%= f.label :patient_id, "名前" %>
+            患者名
           </div>
           <div class="col-lg-9">
-            <% if @patient.full_name.present? %>
-              <%= @patient.full_name %> / <%= @patient.full_name_kana %>
+            <% if @appointment.patient.full_name.present? %>
+              <%= @appointment.patient.full_name %> / <%= @appointment.patient.full_name_kana %>
             <% else %>
-              <%= @patient.full_name_kana %>
+              <%= @appointment.patient.full_name_kana %>
             <% end %>
-            <%= f.hidden_field :patient_id, :value => @patient.id %>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-3 d-flex align-items-center">
             <%= f.label :appointment_date, "予約日時" %>
           </div>
           <div class="col-lg-9">
@@ -50,8 +46,8 @@
 
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-3">
-            <%= f.label :symptom, "症状" %>
+          <div class="col-lg-3 d-flex align-items-center">
+            <%= f.label "症状" %>
           </div>
           <div class="col-lg-9">
             <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |b| %>
@@ -59,35 +55,46 @@
                 <%= b.check_box(class:"custom-control-input") %>
                 <%= b.label(class:"custom-control-label") %>
               </div>
-           <% end %>
+            <% end %>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-3 d-flex align-items-center">
             <%= f.label :symptom_text, "その他症状" %>
           </div>
           <div class="col-lg-9">
-            <%= f.text_area :symptom_text, class: 'form-control'%>
+            <%= f.text_area :symptom_text, class: "form-control" %>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="row">
-          <div class="col-lg-3">
-            <%= f.label :remark, "備考" %>
+          <div class="col-lg-3 d-flex align-items-center">
+            <%= f.label :remark,"備考" %>
           </div>
           <div class="col-lg-9">
-            <%= f.text_area :remark, class: 'form-control'%>
+            <%= f.text_area :remark, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3 d-flex align-items-center">
+            <%= f.label :status, "予約状態" %>
+          </div>
+          <div class="col-lg-9">
+            <%= f.select :status, Appointment.statuses_i18n.slice(:cancel, :request).invert, {prompt: ""}, {class: 'form-control'} %>
           </div>
         </div>
       </div>
 
       <div class="form-group text-center">
-        <%= f.submit "予約依頼送信", class: 'btn btn-outline-info col-3' %>
+        <%= f.submit "保存", class: 'btn btn-outline-info col-3', "data-confirm" => "変更を保存しますか？"%>
       </div>
       <% end %>
   </div>

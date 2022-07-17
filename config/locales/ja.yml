@@ -10,7 +10,8 @@ ja:
         confirm: "確定"
         cancel: "キャンセル"
         visit: "来院済"
-        request: "リクエスト"
+        request: "承認待ち"
+        impossible: "予約不可"
       consultation:
         confirm: "確定"
         cancel: "キャンセル"
@@ -34,6 +35,7 @@ ja:
         address: "住所"
         telephone_number: "電話番号"
         patient_text: "患者注意事項"
+        password: "パスワード"
       appointment:
         appointment_date: "予約日時"
         remark: "備考"

@@ -1,5 +1,5 @@
 class Appointment < ApplicationRecord
-  scope :publics, -> { where.not(status: "request") }
+  scope :publics, -> { where.not(status: "request" "impossible") }
 
   belongs_to :patient
   belongs_to :charge, class_name: 'Employee', foreign_key: :charge_id, optional: true
@@ -12,12 +12,10 @@ class Appointment < ApplicationRecord
 
   validates :appointment_date, presence: true
   validate :date_before_start, on: :create
-  validates :charge, presence: true, allow_blank: true
   validates :remark, length: { maximum: 300 }
   validates :symptom_text, length: { maximum: 300 }
-  validates :subscriber, presence: true, allow_blank: true
 
-  enum status: { confirm: 0, cancel: 1, visit: 2, request: 3 }
+  enum status: { confirm: 0, cancel: 1, visit: 2, request: 3, impossible: 4 }
 
   def self.appointments_list(day)
     self.publics.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day)

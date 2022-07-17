@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :appointments do
-      get "appointment_request" => "appointments#appointment_request"
+      get "appointment_impossible" => "appointments#appointment_impossible"
     end
     resources :employees
     resources :infections
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :treatments
     get 'item' => 'homes#item'
     get 'visit_date' => 'appointments#visit_date'
-    get "appointment_request" => "appointments#appointment_request"
+    get "appointment_request_index" => "appointments#request_index"
   end
 
   devise_scope :admin do
@@ -28,9 +28,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :appointments
-    resources :patients do
-      get "appointment_index" => "patients#appointment_index"
-    end
+    resources :patients
   end
 
   # scope :public do
