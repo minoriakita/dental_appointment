@@ -21,6 +21,12 @@ class Appointment < ApplicationRecord
     self.publics.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day)
   end
 
+  def self.appointments_possible?(day, from, to)
+    from = DateTime.parse("#{day} #{from}")
+    to = DateTime.parse("#{day} #{to}")
+    self.where(appointment_date: from...to).exists?
+  end
+
   def date_before_start
     return if appointment_date.blank?
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today

@@ -1,0 +1,26 @@
+<h1>1日の予約一覧</h1>
+
+<table>
+  <tr>
+    <th>10:00</th>
+    <td>
+      <%= if Appointment.appointments_possible?(params[:date], '10:00:00', '10:29:59') %>
+        予約不可
+      <% else %>
+        予約画面へ
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>10:30</th>
+    <td><%= Appointment.appointments_possible?(params[:date], '10:30:00', '11:59:59') %></td>
+  </tr>
+  <tr>
+    <th>11:00</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>11:30</th>
+    <td></td>
+  </tr>
+</table>

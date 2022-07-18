@@ -1,5 +1,5 @@
 class Public::AppointmentsController < ApplicationController
-   before_action :authenticate_patient!
+   before_action :authenticate_patient!, except: [:day_index]
 
   def new
     @appointment = Appointment.new
@@ -41,6 +41,14 @@ class Public::AppointmentsController < ApplicationController
       flash.now[:alert] = "変更が失敗しました"
       render :edit
     end
+  end
+
+  def day_index
+    # @appointments = AdminAppointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
+    # @day = params[:day]
+    # if @day.blank?
+    #   redirect_to appointment_day_index_path(day: Date.current.strftime('%Y-%m-%d'))
+    # end
   end
 
   private
