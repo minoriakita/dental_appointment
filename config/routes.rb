@@ -26,11 +26,17 @@ Rails.application.routes.draw do
     get 'top', to: 'admin/homes#top'
   end
 
+
+  get "appointment_day_index" => "public/appointments#day_index"
+  get "public/top" => "public/homes#top"
+  get "about" => "public/homes#about"
+
   namespace :public do
     resources :appointments
     resources :patients
   end
 
+    
   # scope :public do
   #   resources :appointments
 

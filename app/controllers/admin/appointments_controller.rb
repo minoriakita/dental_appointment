@@ -65,7 +65,7 @@ class Admin::AppointmentsController < ApplicationController
 
   def appointment_impossible
     @appointment = AdminAppointment.find(params[:appointment_id])
-    @appointment.update(
+    @appointment.update!(
         status: 4
       )
     redirect_to admin_appointment_path(@appointment.id)
