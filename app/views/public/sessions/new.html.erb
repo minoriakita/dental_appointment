@@ -44,7 +44,10 @@
               <%= f.label :remember_me %>
             </div>
           <% end %>
-              <%= render "public/shared/links" %>
+            <%= render "public/shared/links" %>
+            <div>予約状況はこちらからご確認ください<br>
+              <%= link_to "予約状況", public_top_path, class: "btn btn-outline-secondary col-3" %>
+            </div>
         </div>
       </div>
     </div>

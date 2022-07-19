@@ -27,10 +27,11 @@ Rails.application.routes.draw do
   end
 
   #ルートページにしている
-  devise_scope :admin do
-    root to: "admin/sessions#new"
-    get 'top', to: 'admin/homes#top'
-  end
+  # devise_scope :admin do
+  #   root to: "admin/sessions#new"
+  #   get 'top', to: 'admin/homes#top'
+  # end
+  root to: "public/homes#about"
 
 
   get "appointment_day_index" => "public/appointments#day_index"

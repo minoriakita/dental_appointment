@@ -1,26 +1,173 @@
-<h1>1日の予約一覧</h1>
+<div class='row'>
+  <%= render 'layouts/public_sidebar' %>
+  <div class='col col-md-9 offset-md-1 mt-3'>
+    <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
+    <!--<h5>※予約不可の表示でも可能な場合がございますので、当日やお急ぎのご予約はお電話にてお問い合わせください。</h5>-->
 
 <table>
-  <tr>
+  <tr class="test">
     <th>10:00</th>
     <td>
-      <%= if Appointment.appointments_possible?(params[:date], '10:00:00', '10:29:59') %>
+      <% if Appointment.appointments_possible?(params[:date], '10:00:00', '10:29:59') %>
         予約不可
       <% else %>
-        予約画面へ
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 10:00:00") %>
       <% end %>
     </td>
   </tr>
   <tr>
     <th>10:30</th>
-    <td><%= Appointment.appointments_possible?(params[:date], '10:30:00', '11:59:59') %></td>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '10:30:00', '10:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 10:30:00") %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th>11:00</th>
-    <td></td>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '11:00:00', '11:29:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 11:00:00") %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th>11:30</th>
-    <td></td>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '11:30:00', '11:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 11:30:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>12:00</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '12:00:00', '12:29:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 12:00:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>12:30</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '12:30:00', '12:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 12:30:00") %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <th>
+      .<br>
+      .<br>
+      .<br>
+    </th>
+    <td>
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>14:30</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '14:30:00', '14:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 14:30:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>15:00</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '15:00:00', '15:29:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 15:00:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>15:30</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '15:30:00', '15:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 15:30:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>16:00</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '16:00:00', '16:29:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 16:00:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>16:30</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '16:30:00', '16:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 16:30:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>17:00</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '17:00:00', '17:29:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 17:00:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>17:30</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '17:30:00', '17:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 17:30:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>18:00</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '18:00:00', '18:29:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 18:00:00") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>18:30</th>
+    <td>
+      <% if Appointment.appointments_possible?(params[:date], '18:30:00', '18:59:59') %>
+        予約不可
+      <% else %>
+        <%= link_to "予約画面へ", new_public_appointment_path(date: "#{@day.to_s} 18:30:00") %>
+      <% end %>
+    </td>
   </tr>
 </table>
+
+  </div>
+</div>

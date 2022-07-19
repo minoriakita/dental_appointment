@@ -28,7 +28,7 @@
                       <% passed_block.call day, sorted_events.fetch(day, []) %>
                       <div class="text-center">
                         <!--1日の予約件数-->
-                        <%#= Appointment.appointments_list(day.to_s).count %> 件
+                        <%#= Appointment.appointments_list(day.to_s).count %>
                         <%= link_to '予約を見る', appointment_day_index_path(date: day.to_s) %>
                       </div>
                   <% end %>
