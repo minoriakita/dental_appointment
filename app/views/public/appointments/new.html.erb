@@ -1,8 +1,8 @@
 <div class='row'>
-  <%= render 'layouts/patient_sidebar' %>
+  <%= render 'layouts/public_sidebar' %>
   <div class='col-md-9 offset-md-1 mt-3'>
     <h3>予約依頼</h3>
-    <h5>※お急ぎのご予約はお電話ください。</h5>
+    <!--<h5>※こちらは予約依頼フォームです。お急ぎのご予約はお電話にてお問い合わせください。</h5>-->
       <%= render partial: 'layouts/flash' %>
       <%= render 'layouts/error', obj: @appointment %>
 
@@ -43,7 +43,8 @@
             <%= f.label :appointment_date, "予約日時" %>
           </div>
           <div class="col-lg-9">
-            <%= f.datetime_field :appointment_date, class: 'form-control' %>
+            <%= @day.strftime("%Y年%m月%d日 %H時%M分") %>
+            <%= f.hidden_field :appointment_date, :value => @day %>
           </div>
         </div>
       </div>

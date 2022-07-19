@@ -1,10 +1,14 @@
 class Public::AppointmentsController < ApplicationController
-   before_action :authenticate_patient!, except: [:day_index]
+   before_action :authenticate_patient!, except: [:day_index, :new]
 
   def new
+    unless patient_signed_in?
+      return redirect_to new_patient_session_path
+    end
     @appointment = Appointment.new
-    @patients = Patient.all
-    @patient = Patient.find(params[:patient_id])
+    @patient = current_patient
+    @day = Time.parse(params[:date])
+    #ログインしていなければログイン画面へ
   end
 
   def create
@@ -45,7 +49,9 @@ class Public::AppointmentsController < ApplicationController
 
   def day_index
     # @appointments = AdminAppointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
-    # @day = params[:day]
+    @day = params[:day]
+    #if public_signed_in?
+
     # if @day.blank?
     #   redirect_to appointment_day_index_path(day: Date.current.strftime('%Y-%m-%d'))
     # end

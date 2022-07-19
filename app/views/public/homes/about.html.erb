@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <%#= render partial: 'layouts/flash' %>
+      <h2>予約取得・管理アプリケーション</h2>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= link_to "患者様はこちら", patient_session_path(params[:id]), class: 'btn btn-outline-info col-4' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= link_to "医院関係の方はこちら", admin_session_path(params[:id]), class: 'btn btn-outline-info col-5' %>
+      </div>
+    </div>
+  </div>
+</div>
