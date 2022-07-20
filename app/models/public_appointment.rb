@@ -1,3 +1,3 @@
 class PublicAppointment < ActiveType::Record[Appointment]
-  validates :symptom, presence: true
+  validates :appointment_symptoms, presence: true
 end

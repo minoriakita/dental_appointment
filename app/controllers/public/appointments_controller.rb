@@ -17,15 +17,16 @@ class Public::AppointmentsController < ApplicationController
        redirect_to public_appointment_path(@appointment), notice: "予約依頼が完了しました"
     else
        @patient = Patient.find(params[:appointment][:patient_id])
+       @day = Time.parse(appointment_params[:appointment_date])
        flash.now[:alert] = "予約依頼が失敗しました"
        render "new"
     end
   end
 
-  def index
+  def history
     patient = current_patient
     @appointments = patient.appointments.page(params[:page]).order(created_at: :desc)
-    @patient = Patient.find(params[:format])
+    @patient = Patient.find(params[:id])
   end
 
   def show
@@ -50,6 +51,7 @@ class Public::AppointmentsController < ApplicationController
   def day_index
     # @appointments = AdminAppointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @day = params[:day]
+    #@day = params[:date]
     #if public_signed_in?
 
     # if @day.blank?

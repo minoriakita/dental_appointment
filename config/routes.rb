@@ -33,7 +33,12 @@ Rails.application.routes.draw do
   get "about" => "public/homes#about"
 
   namespace :public do
-    resources :appointments
+    resources :appointments, except: :index do
+      member do
+        get :history
+      end
+    end
+
     resources :patients
   end
 
