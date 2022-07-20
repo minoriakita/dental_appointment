@@ -2,12 +2,13 @@
   <%= render 'layouts/public_sidebar' %>
   <div class='col col-md-9 offset-md-1 mt-3'>
     <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
-    <!--<h5>※予約不可の表示でも可能な場合がございますので、当日やお急ぎのご予約はお電話にてお問い合わせください。</h5>-->
+    <h6>※予約不可の表示でも可能な場合がございますので、当日やお急ぎのご予約はお電話にてお問い合わせください。</h6>
 
-<table>
-  <tr class="test">
-    <th>10:00</th>
-    <td>
+<div class="col col-md-3">
+<table class="table table-bordered">
+  <tr>
+    <th class="col-md-1 text-center">10:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '10:00:00', '10:29:59') %>
         予約不可
       <% else %>
@@ -16,8 +17,8 @@
     </td>
   </tr>
   <tr>
-    <th>10:30</th>
-    <td>
+    <th class="col-md-1 text-center">10:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '10:30:00', '10:59:59') %>
         予約不可
       <% else %>
@@ -26,8 +27,8 @@
     </td>
   </tr>
   <tr>
-    <th>11:00</th>
-    <td>
+    <th class="col-md-1 text-center">11:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '11:00:00', '11:29:59') %>
         予約不可
       <% else %>
@@ -36,8 +37,8 @@
     </td>
   </tr>
   <tr>
-    <th>11:30</th>
-    <td>
+    <th class="col-md-1 text-center">11:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '11:30:00', '11:59:59') %>
         予約不可
       <% else %>
@@ -46,8 +47,8 @@
     </td>
   </tr>
   <tr>
-    <th>12:00</th>
-    <td>
+    <th class="col-md-1 text-center">12:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '12:00:00', '12:29:59') %>
         予約不可
       <% else %>
@@ -56,8 +57,8 @@
     </td>
   </tr>
   <tr>
-    <th>12:30</th>
-    <td>
+    <th class="col-md-1 text-center">12:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '12:30:00', '12:59:59') %>
         予約不可
       <% else %>
@@ -78,8 +79,8 @@
   </tr>
 
   <tr>
-    <th>14:30</th>
-    <td>
+    <th class="col-md-1 text-center">14:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '14:30:00', '14:59:59') %>
         予約不可
       <% else %>
@@ -88,8 +89,8 @@
     </td>
   </tr>
   <tr>
-    <th>15:00</th>
-    <td>
+    <th class="col-md-1 text-center">15:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '15:00:00', '15:29:59') %>
         予約不可
       <% else %>
@@ -98,8 +99,8 @@
     </td>
   </tr>
   <tr>
-    <th>15:30</th>
-    <td>
+    <th class="col-md-1 text-center">15:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '15:30:00', '15:59:59') %>
         予約不可
       <% else %>
@@ -108,8 +109,8 @@
     </td>
   </tr>
   <tr>
-    <th>16:00</th>
-    <td>
+    <th class="col-md-1 text-center">16:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '16:00:00', '16:29:59') %>
         予約不可
       <% else %>
@@ -118,8 +119,8 @@
     </td>
   </tr>
   <tr>
-    <th>16:30</th>
-    <td>
+    <th class="col-md-1 text-center">16:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '16:30:00', '16:59:59') %>
         予約不可
       <% else %>
@@ -128,8 +129,8 @@
     </td>
   </tr>
   <tr>
-    <th>17:00</th>
-    <td>
+    <th class="col-md-1 text-center">17:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '17:00:00', '17:29:59') %>
         予約不可
       <% else %>
@@ -138,8 +139,8 @@
     </td>
   </tr>
   <tr>
-    <th>17:30</th>
-    <td>
+    <th class="col-md-1 text-center">17:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '17:30:00', '17:59:59') %>
         予約不可
       <% else %>
@@ -148,8 +149,8 @@
     </td>
   </tr>
   <tr>
-    <th>18:00</th>
-    <td>
+    <th class="col-md-1 text-center">18:00</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '18:00:00', '18:29:59') %>
         予約不可
       <% else %>
@@ -158,8 +159,8 @@
     </td>
   </tr>
   <tr>
-    <th>18:30</th>
-    <td>
+    <th class="col-md-1 text-center">18:30</th>
+    <td class="table table-hover text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:date], '18:30:00', '18:59:59') %>
         予約不可
       <% else %>
@@ -168,6 +169,7 @@
     </td>
   </tr>
 </table>
+</div>
 
   </div>
 </div>
