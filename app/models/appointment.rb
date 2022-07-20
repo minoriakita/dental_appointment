@@ -10,6 +10,7 @@ class Appointment < ApplicationRecord
   has_many :appointment_treatments
   has_many :treatments, through: :appointment_treatments
 
+
   validates :appointment_date, presence: true
   validate :date_before_start, on: :create
   validates :remark, length: { maximum: 300 }
