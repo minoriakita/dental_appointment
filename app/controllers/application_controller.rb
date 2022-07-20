@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
      if resource.class == Admin
        top_path # ログイン後に遷移するpathを設定
      elsif resource.class == Patient
-       public_patient_path(id: current_patient.id)
+       public_top_path
+       #public_patient_path(id: current_patient.id)
      end
   end
 

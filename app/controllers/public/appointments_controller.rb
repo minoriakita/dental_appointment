@@ -5,14 +5,14 @@ class Public::AppointmentsController < ApplicationController
     unless patient_signed_in?
       return redirect_to new_patient_session_path
     end
-    @appointment = Appointment.new
+    @appointment = PublicAppointment.new
     @patient = current_patient
     @day = Time.parse(params[:date])
     #ログインしていなければログイン画面へ
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = PublicAppointment.new(appointment_params)
     if @appointment.save
        redirect_to public_appointment_path(@appointment), notice: "予約依頼が完了しました"
     else
@@ -29,16 +29,16 @@ class Public::AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
+    @appointment = PublicAppointment.find(params[:id])
     @patient = Patient.find(@appointment.patient_id)
   end
 
   def edit
-    @appointment = Appointment.find(params[:id])
+    @appointment = PublicAppointment.find(params[:id])
   end
 
   def update
-    @appointment = Appointment.find(params[:id])
+    @appointment = PublicAppointment.find(params[:id])
     if @appointment.update(appointment_update_params)
       redirect_to public_appointment_path(@appointment), notice: "変更が完了しました"
     else

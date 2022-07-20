@@ -27,10 +27,9 @@ Rails.application.routes.draw do
   #   get 'top', to: 'admin/homes#top'
   # end
   root to: "public/homes#about"
-
-
+  get 'admin/top', to: 'admin/homes#top'
+  get "public/top", to: "public/homes#top"
   get "appointment_day_index" => "public/appointments#day_index"
-  get "public/top" => "public/homes#top"
   get "about" => "public/homes#about"
 
   namespace :public do
@@ -38,7 +37,7 @@ Rails.application.routes.draw do
     resources :patients
   end
 
-    
+
   # scope :public do
   #   resources :appointments
 

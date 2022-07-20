@@ -8,7 +8,7 @@ class Patient < ApplicationRecord
   has_many :patient_infections
   has_many :infections, through: :patient_infections
 
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
   validates :last_name, length: { maximum: 20 }
   validates :first_name, length: { maximum: 20 }
   validates :last_name_kana, presence: true, length: { maximum: 20 },
@@ -16,13 +16,10 @@ class Patient < ApplicationRecord
   validates :first_name_kana, presence: true, length: { maximum: 20 },
   format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力してください'}
   validates :patient_text, length: { maximum: 300 }
-  validates :postal_code, numericality: true, allow_blank: true
   validates :telephone_number, numericality: true, uniqueness: true, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
-  validates :birthday, presence: true, allow_blank: true
+  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validate :date_after_start
-
 
   enum gender: { man: 0, woman: 1, other: 2 }
 
