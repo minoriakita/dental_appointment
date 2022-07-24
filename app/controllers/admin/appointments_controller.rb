@@ -68,6 +68,7 @@ class Admin::AppointmentsController < ApplicationController
     @appointment.update!(
         status: 4
       )
+    $request_count = Appointment.where(status: "request").length
     redirect_to admin_appointment_path(@appointment.id)
   end
 

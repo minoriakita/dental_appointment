@@ -42,6 +42,7 @@ ja:
         symptom_text: "その他症状"
         charge: "担当者"
         subscriber: "予約者"
+        appointment_symptoms: "症状"
       employee:
         name: "スタッフ名"
       infection:
@@ -50,6 +51,7 @@ ja:
         name: "症状名"
       treatment:
         name: "治療名"
+      appointment_symptom: "症状"
   date:
     formats:
       default: "%Y/%m/%d"

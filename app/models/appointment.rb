@@ -13,6 +13,7 @@ class Appointment < ApplicationRecord
 
   validates :appointment_date, presence: true
   validate :date_before_start, on: :create
+  validate :start_finish_check
   validates :remark, length: { maximum: 300 }
   validates :symptom_text, length: { maximum: 300 }
 
@@ -31,5 +32,11 @@ class Appointment < ApplicationRecord
   def date_before_start
     return if appointment_date.blank?
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today
+  end
+
+  def start_finish_check
+    return if appointment_date.blank?
+    errors.add(:appointment_date, "は10時から18時の間で選択してください") if appointment_date.strftime('%H%M').to_i < 1000 || 1800 < appointment_date.strftime('%H%M').to_i
+# Datetime.10-00-00 から 18-00-00
   end
 end

@@ -1,25 +1,38 @@
 <%= stylesheet_link_tag 'about', media: 'all', 'data-turbolinks-track': 'reload' %>
-<div class="about container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3 mt-4">
+  <div class="row ml-5 mt-5">
+    <div class="col-md-6 mt-4 offset-1">
       <%#= render partial: 'layouts/flash' %>
-      <h2>予約取得・管理アプリケーション</h2>
+      <h6>予約取得・管理アプリケーション</h6>
+      <h2>Welcome to Dental apo</h2>
     </div>
   </div>
 
   <div class="field form-group">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <%= link_to "患者様はこちら", patient_session_path(params[:id]), class: 'btn btn-outline-info col-4' %>
+    <div class="row ml-5 mt-3">
+      <div class="col-md-6 offset-1">
+        患者様はこちら<br>
+        <%= link_to "患者様", patient_session_path(params[:id]), class: 'btn btn-outline-info col-4' %>
       </div>
     </div>
   </div>
 
   <div class="field form-group">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <%= link_to "医院関係の方はこちら", admin_session_path(params[:id]), class: 'btn btn-outline-info col-5' %>
+    <div class="row ml-5">
+      <div class="col-md-6 offset-1">
+        医院関係の方はこちら<br>
+        <%= link_to "医院関係の方", admin_session_path(params[:id]), class: 'btn btn-outline-info col-4' %>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="row ml-5 mt-5">
+    <div class="col-md-6 mt-4 offset-1">
+      <h5>概要</h5>
+    　歯科医院の予約管理専用のアプリケーションとなっております。<br>
+    　予約取得やキャンセルをスムーズに行うことができます。<br>
+    　WEB予約にも対応しておりますが、リクエスト予約となっておりますので、<br>
+    　歯科医院側で承認されると予約確定になります。
+    </div>
+  </div>
+
+
