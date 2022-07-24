@@ -18,8 +18,8 @@ class Public::AppointmentsController < ApplicationController
     else
        @patient = Patient.find(params[:appointment][:patient_id])
        @day = Time.parse(appointment_params[:appointment_date])
-       flash.now[:alert] = "予約依頼が失敗しました"
-       render "new"
+      # flash.now[:alert] = "予約依頼が失敗しました"
+       redirect_to new_public_appointment_path(date: appointment_params[:appointment_date]), flash: {danger: "予約依頼が失敗しました", info: "test"}#notice: "予約依頼が失敗しました"
     end
   end
 
@@ -49,14 +49,7 @@ class Public::AppointmentsController < ApplicationController
   end
 
   def day_index
-    # @appointments = AdminAppointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @day = params[:day]
-    #@day = params[:date]
-    #if public_signed_in?
-
-    # if @day.blank?
-    #   redirect_to appointment_day_index_path(day: Date.current.strftime('%Y-%m-%d'))
-    # end
   end
 
   private

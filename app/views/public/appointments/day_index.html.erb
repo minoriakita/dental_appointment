@@ -4,9 +4,9 @@
     <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
     <h6>※予約不可の表示でも可能な場合がございますので、当日やお急ぎのご予約はお電話にてお問い合わせください。</h6>
 
-<div class="col col-md-3">
-<table class="table table-bordered table-hover">
-  <%= table_rows(@day) %>
+<div class="col col-md-2">
+<table class="table table-bordered bg-white">
+  <%= table_rows_am(@day) %>
   <tr>
     <th>
       .<br>
@@ -14,7 +14,6 @@
       .<br>
     </th>
     <td>
-
     </td>
   </tr>
 
@@ -78,7 +77,7 @@
       <% end %>
     </td>
   </tr>
-  <tr class="bg-white">
+  <tr>
     <th class="col-md-1 text-center">17:30</th>
     <td class="text-center" style="vertical-align: middle;">
       <% if Appointment.appointments_possible?(params[:day], '17:30:00', '17:59:59') %>

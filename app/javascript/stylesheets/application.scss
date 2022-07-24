@@ -34,10 +34,6 @@ body {
   background-color: #EDEFF5;
 }
 
-main {
-  // background-image: url(dental-hygiene-items-copy-space.jpg);
-}
-
 a {
   color: black;
 }
@@ -184,3 +180,19 @@ transform: scale(1.1);
   padding-top: 40px;
 }
 
+.table-am a {
+  padding: 12px 0;
+}
+
+.table-am:hover {
+  background: #C5D6E6 !important;
+  // height: 38px;
+  // vertical-align: middle !important;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-around;
+}
+
+.link_disable {
+  pointer-events: none;
+}
