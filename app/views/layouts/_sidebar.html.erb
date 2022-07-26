@@ -33,8 +33,14 @@
     <div class="row">
       <div class="col">
         <%= link_to admin_appointment_request_index_path do %>
-          承認待ち<i class="fas fa-users ml-1"></i>
-          <%= request_count %>
+          承認待ち
+          <div class="maru <%= "border-black" if request_count == 0 %>">
+            <%# if request_count == 0 %>
+            <!--<div class="text-dark">-->
+              <%= request_count %>
+            <!--</div>-->
+            <%# end %>
+          </div>
         <% end %>
       </div>
     </div>

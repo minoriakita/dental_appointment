@@ -1,5 +1,5 @@
 module Public::AppointmentsHelper
-  def table_rows_am(day)
+  def table_rows_am(day, today_text)
     times = [
       ["10:00:00", "10:29:59"],
       ["10:30:00", "10:59:59"],
@@ -25,7 +25,12 @@ module Public::AppointmentsHelper
                 concat tag.a time.first[0, 5], href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100"
               end)
               concat (tag.td class: "table-am text-center", style: "vertical-align: middle;" do
-                concat tag.a "◯", href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100"
+                if day == today_text
+                  concat tag.a "◯", href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100 link_disable"
+                else
+                  concat tag.a "◯", href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100"
+                end
+
               end)
             end)
           #end)
@@ -63,7 +68,11 @@ module Public::AppointmentsHelper
                 concat tag.a time.first[0, 5], href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100"
               end)
               concat (tag.td class: "table-am text-center", style: "vertical-align: middle;" do
-                concat tag.a "◯", href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100"
+                if day == @today_text
+                  concat tag.a "◯", href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100 link_disable"
+                else
+                  concat tag.a "◯", href: new_public_appointment_path(date: "#{day} #{time.first}"), class: "d-block h-100 w-100"
+                end
               end)
             end)
           #end)

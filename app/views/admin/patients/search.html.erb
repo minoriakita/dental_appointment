@@ -1,5 +1,5 @@
 <div class='row'>
-  <%= render 'layouts/sidebar' %>
+  <%= render 'layouts/sidebar', request_count: @request_count %>
   <div class='col-md-9 offset-md-1 mt-3'>
 
     <div class="search-index">
@@ -68,7 +68,7 @@
         <%= paginate @patients %>
       </div>
     </div>
-      
+
   </div>
 </div>
 

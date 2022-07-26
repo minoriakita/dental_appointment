@@ -20,13 +20,14 @@ class Appointment < ApplicationRecord
   enum status: { confirm: 0, cancel: 1, visit: 2, request: 3, impossible: 4 }
 
   def self.appointments_list(day)
-    self.publics.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day)
+    self.publics.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day, status: "confirm")
   end
 
   def self.appointments_possible?(day, from, to)
+    #確定のものだけ取得
     from = DateTime.parse("#{day} #{from}")
     to = DateTime.parse("#{day} #{to}")
-    self.where(appointment_date: from...to).exists?
+    self.where(appointment_date: from...to, status: "confirm" "visit").exists?
   end
 
   def date_before_start
@@ -36,7 +37,6 @@ class Appointment < ApplicationRecord
 
   def start_finish_check
     return if appointment_date.blank?
-    errors.add(:appointment_date, "は10時から18時の間で選択してください") if appointment_date.strftime('%H%M').to_i < 1000 || 1800 < appointment_date.strftime('%H%M').to_i
-# Datetime.10-00-00 から 18-00-00
+    errors.add(:appointment_date, "は10時から18時の間で選択してください") if appointment_date.strftime('%H%M').to_i < 1000 || 1830 < appointment_date.strftime('%H%M').to_i
   end
 end

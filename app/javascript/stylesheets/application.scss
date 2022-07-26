@@ -44,6 +44,12 @@ a:hover {
 }
 
 .table-index {
+  white-space: nowrap;
+
+}
+.table-index div div {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table-index:hover {
@@ -185,7 +191,7 @@ transform: scale(1.1);
 }
 
 .table-am:hover {
-  background: #C5D6E6 !important;
+  background: #C5D6E6
   // height: 38px;
   // vertical-align: middle !important;
   // display: flex;
@@ -195,4 +201,25 @@ transform: scale(1.1);
 
 .link_disable {
   pointer-events: none;
+  background: white;
+}
+
+.maru {
+  width: 20px;
+  display: inline-block;
+  // padding-bottom: 7px;
+  border-radius: 50%;
+  line-height: auto;
+  text-align: center;
+  background: white;
+  box-sizing: border-box;
+  border: solid red;
+}
+
+.border-black {
+  border-color: black;
+}
+
+.color-black {
+  text-color: black;
 }
