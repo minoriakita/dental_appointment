@@ -1,5 +1,6 @@
 class Appointment < ApplicationRecord
   scope :publics, -> { where.not(status: "request" "impossible") }
+  # scope :unchecked, -> { where(status: [:confirm, :impossible], checked: false) }
 
   belongs_to :patient
   belongs_to :charge, class_name: 'Employee', foreign_key: :charge_id, optional: true

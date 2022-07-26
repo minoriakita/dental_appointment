@@ -82,6 +82,7 @@ class Admin::AppointmentsController < ApplicationController
       :status,
       :charge_id,
       :subscriber_id,
+      :checked,
       { symptom_ids: []},
       { treatment_ids: []},)
   end
@@ -95,6 +96,7 @@ class Admin::AppointmentsController < ApplicationController
       :symptom_text,
       :visit_date,
       :subscriber_id,
+      :checked,
       { symptom_ids: []},
       { treatment_ids: []})
   end

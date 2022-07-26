@@ -21,8 +21,11 @@ class ApplicationController < ActionController::Base
      end
   end
 
-  protected
+  # def unchecked_appointments
+  #   @unchecked_appointments ||= @appointments.where(status: [:confirm, :impossible], checked: false)
+  # end
 
+  protected
   def get_request_count
     if current_admin
       @request_count = Appointment.where(status: "request").length
