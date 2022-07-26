@@ -47,9 +47,14 @@ class Patient < ApplicationRecord
   def full_name_kana
     "#{self.last_name_kana} #{self.first_name_kana}"
   end
-end
 
-def date_after_start
-    return if birthday.blank?
-    errors.add(:birthday, "は今日以前のものを選択してください") if birthday > Date.today
+  def date_after_start
+      return if birthday.blank?
+      errors.add(:birthday, "は今日以前のものを選択してください") if birthday > Date.today
+  end
+
+  def unchecked_appointments
+    appointments.where(status: [:confirm, :impossible], checked: false)
+  end
+
 end

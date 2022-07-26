@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :patients, skip: [:passwords],controllers: {
+  devise_for :patients, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
+  passwords: 'public/passwords'
   }
 
-  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
+  devise_for :admins, skip: [:registrations] ,controllers: {
+    sessions: "admin/sessions",
+    passwords: 'admin/passwords'
   }
 
   namespace :admin do
@@ -47,6 +49,9 @@ Rails.application.routes.draw do
     resources :patients
   end
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # scope :public do
   #   resources :appointments

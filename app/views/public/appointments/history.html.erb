@@ -30,7 +30,7 @@
     </div>
 
     <% @appointments.each do |appointment| %>
-    <div class="table-index">
+    <div class='table-index <%= "unchecked" if !appointment.checked? && (appointment.status == "confirm" || appointment.status == "impossible") %>'>
       <%= link_to public_appointment_path(appointment.id) do %>
         <div class="row border-bottom d-flex align-items-end" style = "padding-top: 25px;">
           <div class="col-md-3">

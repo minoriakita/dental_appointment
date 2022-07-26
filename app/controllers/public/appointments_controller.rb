@@ -24,14 +24,16 @@ class Public::AppointmentsController < ApplicationController
   end
 
   def history
-    patient = current_patient
-    @appointments = patient.appointments.page(params[:page]).order(created_at: :desc)
+    @appointments = current_patient.appointments.page(params[:page]).order(created_at: :desc)
     @patient = Patient.find(params[:id])
   end
 
   def show
     @appointment = PublicAppointment.find(params[:id])
-    @patient = Patient.find(@appointment.patient_id)
+    @patient = @appointment.patient
+    if @patient == current_patient && !@appointment.checked?
+       @appointment.update(checked: true)
+    end
   end
 
   def edit
@@ -54,6 +56,15 @@ class Public::AppointmentsController < ApplicationController
     @today_text = today.strftime("%Y-%m-%d")
   end
 
+  # def get_checked_count
+  #   アドミン側でステータスを変えたものの数を数える
+  # 　　@appointment.update(status: "confirm" "impossible").length
+  #     @checked_count = Appointment.where(status: "confirm" "impossible")
+  # showページ見たらtrueになる
+  # @appointment.update(checked: "true")
+  #   end
+  # end
+
   private
 
   def appointment_params
@@ -64,6 +75,7 @@ class Public::AppointmentsController < ApplicationController
       :status,
       :charge_id,
       :subscriber_id,
+      :checked,
       { symptom_ids: []},
       { treatment_ids: []},)
   end
@@ -77,6 +89,7 @@ class Public::AppointmentsController < ApplicationController
       :symptom_text,
       :visit_date,
       :subscriber_id,
+      :checked,
       { symptom_ids: []},
       { treatment_ids: []})
   end
