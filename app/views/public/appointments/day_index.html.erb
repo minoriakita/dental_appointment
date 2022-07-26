@@ -6,7 +6,7 @@
 
 <div class="col col-md-2">
 <table class="table table-bordered bg-white">
-  <%= table_rows_am(@day) %>
+  <%= table_rows_am(@day, @today_text) %>
   <tr>
     <th>
       .<br>
@@ -16,6 +16,7 @@
     <td>
     </td>
   </tr>
+  <%= table_rows_pm(@day) %>
 
   <tr>
     <th class="col-md-1 text-center">14:30</th>

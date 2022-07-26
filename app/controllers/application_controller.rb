@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     if resource == :admin
-       root_path # ログアウト後に遷移するpathを設定
+       new_admin_session_path # ログアウト後に遷移するpathを設定
     elsif resource == :patient
        new_patient_session_path
     end

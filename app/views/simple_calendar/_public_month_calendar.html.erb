@@ -21,7 +21,6 @@
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% link_disable = "link_disable" unless day >= Date.today %>
-            
               <%= link_to appointment_day_index_path(day: day), class: link_disable do %>
                 <div class="calendar-link">
                   <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
