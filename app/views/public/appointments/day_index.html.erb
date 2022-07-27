@@ -4,112 +4,21 @@
     <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
     <h6>※予約不可の表示でも可能な場合がございますので、当日やお急ぎのご予約はお電話にてお問い合わせください。</h6>
 
-<div class="col col-md-2">
-<table class="table table-bordered bg-white">
-  <%= table_rows_am(@day, @today_text) %>
-  <tr>
-    <th>
-      .<br>
-      .<br>
-      .<br>
-    </th>
-    <td>
-    </td>
-  </tr>
-  <%= table_rows_pm(@day) %>
+    <div class="col col-md-2">
+      <table class="table table-bordered bg-white">
+        <%= table_rows_am(@day, @today_text) %>
+        <tr>
+          <th>
+            .<br>
+            .<br>
+            .<br>
+          </th>
+          <td>
+          </td>
+        </tr>
+        <%= table_rows_pm(@day) %>
 
-  <tr>
-    <th class="col-md-1 text-center">14:30</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '14:30:00', '14:59:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 14:30:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">15:00</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '15:00:00', '15:29:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 15:00:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">15:30</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '15:30:00', '15:59:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 15:30:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">16:00</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '16:00:00', '16:29:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 16:00:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">16:30</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '16:30:00', '16:59:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 16:30:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">17:00</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '17:00:00', '17:29:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 17:00:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">17:30</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '17:30:00', '17:59:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 17:30:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">18:00</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '18:00:00', '18:29:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 18:00:00") %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th class="col-md-1 text-center">18:30</th>
-    <td class="text-center" style="vertical-align: middle;">
-      <% if Appointment.appointments_possible?(params[:day], '18:30:00', '18:59:59') %>
-        予約不可
-      <% else %>
-        <%= link_to "予約依頼へ", new_public_appointment_path(date: "#{@day.to_s} 18:30:00") %>
-      <% end %>
-    </td>
-  </tr>
-</table>
-</div>
-
+      </table>
+    </div>
   </div>
 </div>

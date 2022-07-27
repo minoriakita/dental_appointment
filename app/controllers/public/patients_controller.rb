@@ -20,7 +20,7 @@ class Public::PatientsController < ApplicationController
        redirect_to public_patient_path(@patient), notice: "変更が完了しました"
     else
       flash.now[:alert] = "変更が失敗しました"
-       render :edit
+      render :edit
     end
   end
 
