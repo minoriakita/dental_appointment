@@ -18,8 +18,7 @@ class Public::AppointmentsController < ApplicationController
     else
        @patient = Patient.find(params[:appointment][:patient_id])
        @day = Time.parse(appointment_params[:appointment_date])
-      # flash.now[:alert] = "予約依頼が失敗しました"
-       redirect_to new_public_appointment_path(date: appointment_params[:appointment_date]), notice: "予約依頼が失敗しました", flash: { secondary: "・症状を入力してください"}#notice: "予約依頼が失敗しました"
+       redirect_to new_public_appointment_path(date: appointment_params[:appointment_date]), notice: "予約依頼が失敗しました", flash: { secondary: "・症状を入力してください"}
     end
   end
 

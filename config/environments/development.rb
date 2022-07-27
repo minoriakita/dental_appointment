@@ -37,19 +37,19 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = true
-  # config.action_mailer.default_url_options = {host: "bf47b757b9a04ee381ec5cca872f2249.vfs.cloud9.ap-northeast-1.amazonaws.com",
-  #                                             port: $PORT,
-  #                                             protocol: 'https'}
-  config.action_mailer.delivery_method = :letter_opener_web
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.gmail.com",
-  #   domain: 'gmail.com',
-  #   port:587,
-  #   user_name: ENV['GMAIL_USER_NAME'],
-  #   password: ENV['GMAIL_PASSWORD'],
-  #   authentication: :login
-  # }
+   config.action_mailer.default_url_options = {host: "bf47b757b9a04ee381ec5cca872f2249.vfs.cloud9.ap-northeast-1.amazonaws.com",
+                                               port: $PORT,
+                                               protocol: 'https'}
+  #config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    domain: 'gmail.com',
+    port:587,
+    user_name: ENV['GMAIL_USER_NAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: :login
+  }
 
 
   config.action_mailer.perform_deliveries = true
