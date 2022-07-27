@@ -6,7 +6,7 @@ class Employee < ApplicationRecord
 
   def appointments_list_on_charge(charge_id, day)
     Appointment.where(charge_id: charge_id)
-                    .where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day, status: "confirm" "cancel" "visit")
+                    .where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day, status: ["confirm", "cancel", "visit"])
                     .order(appointment_date: "ASC")
   end
 end

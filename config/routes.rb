@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :patients, controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions',
-  passwords: 'public/passwords'
+    registrations: "public/registrations",
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'
   }
 
   devise_for :admins, skip: [:registrations] ,controllers: {
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :symptoms
     resources :treatments
     get 'item' => 'homes#item'
-    get 'visit_date' => 'appointments#visit_date'
+    get 'visit_date/:id' => 'appointments#visit_date', as: 'visit_date'
     get "appointment_request_index" => "appointments#request_index"
   end
 

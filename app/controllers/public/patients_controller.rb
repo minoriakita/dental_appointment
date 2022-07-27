@@ -13,7 +13,7 @@ class Public::PatientsController < ApplicationController
     @patient = PublicPatient.find(params[:patient_id])
     @appointments = @patient.appointments.page(params[:page]).order(created_at: :desc)
   end
-
+  
   def update
     @patient = PublicPatient.find(params[:id])
     if @patient.update(patient_params)

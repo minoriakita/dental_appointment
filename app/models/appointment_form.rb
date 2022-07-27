@@ -15,7 +15,6 @@ class AppointmentForm
     @remark = appointment.remark
     @status = appointment.status
     @symptom_text = appointment.symptom_text
-    
   end
 
   def save

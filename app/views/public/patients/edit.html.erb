@@ -135,7 +135,7 @@
             <%= f.label :infection_id, "感染症" %>
           </div>
           <div class="col-lg-8">
-            <%= f.collection_check_boxes(:infection_ids, Infection.all, :id, :name) do |b| %>
+            <%= f.collection_check_boxes(:infection_ids, Infection.where(is_deleted: false), :id, :name) do |b| %>
               <div class="custom-control custom-checkbox custom-control-inline">
                 <%= b.check_box(class:"custom-control-input") %>
                 <%= b.label(class:"custom-control-label") %>
