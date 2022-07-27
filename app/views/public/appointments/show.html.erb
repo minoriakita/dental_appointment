@@ -98,20 +98,20 @@
       予約状態
     </div>
     <div class="col-lg-9">
-      <% if @appointment.status == "cancel" %>
-        <%= tag.span @appointment.status_i18n, class: "text-danger" %>
-      <% elsif @appointment.status.nil? %>
-        未登録
-      <% else %>
+      <%# if @appointment.status == "cancel" %>
+        <%#= tag.span @appointment.status_i18n, class: "text-danger" %>
+      <% if @appointment.status.present? %>
         <%= @appointment.status_i18n %>
+      <% else %>
+        未登録
       <% end %>
     </div>
   </div>
 </div>
 
-    <% if @appointment.status == "request" %>
+    <% unless @appointment.status == "impossible" %>
     <div class="form-group text-center">
-      <%= link_to "予約依頼変更", edit_public_appointment_path(params[:id]), class: 'btn btn-outline-info col-3' %>
+      <%= link_to "予約内容変更", edit_public_appointment_path(params[:id]), class: 'btn btn-outline-info col-3' %>
     </div>
     <% end %>
 

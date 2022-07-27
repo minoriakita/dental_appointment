@@ -1,25 +1,45 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <h2>パスワード再設定</h2>
+        <%= render "public/shared/error_messages", resource: resource %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+<%= form_with url: password_path(resource_name) do |f| %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field form-group">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= f.label :password, "新しいパスワード" %><br />
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= f.label :password_confirmation, "新しいパスワード確認" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-3" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Change my password" %>
+    <div class="row">
+      <div class="col text-center">
+        <%= f.submit "パスワード変更", class: "btn btn-outline-info col-3 mb-3" %>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+  <div class="text-center">
+    <%= render "public/shared/links" %>
+  </div>
+</div>

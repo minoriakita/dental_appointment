@@ -2,13 +2,13 @@ class Public::AppointmentsController < ApplicationController
    before_action :authenticate_patient!, except: [:day_index, :new]
 
   def new
+    #ログインしていなければログイン画面へ
     unless patient_signed_in?
       return redirect_to new_patient_session_path
     end
     @appointment = PublicAppointment.new
     @patient = current_patient
     @day = Time.parse(params[:date])
-    #ログインしていなければログイン画面へ
   end
 
   def create
