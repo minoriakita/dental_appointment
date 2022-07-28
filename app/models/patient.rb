@@ -18,8 +18,19 @@ class Patient < ApplicationRecord
   validates :patient_text, length: { maximum: 300 }
   validates :telephone_number, numericality: true, uniqueness: true, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
   validate :date_after_start
+
+  # 複数valitatesをまとめたい場合はwith_optionsを使用
+  with_options unless: -> { validation_context == :admin } do #adminが引数に渡された時
+    validates :last_name, presence: true
+    validates :first_name, presence: true
+    validates :postal_code, numericality: true, presence: true
+    validates :email, presence: true
+    validates :birthday, presence: true
+    validates :gender, presence: true
+    validates :address, presence: true
+  end
 
   enum gender: { man: 0, woman: 1, other: 2 }
 
