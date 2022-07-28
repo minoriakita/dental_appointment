@@ -30,6 +30,7 @@ ja:
         last_name_kana: "セイ"
         first_name_kana: "メイ"
         birthday: "誕生日"
+        gender: "性別"
         email: "メールアドレス"
         postal_code: "郵便番号"
         address: "住所"

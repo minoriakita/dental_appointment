@@ -8,7 +8,7 @@ class Admin::PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-    if @patient.save
+    if @patient.save(context: :admin)
       redirect_to admin_patient_path(@patient.id), notice: "登録が完了しました"
     else
       flash.now[:alert] = "登録が失敗しました"
@@ -35,7 +35,9 @@ class Admin::PatientsController < ApplicationController
 
   def update
     @patient = Patient.find(params[:id])
-    if @patient.update(patient_params)
+    @patient.attributes = patient_params
+
+    if @patient.save(context: :admin)
        redirect_to admin_patient_path(@patient), notice: "変更が完了しました"
     else
       flash.now[:alert] = "変更が失敗しました"
