@@ -55,15 +55,6 @@ class Public::AppointmentsController < ApplicationController
     @today_text = today.strftime("%Y-%m-%d")
   end
 
-  # def get_checked_count
-  #   アドミン側でステータスを変えたものの数を数える
-  # 　　@appointment.update(status: "confirm" "impossible").length
-  #     @checked_count = Appointment.where(status: "confirm" "impossible")
-  # showページ見たらtrueになる
-  # @appointment.update(checked: "true")
-  #   end
-  # end
-
   private
 
   def appointment_params
