@@ -45,12 +45,10 @@ class Admin::PatientsController < ApplicationController
     end
   end
 
+  #個人予約履歴
   def appointment_index
     @patient = Patient.find(params[:patient_id])
     @appointments = @patient.appointments.page(params[:page]).order(created_at: :desc)
-  end
-
-  def destroy
   end
 
   private

@@ -18,6 +18,7 @@ class Appointment < ApplicationRecord
 
   enum status: { confirm: 0, cancel: 1, visit: 2, request: 3, impossible: 4 }
 
+  #一日のアポイント件数を表示
   def self.appointments_list(day)
     self.publics.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day, status: ["confirm", "visit"])
   end
@@ -29,6 +30,7 @@ class Appointment < ApplicationRecord
     self.where(appointment_date: from...to, status: ["confirm", "visit"]).exists?
   end
 
+  #バリデーション
   def date_before_start
     return if appointment_date.blank?
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today

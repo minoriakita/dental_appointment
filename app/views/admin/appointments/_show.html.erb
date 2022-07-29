@@ -49,10 +49,7 @@
 <div class="text-center">
   <div class="row">
     <div class="col">
-      <% if appointment.status == "request" %>
-        <%= link_to "予約不可", admin_appointment_appointment_impossible_path(appointment.id), class: 'btn btn-outline-danger col-3', "data-confirm" => "予約不可にしますか？" %>
-        <%= link_to "予約編集", edit_admin_appointment_path(appointment.id), class: 'btn btn-outline-info col-3' %>
-      <% elsif appointment.visit_date.present? || appointment.status != "confirm"  %>
+      <% if appointment.visit_date.present? || appointment.status != "confirm"  %>
         <%= link_to "予約編集", edit_admin_appointment_path(appointment.id), class: 'btn btn-outline-info col-3' %>
       <% else %>
         <%= link_to "来院", admin_visit_date_path(appointment.id), remote: true, class: 'btn btn-outline-danger col-3', "data-confirm" => "来院しましたか？" %>

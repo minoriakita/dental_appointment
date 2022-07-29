@@ -38,6 +38,7 @@ class Admin::AppointmentsController < ApplicationController
 
   def update
     @appointment = AdminAppointment.find(params[:id])
+    $request_count = Appointment.where(status: "request").length
     if @appointment.update(appointment_update_params)
       @appointment.update(visit_date: nil) if @appointment.status == 'cancel'
       redirect_to admin_appointment_path(@appointment), notice: "変更が完了しました"
@@ -47,9 +48,7 @@ class Admin::AppointmentsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
+  #来院ステータスに変更
   def visit_date
     @appointment = AdminAppointment.find(params[:id])
     @appointment.update!(
@@ -59,18 +58,19 @@ class Admin::AppointmentsController < ApplicationController
     flash.now[:notice] = "来院しました"
   end
 
+  #リクエストステータス一覧
   def request_index
     @appointments = AdminAppointment.where(status: "request").page(params[:page])
   end
 
-  def appointment_impossible
-    @appointment = AdminAppointment.find(params[:appointment_id])
-    @appointment.update!(
-        status: 4
-      )
-    $request_count = Appointment.where(status: "request").length
-    redirect_to admin_appointment_path(@appointment.id)
-  end
+  # def appointment_impossible
+  #   @appointment = AdminAppointment.find(params[:appointment_id])
+  #   @appointment.update!(
+  #       status: 4
+  #     )
+  #   $request_count = Appointment.where(status: "request").length
+  #   redirect_to admin_appointment_path(@appointment.id)
+  # end
 
   private
 
