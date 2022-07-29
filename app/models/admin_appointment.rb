@@ -1,4 +1,5 @@
 class AdminAppointment < ActiveType::Record[Appointment]
-  validates :charge, presence: true, on: :create
-  validates :subscriber, presence: true, on: :create
+  #アドミンでアポイント取得する時のバリデーション
+  validates :charge, presence: true
+  validates :subscriber, presence: true
 end

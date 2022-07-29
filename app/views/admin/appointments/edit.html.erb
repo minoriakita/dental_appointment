@@ -63,8 +63,8 @@
           <div class="col-lg-9">
             <%= f.collection_check_boxes(:treatment_ids, Treatment.where(is_deleted: false), :id, :name) do |b| %>
               <div class="custom-control custom-checkbox custom-control-inline">
-                <%= b.check_box(class:"custom-control-input") %>
-                <%= b.label(class:"custom-control-label") %>
+                <%= b.check_box(class: "custom-control-input") %>
+                <%= b.label(class: "custom-control-label") %>
               </div>
             <% end %>
           </div>
@@ -115,7 +115,7 @@
             <%= f.label :status, "予約状態" %>
           </div>
           <div class="col-lg-9">
-            <%= f.select :status, Appointment.statuses_i18n.slice(:confirm, :cancel, :request).invert, {prompt: ""}, {class: 'form-control'} %>
+            <%= f.select :status, Appointment.statuses_i18n.slice(:confirm, :cancel, :request, :impossible).invert, {prompt: ""}, {class: 'form-control'} %>
           </div>
         </div>
       </div>

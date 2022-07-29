@@ -34,16 +34,19 @@ class Patient < ApplicationRecord
 
   enum gender: { man: 0, woman: 1, other: 2 }
 
+  # 初診再診の表示
   def is_visited?(on: Date.today)
     appointments.where("appointment_date < ?", on).where(status: :visit).exists?
   end
 
+  # バリデーション
   def get_age
     return if birthday.nil?
     date_format = "%Y%m%d"
     (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
   end
 
+  # 検索機能
   def self.search(keyword)
     where([
       "id = ? OR first_name_kana LIKE ? OR last_name_kana LIKE ?",
@@ -59,11 +62,13 @@ class Patient < ApplicationRecord
     "#{self.last_name_kana} #{self.first_name_kana}"
   end
 
+  # バリデーション
   def date_after_start
       return if birthday.blank?
       errors.add(:birthday, "は今日以前のものを選択してください") if birthday > Date.today
   end
 
+  # チェックしていないものの件数
   def unchecked_appointments
     appointments.where(status: [:confirm, :impossible], checked: false)
   end

@@ -1,4 +1,5 @@
 module Public::AppointmentsHelper
+  #午前の予約状況
   def table_rows_am(day, today_text)
     times = [
       ["10:00:00", "10:29:59"],
@@ -39,6 +40,7 @@ module Public::AppointmentsHelper
     end
   end
 
+  #午後の予約状況
   def table_rows_pm(day)
     times = [
       ["14:30:00", "14:59:59"],
@@ -82,6 +84,7 @@ module Public::AppointmentsHelper
   end
 
 end
+
 #Appointment.appointments_possible?(day, '10:00:00', '10:29:59') ? "予約不可" : link_to("予約依頼へ", new_public_appointment_path(date: "#{day} 10:00:00"))
     #<tr>
     #  <th class="col-md-1 text-center">10:00</th>
