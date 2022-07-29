@@ -7,6 +7,11 @@
       <div class="menu mx-2">
         <ul class="navbar-nav">
           <li class="nav-item">
+            <% if current_patient.full_name.present? %>
+              ようこそ、<%= current_patient.full_name %>さん！
+            <% else %>
+              ようこそ、<%= current_patient.full_name_kana %>さん！
+            <% end %>
           </li>
         </ul>
       </div>

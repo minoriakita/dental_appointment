@@ -17,7 +17,7 @@
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em><br />
           <% end %>
-          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+          <%= f.password_field :password, autofocus: true, required: true, autocomplete: "new-password", class: "form-control" %>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <%= f.label :password_confirmation, "新しいパスワード確認" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-3" %>
+          <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control mb-3" %>
         </div>
       </div>
     </div>

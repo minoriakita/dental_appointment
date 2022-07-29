@@ -14,7 +14,7 @@ module Public::AppointmentsHelper
         if Appointment.appointments_possible?(day, time.first, time.second)
           concat (tag.tr class: "bg-white" do
             concat tag.th time.first[0, 5], class: "dext-center bg-white"
-            concat (tag.td class: "text-center" do
+            concat (tag.td class: "text-center", style: "vertical-align: middle;" do
               concat(tag.span "×")
             end)
           end)
