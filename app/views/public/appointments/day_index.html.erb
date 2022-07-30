@@ -1,0 +1,24 @@
+<div class='row'>
+  <%= render 'layouts/public_sidebar' %>
+  <div class='col col-md-9 offset-md-1 mt-3'>
+    <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>
+    <h6>※予約不可の表示でも可能な場合がございますので、当日やお急ぎのご予約はお電話にてお問い合わせください。</h6>
+
+    <div class="col col-md-2">
+      <table class="table table-bordered bg-white">
+        <%= table_rows_am(@day, @today_text) %>
+        <tr>
+          <th>
+            .<br>
+            .<br>
+            .<br>
+          </th>
+          <td>
+          </td>
+        </tr>
+        <%= table_rows_pm(@day) %>
+
+      </table>
+    </div>
+  </div>
+</div>

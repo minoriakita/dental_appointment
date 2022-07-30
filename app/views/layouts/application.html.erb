@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DentalAppointment</title>
+    <title>Dental apo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <% if admin_signed_in? %>
         <%= render 'layouts/header_admin' %>
+      <% elsif patient_signed_in? %>
+        <%= render "layouts/header_patient" %>
       <% else %>
         <%= render 'layouts/default_header' %>
       <% end %>

@@ -1,5 +1,5 @@
 <div class='row'>
-  <%= render 'layouts/sidebar' %>
+  <%= render 'layouts/sidebar', request_count: @request_count %>
   <div class='col-md-9 offset-md-1 mt-3'>
     <h3>患者詳細</h3>
     <%= render partial: 'layouts/flash' %>
@@ -131,21 +131,6 @@
         <% else %>
           未登録
         <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="table">
-      <div class="row">
-        <div class="col-lg-3">
-          患者注意事項
-        </div>
-        <div class="col-lg-9">
-          <% if @patient.patient_text.present? %>
-            <%= @patient.patient_text %>
-          <% else %>
-            なし
-          <% end %>
         </div>
       </div>
     </div>

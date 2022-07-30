@@ -1,0 +1,143 @@
+<div class='row'>
+  <%= render 'layouts/public_sidebar' %>
+  <div class='col-md-9 offset-md-1 mt-3'>
+    <h3>登録情報編集</h3>
+      <%= render partial: 'layouts/flash' %>
+      <%= render 'layouts/error', obj: @patient %>
+
+      <%= form_with model: @patient, url: public_patient_path(@patient) do |f| %>
+
+      <div class='form-group'>
+        <div class='row'>
+          <div class='col-lg-3'>
+            <%= f.label :full_name,"名前" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :last_name, "(姓)" %>
+            <%= f.text_field :last_name, placeholder: "令和", class: "form-control" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :first_name, "(名)" %>
+            <%= f.text_field :first_name, placeholder: "道子", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='row'>
+          <div class='col-lg-3'>
+            <%= f.label :full_name_kana,"フリガナ" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :last_name_kana, "(セイ)" %>
+            <%= f.text_field :last_name_kana, placeholder: "レイワ", class: "form-control" %>
+          </div>
+          <div class='col-lg-4'>
+            <%= f.label :first_name_kana, "(メイ)" %>
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :birthday, "誕生日" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.date_field :birthday, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :gender, "性別" %>
+          </div>
+          <div class="col-lg-8">
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(0), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:man], for: 'patient_gender_man', class: 'custom-control-label' %>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(1), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:woman], for: 'patient_gender_woman', class: 'custom-control-label' %>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :gender,Patient.genders.key(2), class: 'custom-control-input' %>
+              <%= f.label :gender,Patient.genders_i18n[:other], for: 'patient_gender_other', class: 'custom-control-label' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :telephone_number,"電話番号(ハイフンなし)" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :telephone_number, placeholder: "0000000000", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :email,"メールアドレス" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :email, placeholder: "sample@example.com", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :address, "住所" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0－0", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= f.label :infection_id, "感染症" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.collection_check_boxes(:infection_ids, Infection.where(is_deleted: false), :id, :name) do |b| %>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <%= b.check_box(class:"custom-control-input") %>
+                <%= b.label(class:"custom-control-label") %>
+              </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <%= f.submit "変更を保存", class: 'btn btn-outline-info col-3' %>
+      </div>
+      <% end %>
+
+  </div>
+</div>

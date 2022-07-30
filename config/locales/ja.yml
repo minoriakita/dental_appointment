@@ -10,6 +10,8 @@ ja:
         confirm: "確定"
         cancel: "キャンセル"
         visit: "来院済"
+        request: "承認待ち"
+        impossible: "予約不可"
       consultation:
         confirm: "確定"
         cancel: "キャンセル"
@@ -28,17 +30,20 @@ ja:
         last_name_kana: "セイ"
         first_name_kana: "メイ"
         birthday: "誕生日"
+        gender: "性別"
         email: "メールアドレス"
         postal_code: "郵便番号"
         address: "住所"
         telephone_number: "電話番号"
         patient_text: "患者注意事項"
+        password: "パスワード"
       appointment:
         appointment_date: "予約日時"
         remark: "備考"
         symptom_text: "その他症状"
         charge: "担当者"
         subscriber: "予約者"
+        appointment_symptoms: "症状"
       employee:
         name: "スタッフ名"
       infection:
@@ -47,6 +52,7 @@ ja:
         name: "症状名"
       treatment:
         name: "治療名"
+      appointment_symptom: "症状"
   date:
     formats:
       default: "%Y/%m/%d"

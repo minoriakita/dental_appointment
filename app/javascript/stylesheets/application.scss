@@ -17,6 +17,10 @@
   background-color: #D0CDFA;
 }
 
+.navbar {
+  transition-duration: .4s;
+}
+
 .navbar-brand {
   transition-duration: .4s;
 }
@@ -40,10 +44,20 @@ a:hover {
 }
 
 .table-index {
+  white-space: nowrap;
+
+}
+.table-index div div {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table-index:hover {
   background-color: #C5D6E6;
+}
+
+.unchecked {
+  background-color: #f8d7da;
 }
 
 header {
@@ -174,4 +188,41 @@ transform: scale(1.1);
 
 .item-index {
   padding-top: 40px;
+}
+
+.table-am a {
+  padding: 12px 0;
+}
+
+.table-am:hover {
+  background: #C5D6E6
+  // height: 38px;
+  // vertical-align: middle !important;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-around;
+}
+
+.link_disable {
+  pointer-events: none;
+  background: white;
+}
+
+.maru {
+  width: 20px;
+  display: inline-block;
+  border-radius: 50%;
+  line-height: auto;
+  text-align: center;
+  background: white;
+  box-sizing: border-box;
+  border: solid red;
+}
+
+.border-black {
+  border-color: black;
+}
+
+.color-black {
+  text-color: black;
 }

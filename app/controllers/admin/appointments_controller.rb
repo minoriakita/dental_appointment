@@ -2,13 +2,13 @@ class Admin::AppointmentsController < ApplicationController
   before_action :authenticate_admin!
 
   def new
-    @appointment = Appointment.new
+    @appointment = AdminAppointment.new
     @patients = Patient.all
     @patient = Patient.find(params[:patient_id])
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = AdminAppointment.new(appointment_params)
     if @appointment.save
        redirect_to admin_appointment_path(@appointment), notice: "予約が完了しました"
     else
@@ -19,7 +19,7 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = Appointment.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
+    @appointments = AdminAppointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @employees = Employee.all
     @day = params[:day]
     if @day.blank?
@@ -28,16 +28,17 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
+    @appointment = AdminAppointment.find(params[:id])
     @patient = Patient.find(@appointment.patient_id)
   end
 
   def edit
-    @appointment = Appointment.find(params[:id])
+    @appointment = AdminAppointment.find(params[:id])
   end
 
   def update
-    @appointment = Appointment.find(params[:id])
+    @appointment = AdminAppointment.find(params[:id])
+    $request_count = Appointment.where(status: "request").length
     if @appointment.update(appointment_update_params)
       @appointment.update(visit_date: nil) if @appointment.status == 'cancel'
       redirect_to admin_appointment_path(@appointment), notice: "変更が完了しました"
@@ -47,17 +48,29 @@ class Admin::AppointmentsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
+  #来院ステータスに変更
   def visit_date
-    @appointment = Appointment.find(params[:id])
+    @appointment = AdminAppointment.find(params[:id])
     @appointment.update!(
         visit_date: Time.current,
         status: 2
       )
     flash.now[:notice] = "来院しました"
   end
+
+  #リクエストステータス一覧
+  def request_index
+    @appointments = AdminAppointment.where(status: "request").page(params[:page])
+  end
+
+  # def appointment_impossible
+  #   @appointment = AdminAppointment.find(params[:appointment_id])
+  #   @appointment.update!(
+  #       status: 4
+  #     )
+  #   $request_count = Appointment.where(status: "request").length
+  #   redirect_to admin_appointment_path(@appointment.id)
+  # end
 
   private
 
@@ -69,6 +82,7 @@ class Admin::AppointmentsController < ApplicationController
       :status,
       :charge_id,
       :subscriber_id,
+      :checked,
       { symptom_ids: []},
       { treatment_ids: []},)
   end
@@ -82,6 +96,7 @@ class Admin::AppointmentsController < ApplicationController
       :symptom_text,
       :visit_date,
       :subscriber_id,
+      :checked,
       { symptom_ids: []},
       { treatment_ids: []})
   end

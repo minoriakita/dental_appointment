@@ -1,5 +1,5 @@
 <div class='row'>
-  <%= render 'layouts/sidebar' %>
+  <%= render 'layouts/sidebar', request_count: @request_count %>
   <div class='col mt-3'>
     <div class='col-md-9 offset-md-1'>
     <h3><%= @day.to_date.strftime("%m月%d日") %>の予約一覧</h3>

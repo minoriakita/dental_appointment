@@ -1,5 +1,5 @@
 <div class='row'>
-  <%= render 'layouts/sidebar' %>
+  <%= render 'layouts/sidebar', request_count: @request_count %>
   <div class='col-md-9 offset-md-1 mt-3'>
     <h3>
       <% if @patient.full_name.present? %>
@@ -60,8 +60,8 @@
           <% end %>
           </div>
           <div class="col-md-2">
-          <% if appointment_status(appointment).present? %>
-            <%= appointment_status(appointment) %>
+          <% if appointment.status.present? %>
+            <%= appointment.status_i18n %>
           <% else %>
             未登録
           <% end %>

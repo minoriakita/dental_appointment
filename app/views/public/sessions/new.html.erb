@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <%= render partial: 'layouts/flash' %>
+      <h2>ログイン</h2>
+    </div>
+  </div>
+
+  <%= form_with model: @patient, url: patient_session_path do |f| %>
+    <div class="field form-group">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <%= f.label :電話番号 %>
+          <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <%= f.label :パスワード %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions form-group">
+      <div class="row">
+        <div class="col text-center">
+          <%= button_tag type: "submit", class: "btn btn-outline-info col-3 mt-3", id: "login-submit" do %>
+            ログイン<i class="fas fa-sign-in-alt ml-1"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions form-group">
+      <div class="row">
+        <div class="col text-center">
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "ログイン状態を保存する" %>
+            </div>
+          <% end %>
+            <%= render "public/shared/links" %>
+            <div>予約状況はこちらからご確認ください。<br>
+              <%= link_to "予約状況", public_top_path, class: "btn btn-outline-secondary col-3" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

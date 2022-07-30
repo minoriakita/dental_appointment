@@ -32,6 +32,19 @@
   <div class="sidebar mb-2 mb-md-3">
     <div class="row">
       <div class="col">
+        <%= link_to admin_appointment_request_index_path do %>
+          承認待ち
+          <div class="maru <%= "border-black" if request_count == 0 %>">
+            <%= request_count %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar mb-2 mb-md-3">
+    <div class="row">
+      <div class="col">
         <%= link_to admin_item_path do %>
           項目編集<i class="fas fa-pencil-alt ml-1"></i>
         <% end %>

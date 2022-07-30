@@ -1,5 +1,5 @@
 <div class='row'>
-  <%= render 'layouts/sidebar' %>
+  <%= render 'layouts/sidebar', request_count: @request_count %>
   <div class='col-md-9 offset-md-1 mt-3'>
     <h3>患者登録</h3>
       <%= render partial: 'layouts/flash' %>
@@ -77,6 +77,17 @@
       <div class="form-group">
         <div class="row">
           <div class="col-lg-3">
+            <%= f.label :password,"パスワード" %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :password, required: true, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-3">
             <%= f.label :telephone_number,"電話番号(ハイフンなし)" %>
           </div>
           <div class="col-lg-8">
@@ -91,7 +102,7 @@
             <%= f.label :email,"メールアドレス" %>
           </div>
           <div class="col-lg-8">
-            <%= f.text_field :email, placeholder: "sample@example.com", class: "form-control" %>
+            <%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %>
           </div>
         </div>
       </div>

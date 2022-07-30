@@ -1,3 +1,9 @@
 <% flash.each do |key, value| %>
-      <%= content_tag(:p, value, class: "alert alert-#{key} mt-2 text-danger") %>
+<%# binding.pry %>
+<% if patient_signed_in? && value == "・症状を入力してください" %>
+  <% class_name = "text-dark" %>
+<% else %>
+  <% class_name = "text-danger" %>
+<% end %>
+  <%= content_tag(:p, value, class: "alert alert-#{key} mt-2 #{class_name}") %>
 <% end %>

@@ -1,0 +1,71 @@
+<div class='row'>
+  <%= render 'layouts/sidebar', request_count: @request_count %>
+  <div class='col-md-9 offset-md-1 mt-3'>
+    <h3>予約依頼</h3>
+
+    <div class="table-title">
+      <div class="row">
+        <div class="col-md-3">
+          [予約日時]
+        </div>
+        <div class="col-md-2">
+          [患者ID]
+        </div>
+        <div class="col-md-2">
+          [患者名]
+        </div>
+        <div class="col-md-3">
+          [症状]
+        </div>
+        <div class="col-md-2">
+          [予約状況]
+        </div>
+      </div>
+    </div>
+
+    <% @appointments.each do |appointment| %>
+    <div class="table-index">
+      <%= link_to admin_appointment_path(appointment.id) do %>
+        <div class="row border-bottom d-flex align-items-end" style = "padding-top: 25px;">
+          <div class="col-md-3">
+            <%= appointment.appointment_date.strftime("%Y年%m月%d日 %H時%M分") %>
+          </div>
+          <div class="col-md-2">
+            <%= appointment.patient.id %>
+          </div>
+          <div class="col-md-2">
+          <% if appointment.patient.full_name.present? %>
+            <%= "#{appointment.patient.full_name} / #{appointment.patient.full_name_kana}" %>
+          <% else %>
+            <%= appointment.patient.full_name_kana %>
+          <% end %>
+          </div>
+          <div class="col-md-3">
+          <% if appointment.symptoms.length != 0 %>
+            <%# symptom_name = "" %>
+            <% appointment.symptoms.each do |symptom| %>
+              <%# symptom_name += symptom.name %>
+              <%= symptom.name %>
+            <% end %>
+            <%#= "t".bytesize %>
+            <%#= symptom_name.truncate(10) %>
+          <% else %>
+           未登録
+          <% end %>
+          </div>
+          <div class="col-md-2">
+          <% if appointment_status(appointment).present? %>
+            <%= appointment_status(appointment) %>
+          <% else %>
+            未登録
+          <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+    <div class="d-flex justify-content-center mt-3">
+      <%= paginate @appointments %>
+    </div>
+  </div>
+</div>

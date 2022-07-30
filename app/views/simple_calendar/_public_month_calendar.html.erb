@@ -1,0 +1,45 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <span class="calendar-change"><%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %></span>
+    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    <span class="calendar-change"><%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %></span>
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th style="width:14%;"><%= t('date.abbr_day_names')[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <% link_disable = "link_disable" unless day >= Date.today %>
+              <%= link_to appointment_day_index_path(day: day), class: link_disable do %>
+                <div class="calendar-link">
+                  <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                    <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                  <% else %>
+                      <% passed_block.call day, sorted_events.fetch(day, []) %>
+                      <div class="text-center">
+                        <% if day >= Date.today %>
+                          予約状況を見る
+                        <% end %>
+                      </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

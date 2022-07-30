@@ -39,6 +39,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_type (2.2.0)
+      activerecord (>= 3.2)
     activejob (6.1.6.1)
       activesupport (= 6.1.6.1)
       globalid (>= 0.3.6)
@@ -116,6 +118,14 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
+    letter_opener_web (1.4.1)
+      actionmailer (>= 3.2)
+      letter_opener (~> 1.0)
+      railties (>= 3.2)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -251,6 +261,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_type
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
@@ -260,6 +271,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
+  letter_opener_web (~> 1.0)
   listen (~> 3.3)
   mysql2
   pry-rails
