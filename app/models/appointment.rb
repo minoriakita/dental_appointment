@@ -1,5 +1,5 @@
 class Appointment < ApplicationRecord
-  scope :publics, -> { where.not(status: "request" "impossible") }
+  scope :publics, -> { where.not(status: ["request", "impossible"]) }
 
   belongs_to :patient
   belongs_to :charge, class_name: 'Employee', foreign_key: :charge_id, optional: true
@@ -20,7 +20,7 @@ class Appointment < ApplicationRecord
 
   #一日のアポイント件数を表示
   def self.appointments_list(day)
-    self.publics.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day, status: ["confirm", "visit"])
+    self.where(appointment_date: Date.parse(day).beginning_of_day...Date.parse(day).end_of_day, status: ["confirm", "visit"])
   end
 
   def self.appointments_possible?(day, from, to)
