@@ -1,6 +1,6 @@
 # 勉強用
 
-# class AppointmentForm
+ class AppointmentForm
 #   include ActiveModel::Model
 #   include ActiveRecord::AttributeAssignment
 
@@ -33,4 +33,4 @@
 #     AppointmentSymptom.create(symptom_id: symptom_id, appointment_id: appointment.id) if symptom_id.present?
 #     appointment.id
 #   end
-# end
+ end
