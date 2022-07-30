@@ -35,12 +35,15 @@ class Public::AppointmentsController < ApplicationController
       render :edit
     end
   end
-  
+
   #詳細ページを見たら通知外す
   def show
     @appointment = PublicAppointment.find(params[:id])
     @patient = @appointment.patient
-    if @patient == current_patient && !@appointment.checked?
+    if @patient == current_patient &&
+      !@appointment.checked? &&
+      (@appointment.status_before_type_cast == Appointment.statuses["confirm"] ||
+      @appointment.status_before_type_cast == Appointment.statuses["impossible"])
        @appointment.update(checked: true)
     end
   end
@@ -51,7 +54,7 @@ class Public::AppointmentsController < ApplicationController
     today = Date.today
     @today_text = today.strftime("%Y-%m-%d")
   end
-  
+
   #予約履歴
   def history
     @appointments = current_patient.appointments.page(params[:page]).order(created_at: :desc)
