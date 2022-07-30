@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_scope :patient do
     get 'patients/sign_up' => 'public/registrations#new'
     post 'patients/sign_up' => 'public/registrations#create', as: 'patient_registration'
