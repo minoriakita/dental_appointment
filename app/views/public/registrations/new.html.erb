@@ -10,10 +10,10 @@
       <div class='form-group'>
         <div class='row'>
           <div class='col-lg-3'>
-            <%= f.label :full_name,"名前" %>
+            <%= f.label :full_name %>
           </div>
           <div class='col-lg-4'>
-            <%= f.label :last_name, "(姓)" %>
+            <%= f.label :last_name, "(姓)"%>
             <%= f.text_field :last_name, placeholder: "令和", class: "form-control" %>
           </div>
           <div class='col-lg-4'>
@@ -26,7 +26,7 @@
       <div class='form-group'>
         <div class='row'>
           <div class='col-lg-3'>
-            <%= f.label :full_name_kana,"フリガナ" %>
+            <%= f.label :full_name_kana, "フリガナ" %>
           </div>
           <div class='col-lg-4'>
             <%= f.label :last_name_kana, "(セイ)" %>
@@ -57,18 +57,18 @@
           </div>
           <div class="col-lg-8">
             <div class="custom-control custom-radio custom-control-inline">
-              <%= f.radio_button :gender,Patient.genders.key(0), class: 'custom-control-input' %>
-              <%= f.label :gender,Patient.genders_i18n[:man], for: 'patient_gender_man', class: 'custom-control-label' %>
+              <%= f.radio_button :gender, Patient.genders.key(0), class: 'custom-control-input' %>
+              <%= f.label :gender, Patient.genders_i18n[:man], for: 'patient_gender_man', class: 'custom-control-label' %>
             </div>
 
             <div class="custom-control custom-radio custom-control-inline">
-              <%= f.radio_button :gender,Patient.genders.key(1), class: 'custom-control-input' %>
-              <%= f.label :gender,Patient.genders_i18n[:woman], for: 'patient_gender_woman', class: 'custom-control-label' %>
+              <%= f.radio_button :gender, Patient.genders.key(1), class: 'custom-control-input' %>
+              <%= f.label :gender, Patient.genders_i18n[:woman], for: 'patient_gender_woman', class: 'custom-control-label' %>
             </div>
 
             <div class="custom-control custom-radio custom-control-inline">
               <%= f.radio_button :gender,Patient.genders.key(2), class: 'custom-control-input' %>
-              <%= f.label :gender,Patient.genders_i18n[:other], for: 'patient_gender_other', class: 'custom-control-label' %>
+              <%= f.label :gender, Patient.genders_i18n[:other], for: 'patient_gender_other', class: 'custom-control-label' %>
             </div>
           </div>
         </div>
