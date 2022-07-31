@@ -25,50 +25,53 @@
         </div>
       </div>
 
-      <% @patients.each do |patient| %>
-      <div class="table-index">
-        <%= link_to admin_patient_path(patient) do %>
-        <div class="row border-bottom d-flex align-items-end" style = "padding-top: 25px;">
-          <div class="col-md-2">
-           <%= patient.id %>
+      <% if @patients.any? %>
+        <% @patients.each do |patient| %>
+        <div class="table-index">
+          <%= link_to admin_patient_path(patient) do %>
+          <div class="row border-bottom d-flex align-items-end" style = "padding-top: 25px;">
+            <div class="col-md-2">
+             <%= patient.id %>
+            </div>
+            <div class="col-md-4">
+              <% if patient.full_name.present? %>
+                <%= "#{patient.full_name} / #{patient.full_name_kana}" %>
+              <% else %>
+                <%= patient.full_name_kana %>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <% if patient.telephone_number.present? %>
+                <%= patient.telephone_number %>
+              <% else %>
+                未登録
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <% if patient.gender.present? %>
+                <%= patient.gender_i18n %>
+              <% else %>
+                未登録
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <% if patient.get_age.present? %>
+                <%= patient.get_age %>歳
+              <% else %>
+                未登録
+              <% end %>
+            </div>
           </div>
-          <div class="col-md-4">
-            <% if patient.full_name.present? %>
-              <%= "#{patient.full_name} / #{patient.full_name_kana}" %>
-            <% else %>
-              <%= patient.full_name_kana %>
-            <% end %>
-          </div>
-          <div class="col-md-2">
-            <% if patient.telephone_number.present? %>
-              <%= patient.telephone_number %>
-            <% else %>
-              未登録
-            <% end %>
-          </div>
-          <div class="col-md-2">
-            <% if patient.gender.present? %>
-              <%= patient.gender_i18n %>
-            <% else %>
-              未登録
-            <% end %>
-          </div>
-          <div class="col-md-2">
-            <% if patient.get_age.present? %>
-              <%= patient.get_age %>歳
-            <% else %>
-              未登録
-            <% end %>
-          </div>
+          <% end %>
         </div>
         <% end %>
-      </div>
-      <% end %>
       <div class="d-flex justify-content-center mt-3">
         <%= paginate @patients %>
       </div>
+      <% else %>
+          存在しません。
+      <% end %>
     </div>
-
   </div>
 </div>
 

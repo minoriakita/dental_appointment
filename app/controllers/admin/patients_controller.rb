@@ -21,8 +21,8 @@ class Admin::PatientsController < ApplicationController
   end
 
   def search
-    @patients = Patient.search(params[:keyword]).page(params[:page])
-    @keyword = params[:keyword]
+      @patients = Patient.search(params[:keyword]).page(params[:page])
+      @keyword = params[:keyword]
   end
 
   def show
