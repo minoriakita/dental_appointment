@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_scope :patient do
     get 'patients/sign_up' => 'public/registrations#new'
     post 'patients/sign_up' => 'public/registrations#create', as: 'patient_registration'
@@ -34,16 +33,11 @@ Rails.application.routes.draw do
     get "appointment_request_index" => "appointments#request_index"
   end
 
-  #ルートページにしている
-  # devise_scope :admin do
-  #   root to: "admin/sessions#new"
-  #   get 'top', to: 'admin/homes#top'
-  # end
-  root to: "public/homes#about"
-  get 'admin/top', to: 'admin/homes#top'
-  get "public/top", to: "public/homes#top"
-  get "appointment_day_index" => "public/appointments#day_index"
-  get "about" => "public/homes#about"
+    root to: "public/homes#about"
+    get 'admin/top', to: 'admin/homes#top'
+    get "public/top", to: "public/homes#top"
+    get "appointment_day_index" => "public/appointments#day_index"
+    get "about" => "public/homes#about"
 
   namespace :public do
     resources :appointments, except: :index do
@@ -55,9 +49,16 @@ Rails.application.routes.draw do
     resources :patients
   end
 
+  # パスワード再設定のメール確認
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+  
+  #deviseでルートページの設定する時の書き方
+  # devise_scope :admin do
+  #   root to: "admin/sessions#new"
+  #   get 'top', to: 'admin/homes#top'
+  # end
 
   # scope :public do
   #   resources :appointments
@@ -69,6 +70,5 @@ Rails.application.routes.draw do
   #   resources :appointments
   #   # appointments
   # end
-
 
 end

@@ -1,5 +1,5 @@
 class Appointment < ApplicationRecord
-  scope :publics, -> { where.not(status: ["request", "impossible"]) }
+  # scope :publics, -> { where.not(status: ["request", "impossible"]) }
 
   belongs_to :patient
   belongs_to :charge, class_name: 'Employee', foreign_key: :charge_id, optional: true
@@ -30,7 +30,7 @@ class Appointment < ApplicationRecord
     self.where(appointment_date: from...to, status: ["confirm", "visit"]).exists?
   end
 
-  #バリデーション
+  #日時バリデーション
   def date_before_start
     return if appointment_date.blank?
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today

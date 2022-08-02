@@ -54,6 +54,7 @@ class Patient < ApplicationRecord
       ])
   end
 
+  #フルネーム定義
   def full_name
     "#{self.last_name} #{self.first_name}"
   end
