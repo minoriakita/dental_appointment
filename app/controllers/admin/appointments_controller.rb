@@ -51,7 +51,7 @@ class Admin::AppointmentsController < ApplicationController
   #来院ステータスに変更
   def visit_date
     @appointment = AdminAppointment.find(params[:id])
-    @appointment.update!(
+    @appointment.update(
         visit_date: Time.current,
         status: 2
       )
