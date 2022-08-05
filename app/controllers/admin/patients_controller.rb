@@ -3,7 +3,6 @@ class Admin::PatientsController < ApplicationController
 
   def new
     @patient = Patient.new
-    @infection = Infection.all
   end
 
   def create

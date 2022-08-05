@@ -19,7 +19,6 @@ class Admin::AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = AdminAppointment.publics.where(appointment_date: Date.today.beginning_of_day...Date.today.end_of_day)
     @employees = Employee.all
     @day = params[:day]
     if @day.blank?
@@ -29,7 +28,6 @@ class Admin::AppointmentsController < ApplicationController
 
   def show
     @appointment = AdminAppointment.find(params[:id])
-    @patient = Patient.find(@appointment.patient_id)
   end
 
   def edit
