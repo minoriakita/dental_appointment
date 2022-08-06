@@ -38,6 +38,7 @@ class Admin::AppointmentsController < ApplicationController
     @appointment = AdminAppointment.find(params[:id])
     $request_count = Appointment.where(status: "request").length
     if @appointment.update(appointment_update_params)
+      # ステータスがcancelになったら来院日削除
       @appointment.update(visit_date: nil) if @appointment.status == 'cancel'
       redirect_to admin_appointment_path(@appointment), notice: "変更が完了しました"
     else
