@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get "appointment_request_index" => "appointments#request_index"
   end
 
+    # ルートページ
     root to: "public/homes#about"
     get 'admin/top', to: 'admin/homes#top'
     get "public/top", to: "public/homes#top"

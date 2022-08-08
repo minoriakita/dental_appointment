@@ -2,6 +2,7 @@
   <div class="sidebar mb-2 mb-md-3 mt-0 mt-md-3">
     <div class="row">
       <div class="col">
+        <!--当日の予約一覧が表示される-->
         <%= link_to admin_appointments_path(day: Date.current.strftime('%Y-%m-%d')) do %>
           予約一覧<i class="fas fa-tooth ml-1"></i>
         <% end %>
