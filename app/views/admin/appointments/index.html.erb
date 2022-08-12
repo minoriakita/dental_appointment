@@ -8,6 +8,7 @@
 　　　<div class="row">
         <!--担当者毎に予約一覧を表示-->
         <% @employees.each do |employee| %>
+        <!--削除されていない従業員を表示-->
           <% if !employee.is_deleted %>
             <div class="col-lg-4 col-md-6 border-right border-bottom">
               <%= employee.name %>

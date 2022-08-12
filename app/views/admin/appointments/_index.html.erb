@@ -1,5 +1,6 @@
 <!--カルテ部分テンプレート-->
 <%= link_to admin_appointment_path(appointment.id) do %>
+<!--感染症あればカードの色を黄色に表示-->
   <% if appointment.patient.infections.present? %>
     <div class="card-infection mb-3 border">
   <% else %>
