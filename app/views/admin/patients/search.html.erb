@@ -33,6 +33,7 @@
             <div class="col-md-2">
              <%= patient.id %>
             </div>
+            
             <div class="col-md-4">
               <% if patient.full_name.present? %>
                 <%= "#{patient.full_name} / #{patient.full_name_kana}" %>
@@ -40,6 +41,7 @@
                 <%= patient.full_name_kana %>
               <% end %>
             </div>
+            
             <div class="col-md-2">
               <% if patient.telephone_number.present? %>
                 <%= patient.telephone_number %>
@@ -47,6 +49,7 @@
                 未登録
               <% end %>
             </div>
+            
             <div class="col-md-2">
               <% if patient.gender.present? %>
                 <%= patient.gender_i18n %>
@@ -54,6 +57,7 @@
                 未登録
               <% end %>
             </div>
+            
             <div class="col-md-2">
               <% if patient.get_age.present? %>
                 <%= patient.get_age %>歳
@@ -61,13 +65,14 @@
                 未登録
               <% end %>
             </div>
+            
           </div>
           <% end %>
         </div>
         <% end %>
-      <div class="d-flex justify-content-center mt-3">
-        <%= paginate @patients %>
-      </div>
+        <div class="d-flex justify-content-center mt-3">
+          <%= paginate @patients %>
+        </div>
       <% else %>
           存在しません。
       <% end %>

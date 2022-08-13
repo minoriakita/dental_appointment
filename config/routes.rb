@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # 新規登録時にエラー文が出るとURLが変わってしまわないようにするため
+  # 新規登録時にエラー文が出るとURLが変わらないようにするため
   devise_scope :patient do
     get 'patients/sign_up' => 'public/registrations#new'
     post 'patients/sign_up' => 'public/registrations#create', as: 'patient_registration'
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
-  
+
   #deviseでルートページの設定する時の書き方
   # devise_scope :admin do
   #   root to: "admin/sessions#new"
