@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-<%# binding.pry %>
+<!--赤文字のフラッシュメッセージ、患者側のエラーだけ別で設定。redirectに対応している。-->
 <% if patient_signed_in? && value == "・症状を入力してください" %>
   <% class_name = "text-dark" %>
 <% else %>
