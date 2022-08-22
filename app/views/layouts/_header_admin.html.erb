@@ -10,7 +10,7 @@
       </div>
       <div>
         <%= form_with url: search_admin_patients_path, method: :get, local: true, class: 'form-inline my-0 input-group' do |f| %>
-          <%= f.text_field :keyword, value: @keyword, placeholder: 'Search', required: 'required', class: 'form-control', 'aria-describedby': 'search-submit' %>
+          <%= f.text_field :keyword, value: @keyword, placeholder: '【ID】か【カナ】で検索', required: 'required', class: 'form-control', 'aria-describedby': 'search-submit' %>
           <div class="input-group-append">
             <%= button_tag type: "submit", class: "btn btn-outline-secondary", id: 'search-submit' do %>
               <i class="fas fa-search"></i>

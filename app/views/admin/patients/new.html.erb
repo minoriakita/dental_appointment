@@ -30,11 +30,11 @@
           </div>
           <div class='col-lg-4'>
             <%= f.label :last_name_kana, "(セイ)" %>
-            <%= f.text_field :last_name_kana, placeholder: "レイワ", class: "form-control" %>
+            <%= f.text_field :last_name_kana, placeholder: "レイワ（必須）", class: "form-control" %>
           </div>
           <div class='col-lg-4'>
             <%= f.label :first_name_kana, "(メイ)" %>
-            <%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control" %>
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ（必須）", class: "form-control" %>
           </div>
         </div>
       </div>
@@ -77,10 +77,10 @@
       <div class="form-group">
         <div class="row">
           <div class="col-lg-3">
-            <%= f.label :password,"パスワード" %>
+            <%= f.label :password, "パスワード" %>
           </div>
           <div class="col-lg-8">
-            <%= f.text_field :password, required: true, class: "form-control" %>
+            <%= f.text_field :password, placeholder: "（必須）", required: true, class: "form-control" %>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@
             <%= f.label :telephone_number,"電話番号(ハイフンなし)" %>
           </div>
           <div class="col-lg-8">
-            <%= f.text_field :telephone_number, placeholder: "0000000000", class: "form-control" %>
+            <%= f.text_field :telephone_number, placeholder: "0000000000（必須）", class: "form-control" %>
           </div>
         </div>
       </div>
