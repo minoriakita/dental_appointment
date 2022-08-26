@@ -39,7 +39,7 @@
             <%= f.label :appointment_date, "予約日時" %>
           </div>
           <div class="col-lg-9">
-            <%= f.datetime_field :appointment_date, class: 'form-control' %>
+            <%= f.datetime_field :appointment_date, placeholder: "必須", class: 'form-control' %>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
             <%= f.label "担当者" %>
           </div>
           <div class="col-lg-9">
-            <%= f.collection_select :charge_id, Employee.where(is_deleted: false), :id, :name, {include_blank: "選択してください"}, {class: 'form-control'} %>
+            <%= f.collection_select :charge_id, Employee.where(is_deleted: false), :id, :name, {include_blank: "選択してください（必須）"}, {class: 'form-control'} %>
           </div>
         </div>
       </div>
@@ -126,7 +126,7 @@
             <%= f.label :subscriber_id, "予約者" %>
           </div>
           <div class="col-lg-9">
-            <%= f.collection_select :subscriber_id, Employee.where(is_deleted: false), :id, :name, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
+            <%= f.collection_select :subscriber_id, Employee.where(is_deleted: false), :id, :name, {include_blank: "選択して下さい（必須）"}, {class: 'form-control'} %>
           </div>
         </div>
       </div>

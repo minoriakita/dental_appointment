@@ -34,7 +34,7 @@
           </div>
           <div class='col-lg-4'>
             <%= f.label :first_name_kana, "(メイ)" %>
-            <%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control" %>
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ（必須）", class: "form-control" %>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
             <%= f.label :telephone_number,"電話番号(ハイフンなし)" %>
           </div>
           <div class="col-lg-8">
-            <%= f.text_field :telephone_number, placeholder: "0000000000", class: "form-control" %>
+            <%= f.text_field :telephone_number, placeholder: "0000000000（必須）", class: "form-control" %>
           </div>
         </div>
       </div>
@@ -137,8 +137,8 @@
           <div class="col-lg-8">
             <%= f.collection_check_boxes(:infection_ids, Infection.where(is_deleted: false), :id, :name) do |b| %>
               <div class="custom-control custom-checkbox custom-control-inline">
-                <%= b.check_box(class:"custom-control-input") %>
-                <%= b.label(class:"custom-control-label") %>
+                <%= b.check_box(class: "custom-control-input") %>
+                <%= b.label(class: "custom-control-label") %>
               </div>
           <% end %>
           </div>
