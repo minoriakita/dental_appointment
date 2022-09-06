@@ -36,6 +36,7 @@ class Appointment < ApplicationRecord
     errors.add(:appointment_date, "は今日以降のものを選択してください。") if appointment_date < Date.today
   end
 
+  #時間を数字に変換して時間のバリデーション
   def start_finish_check
     return if appointment_date.blank?
     errors.add(:appointment_date, "は10時から18時30分の間で選択してください") if appointment_date.strftime('%H%M').to_i < 1000 || 1830 < appointment_date.strftime('%H%M').to_i
