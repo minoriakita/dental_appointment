@@ -59,11 +59,12 @@ class Patient < ApplicationRecord
     "#{self.last_name} #{self.first_name}"
   end
 
+  #フルネームカナ定義
   def full_name_kana
     "#{self.last_name_kana} #{self.first_name_kana}"
   end
 
-  # バリデーション
+  # 誕生日今日以降は選択できないバリデーション
   def date_after_start
       return if birthday.blank?
       errors.add(:birthday, "は今日以前のものを選択してください") if birthday > Date.today
@@ -73,5 +74,4 @@ class Patient < ApplicationRecord
   def unchecked_appointments
     appointments.where(status: [:confirm, :impossible], checked: false)
   end
-
 end
