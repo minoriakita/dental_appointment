@@ -70,7 +70,7 @@ class Patient < ApplicationRecord
       errors.add(:birthday, "は今日以前のものを選択してください") if birthday > Date.today
   end
 
-  # 予約チェックしていないものの件数
+  # 予約依頼チェックしていないものの件数
   def unchecked_appointments
     appointments.where(status: [:confirm, :impossible], checked: false)
   end
