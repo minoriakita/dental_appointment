@@ -24,7 +24,7 @@ class Appointment < ApplicationRecord
   end
 
   def self.appointments_possible?(day, from, to)
-    #確定と来院済みのものだけ取得
+    #アポが入っているかどうか、確定と来院済みのものだけ取得
     from = DateTime.parse("#{day} #{from}")
     to = DateTime.parse("#{day} #{to}")
     self.where(appointment_date: from...to, status: ["confirm", "visit"]).exists?

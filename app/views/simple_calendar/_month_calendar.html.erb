@@ -20,6 +20,7 @@
         <tr>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <!--予約一覧へのパス-->
               <%= link_to admin_appointments_path(day: day) do %>
                 <div class="calendar-link">
                   <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>

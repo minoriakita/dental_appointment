@@ -21,7 +21,7 @@ class Patient < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
   validate :date_after_start
 
-  # 複数valitatesをまとめたい場合はwith_optionsを使用
+  # 複数valitatesをまとめたい場合はwith_optionsを使用、バリデーションを分けている
   with_options unless: -> { validation_context == :admin } do #adminが引数に渡された時
     validates :last_name, presence: true
     validates :first_name, presence: true
