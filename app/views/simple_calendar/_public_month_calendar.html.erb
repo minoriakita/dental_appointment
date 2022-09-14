@@ -20,6 +20,7 @@
         <tr>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <!--予約一覧へ-->
               <% link_disable = "link_disable" unless day >= Date.today %>
               <%= link_to appointment_day_index_path(day: day), class: link_disable do %>
                 <div class="calendar-link">
